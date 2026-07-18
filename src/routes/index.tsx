@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowUpRight, Workflow, Palette, User, Mail, FileDown, Linkedin, Layers, Box, Cpu, Sparkles } from "lucide-react";
+import { ArrowUpRight, Workflow, Palette, User, Mail, FileDown, Linkedin, Layers, Box, Cpu, Sparkles, CheckCircle2 } from "lucide-react";
 import { PlaceholderCard } from "@/components/page-shell";
 import { SectionHeader } from "@/components/section-header";
 import { Stagger, staggerItem, Reveal } from "@/components/reveal";
@@ -9,15 +9,15 @@ import { StatsScrollReveal } from "@/components/stats-scroll-reveal";
 import { Magnetic } from "@/components/magnetic";
 import { GsapHeadline } from "@/components/gsap-headline";
 
-/* ─── Shared premium easing curve ─── */
-const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
+/* ─── Unified Site-Wide Motion System Standards ─── */
+const EASE_EDITORIAL = [0.16, 1, 0.3, 1] as const;
 
-/* ─── Fade-up animation wrapper ─── */
+/** Subtle Fade-up with hardware-accelerated transforms */
 function FadeUp({
   children,
   delay = 0,
   className,
-  y = 22,
+  y = 18,
 }: {
   children: React.ReactNode;
   delay?: number;
@@ -28,16 +28,16 @@ function FadeUp({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: reduced ? 0 : y, filter: reduced ? "blur(0px)" : "blur(8px)" }}
-      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      transition={{ duration: 0.9, ease: EASE_OUT_EXPO, delay }}
+      initial={{ opacity: 0, y: reduced ? 0 : y, filter: reduced ? "none" : "blur(6px)" }}
+      animate={{ opacity: 1, y: 0, filter: "none" }}
+      transition={{ duration: 0.85, ease: EASE_EDITORIAL, delay }}
     >
       {children}
     </motion.div>
   );
 }
 
-/* ─── CHAPTER 02: Architectural Blueprint Visual Composition ─── */
+/* ─── CHAPTER 01: Projects Rebuilding Living System Architecture ─── */
 function ProjectsRebuildingEditorial() {
   const reduced = useReducedMotion();
 
@@ -48,21 +48,28 @@ function ProjectsRebuildingEditorial() {
         <span className="text-[10px] uppercase tracking-[0.35em] text-accent font-semibold">
           CHAPTER 01 · SYSTEM IN REFACTOR
         </span>
-        <span className="h-px w-16 bg-accent/40 rounded-full" />
+        <motion.div
+          className="h-px bg-accent/40 rounded-full"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: EASE_EDITORIAL }}
+          style={{ originX: 0, width: "4rem" }}
+        />
       </div>
 
       {/* Asymmetrical 12-Column Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         
-        {/* Left Column (5 Cols): Editorial Announcement Text */}
+        {/* Left Column (5 Cols): Text Announcement */}
         <div className="lg:col-span-5 space-y-8 text-left">
           
-          {/* Status badge */}
+          {/* Status badge with pulsing dot */}
           <motion.div
             initial={{ opacity: 0, x: reduced ? 0 : -12 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
+            transition={{ duration: 0.6, ease: EASE_EDITORIAL }}
             className="inline-flex items-center gap-2.5 rounded-full border border-accent/30 bg-accent/[0.08] px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.28em] text-accent"
           >
             <span className="relative flex h-1.5 w-1.5">
@@ -78,27 +85,53 @@ function ProjectsRebuildingEditorial() {
           <Reveal>
             <h2 className="font-display text-4xl sm:text-5xl md:text-6xl leading-[0.92] tracking-tight text-foreground font-light">
               Projects are being <br />
-              <span className="text-accent italic font-normal">rebuilt.</span>
+              <motion.span
+                className="text-accent italic font-normal inline-block"
+                initial={{ opacity: 0, y: reduced ? 0 : 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.2, ease: EASE_EDITORIAL }}
+              >
+                rebuilt.
+              </motion.span>
             </h2>
           </Reveal>
 
           {/* Body */}
           <motion.p
-            initial={{ opacity: 0, y: reduced ? 0 : 16 }}
+            initial={{ opacity: 0, y: reduced ? 0 : 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: EASE_OUT_EXPO, delay: 0.2 }}
+            transition={{ duration: 0.75, ease: EASE_EDITORIAL, delay: 0.25 }}
             className="text-base md:text-lg leading-[1.8] text-muted-foreground font-light"
           >
             I’m currently redesigning this portfolio with deeper case studies, stronger visuals, and a more immersive experience.
           </motion.p>
+
+          {/* Progress Visualization Bar */}
+          <div className="space-y-2 pt-2">
+            <div className="flex justify-between text-[10px] font-mono text-muted-foreground/70 uppercase tracking-widest">
+              <span>SYSTEM_REBUILD_PROGRESS</span>
+              <span>78%</span>
+            </div>
+            <div className="h-1.5 w-full bg-border/30 rounded-full overflow-hidden">
+              <motion.div
+                className="h-full bg-gradient-to-r from-accent/60 via-accent to-accent/80 rounded-full"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 0.78 }}
+                viewport={{ once: true }}
+                transition={{ duration: reduced ? 0 : 1.8, ease: EASE_EDITORIAL, delay: 0.4 }}
+                style={{ originX: 0 }}
+              />
+            </div>
+          </div>
 
           {/* Footnote */}
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.35 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="pt-4 border-t border-border/25 flex items-center justify-between"
           >
             <span className="text-xs text-muted-foreground/60 font-mono tracking-wider">
@@ -119,7 +152,7 @@ function ProjectsRebuildingEditorial() {
         {/* Right Column (7 Cols): Abstract Blueprint & Component Architecture Canvas */}
         <div className="lg:col-span-7">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-border/40 bg-surface/25 backdrop-blur-xl p-6 md:p-8 shadow-[var(--shadow-soft)]">
+            <div className="relative overflow-hidden rounded-3xl border border-border/40 bg-surface/25 backdrop-blur-xl p-6 md:p-8 shadow-[var(--shadow-soft)] group">
               
               {/* Background Blueprint Grid */}
               <div className="absolute inset-0 grid-bg opacity-[0.18] pointer-events-none" />
@@ -127,7 +160,7 @@ function ProjectsRebuildingEditorial() {
               {/* Top Bar Architectural Details */}
               <div className="relative z-10 flex items-center justify-between border-b border-border/30 pb-4 mb-6">
                 <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
-                  <span className="h-2 w-2 rounded-full bg-accent/80" />
+                  <span className="h-2 w-2 rounded-full bg-accent/80 animate-pulse" />
                   <span>CANVAS // 01_CASE_STUDY_FRAMEWORK</span>
                 </div>
                 <div className="text-[10px] font-mono text-accent/70 tracking-widest uppercase">
@@ -139,7 +172,11 @@ function ProjectsRebuildingEditorial() {
               <div className="relative z-10 space-y-6">
                 
                 {/* Visual Wireframe Block 1 - Hero Case Study Bounds */}
-                <div className="group relative rounded-2xl border border-dashed border-accent/40 bg-surface/30 p-5 transition-colors duration-500 hover:border-accent/70">
+                <motion.div
+                  className="relative rounded-2xl border border-dashed border-accent/40 bg-surface/30 p-5 transition-colors duration-500 hover:border-accent/70"
+                  whileHover={{ scale: reduced ? 1 : 1.01 }}
+                  transition={{ duration: 0.35, ease: EASE_EDITORIAL }}
+                >
                   <div className="flex justify-between items-center mb-3">
                     <span className="text-[10px] font-mono text-accent uppercase tracking-widest flex items-center gap-1.5">
                       <Layers className="h-3 w-3" />
@@ -150,18 +187,28 @@ function ProjectsRebuildingEditorial() {
                     </span>
                   </div>
                   <div className="h-12 w-full rounded-lg bg-border/25 flex items-center px-4 justify-between overflow-hidden">
-                    <div className="h-2.5 w-1/3 bg-accent/40 rounded" />
+                    <motion.div
+                      className="h-2.5 bg-accent/40 rounded"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: "35%" }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.2, ease: EASE_EDITORIAL, delay: 0.3 }}
+                    />
                     <div className="flex gap-2">
                       <div className="h-2.5 w-12 bg-border/60 rounded" />
                       <div className="h-2.5 w-8 bg-accent/60 rounded" />
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Visual Wireframe Block 2 - Split Component Nodes */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Token Box 1 */}
-                  <div className="rounded-2xl border border-border/30 bg-surface/40 p-4 relative overflow-hidden">
+                  <motion.div
+                    className="rounded-2xl border border-border/30 bg-surface/40 p-4 relative overflow-hidden"
+                    whileHover={{ scale: reduced ? 1 : 1.01 }}
+                    transition={{ duration: 0.35, ease: EASE_EDITORIAL }}
+                  >
                     <div className="flex items-center justify-between text-[10px] font-mono text-muted-foreground mb-2">
                       <span className="flex items-center gap-1">
                         <Box className="h-3 w-3 text-accent" />
@@ -170,13 +217,31 @@ function ProjectsRebuildingEditorial() {
                       <span>GRID_SPAN: 6</span>
                     </div>
                     <div className="space-y-2 pt-1">
-                      <div className="h-2 w-4/5 bg-muted-foreground/30 rounded" />
-                      <div className="h-2 w-3/5 bg-accent/30 rounded" />
+                      <motion.div
+                        className="h-2 bg-muted-foreground/30 rounded"
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: EASE_EDITORIAL, delay: 0.4 }}
+                        style={{ originX: 0 }}
+                      />
+                      <motion.div
+                        className="h-2 bg-accent/30 rounded"
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: EASE_EDITORIAL, delay: 0.5 }}
+                        style={{ originX: 0, width: "60%" }}
+                      />
                     </div>
-                  </div>
+                  </motion.div>
 
                   {/* Token Box 2 */}
-                  <div className="rounded-2xl border border-border/30 bg-surface/40 p-4 relative overflow-hidden">
+                  <motion.div
+                    className="rounded-2xl border border-border/30 bg-surface/40 p-4 relative overflow-hidden"
+                    whileHover={{ scale: reduced ? 1 : 1.01 }}
+                    transition={{ duration: 0.35, ease: EASE_EDITORIAL }}
+                  >
                     <div className="flex items-center justify-between text-[10px] font-mono text-muted-foreground mb-2">
                       <span className="flex items-center gap-1">
                         <Cpu className="h-3 w-3 text-accent" />
@@ -185,10 +250,24 @@ function ProjectsRebuildingEditorial() {
                       <span>SPRING: 400</span>
                     </div>
                     <div className="space-y-2 pt-1">
-                      <div className="h-2 w-2/3 bg-accent/40 rounded" />
-                      <div className="h-2 w-1/2 bg-muted-foreground/30 rounded" />
+                      <motion.div
+                        className="h-2 bg-accent/40 rounded"
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: EASE_EDITORIAL, delay: 0.45 }}
+                        style={{ originX: 0, width: "70%" }}
+                      />
+                      <motion.div
+                        className="h-2 bg-muted-foreground/30 rounded"
+                        initial={{ scaleX: 0 }}
+                        whileInView={{ scaleX: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: EASE_EDITORIAL, delay: 0.55 }}
+                        style={{ originX: 0, width: "50%" }}
+                      />
                     </div>
-                  </div>
+                  </motion.div>
                 </div>
 
                 {/* Design Token Floating Bar */}
@@ -221,7 +300,7 @@ function ProjectsRebuildingEditorial() {
   );
 }
 
-/* ─── Constants ─── */
+/* ─── Social & Resume URLs ─── */
 const LINKEDIN_URL = "https://www.linkedin.com/in/neeraj-kumar-gopi-b09391331";
 const BEHANCE_URL = "https://www.behance.net/neerajgopi";
 const EMAIL_ADDRESS = "neerajkumar.gopi2025@gmail.com";
@@ -248,9 +327,11 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const reduced = useReducedMotion();
+
   return (
     <HeroScene>
-      {/* ─── SECTION 01: Hero (Left Aligned Cinematic) ─── */}
+      {/* ─── SECTION 01: Hero (Line-by-Line Reveal & Slow Glow) ─── */}
       <div className="relative h-screen min-h-[680px] w-full flex flex-col justify-center px-6 lg:pl-28 lg:pr-12 overflow-hidden border-b border-border/30">
         <div className="relative z-10 max-w-5xl space-y-0">
 
@@ -277,17 +358,17 @@ function Home() {
 
           <div className="flex flex-wrap items-center gap-3.5 mt-10">
             <FadeUp delay={1.75} y={14}>
-              <Magnetic strength={0.4}>
+              <Magnetic strength={0.25}>
                 <Link
                   to="/contact"
                   data-cursor="talk"
-                  className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-accent-foreground shadow-[0_4px_24px_rgb(220,120,80,0.18)] transition-all duration-500 hover:-translate-y-0.5 hover:shadow-[0_10px_40px_rgb(220,120,80,0.32)]"
+                  className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-accent-foreground shadow-[0_4px_24px_rgb(220,120,80,0.18)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_40px_rgb(220,120,80,0.32)]"
                 >
                   Let's talk
                   <motion.span
                     className="inline-flex"
-                    whileHover={{ x: 3, y: -3 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
+                    whileHover={{ x: 2, y: -2 }}
+                    transition={{ duration: 0.3, ease: EASE_EDITORIAL }}
                   >
                     <ArrowUpRight className="h-4 w-4" />
                   </motion.span>
@@ -301,9 +382,9 @@ function Home() {
                   href={LINKEDIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 rounded-full border border-border/40 px-7 py-4 text-sm font-medium text-muted-foreground bg-surface/20 backdrop-blur-sm transition-all duration-300 hover:text-foreground hover:border-accent/40 hover:bg-surface/40"
+                  className="group inline-flex items-center gap-2 rounded-full border border-border/40 px-7 py-4 text-sm font-medium text-muted-foreground bg-surface/20 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:text-foreground hover:border-accent/40 hover:bg-surface/40"
                 >
-                  <Linkedin className="h-4 w-4 text-accent transition-transform duration-300 group-hover:scale-110" strokeWidth={1.75} />
+                  <Linkedin className="h-4 w-4 text-accent transition-transform duration-300 group-hover:scale-105" strokeWidth={1.75} />
                   LinkedIn
                 </a>
               </Magnetic>
@@ -327,7 +408,7 @@ function Home() {
       {/* ─── Main Content Container ─── */}
       <div className="relative mx-auto w-full max-w-6xl px-6 pb-32 lg:pl-28 lg:pr-12 pt-20 space-y-36">
 
-        {/* ─── SECTION 02: Key Metrics (Asymmetrical 5-Column Split) ─── */}
+        {/* ─── SECTION 02: Key Metrics (Sequential Fade & Accent Dividers) ─── */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-4 space-y-3">
             <span className="text-[10px] uppercase tracking-[0.3em] text-accent font-semibold block">
@@ -350,10 +431,10 @@ function Home() {
               ].map(([k, v, category, extraClass], i) => (
                 <div
                   key={v}
-                  className={`relative group rounded-3xl border border-border/30 p-6 overflow-hidden transition-all duration-300 hover:border-accent/40 shadow-[var(--shadow-soft)] ${extraClass}`}
+                  className={`relative group rounded-3xl border border-border/30 p-6 overflow-hidden transition-all duration-300 hover:border-accent/40 hover:scale-[1.01] shadow-[var(--shadow-soft)] ${extraClass}`}
                   data-stat
                 >
-                  <div className="absolute top-0 right-0 p-3 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity select-none pointer-events-none">
+                  <div className="absolute top-0 right-0 p-3 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity select-none pointer-events-none">
                     <span className="font-display text-8xl font-bold text-accent select-none leading-none">0{i + 1}</span>
                   </div>
                   <div className="text-[9px] uppercase tracking-[0.25em] text-accent font-semibold mb-3">
@@ -369,10 +450,10 @@ function Home() {
           </div>
         </section>
 
-        {/* ─── SECTION 03: Projects Rebuilding Announcement (Asymmetrical Split Editorial) ─── */}
+        {/* ─── SECTION 03: Projects Rebuilding Announcement (Living System) ─── */}
         <ProjectsRebuildingEditorial />
 
-        {/* ─── SECTION 04: Process (Right-Aligned Staggered Flow) ─── */}
+        {/* ─── SECTION 04: Process (Viewport Step Reveal & Smooth Dividers) ─── */}
         <section className="space-y-12">
           <div className="text-right max-w-xl ml-auto">
             <SectionHeader
@@ -395,6 +476,8 @@ function Home() {
               <motion.div
                 key={n}
                 variants={staggerItem}
+                whileHover={{ scale: reduced ? 1 : 1.01 }}
+                transition={{ duration: 0.35, ease: EASE_EDITORIAL }}
                 className={`group rounded-3xl border border-border/40 bg-surface/25 backdrop-blur-md p-8 transition-all duration-500 hover:border-accent/30 hover:bg-surface/40 ${offsetClass}`}
               >
                 <div className="font-display text-xs text-accent uppercase tracking-widest">{n}</div>
@@ -407,7 +490,7 @@ function Home() {
           </Stagger>
         </section>
 
-        {/* ─── SECTION 05: Design System Spec (Full-Width Asymmetrical Showcase) ─── */}
+        {/* ─── SECTION 05: Design System Spec (Animated Rhythm Lines & Swatches) ─── */}
         <section className="space-y-12">
           <SectionHeader
             index="03"
@@ -421,7 +504,9 @@ function Home() {
           <Stagger className="grid grid-cols-1 lg:grid-cols-12 gap-8" stagger={0.08}>
             {/* Left Col (7 cols): Typography Spec */}
             <motion.div variants={staggerItem} className="lg:col-span-7">
-              <div
+              <motion.div
+                whileHover={{ scale: reduced ? 1 : 1.01 }}
+                transition={{ duration: 0.35, ease: EASE_EDITORIAL }}
                 className="h-full rounded-3xl border border-border/40 bg-surface/30 backdrop-blur-md p-8 flex flex-col justify-between hover:border-accent/30 transition-all duration-300"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
@@ -439,13 +524,15 @@ function Home() {
                 <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
                   Editorial voice paired with technical layout clarity. Strict fluid modular type scale matching viewport dimensions.
                 </p>
-              </div>
+              </motion.div>
             </motion.div>
 
             {/* Right Col (5 cols): Token Matrix */}
             <motion.div variants={staggerItem} className="lg:col-span-5 space-y-6">
               {/* Palette Card */}
-              <div
+              <motion.div
+                whileHover={{ scale: reduced ? 1 : 1.01 }}
+                transition={{ duration: 0.35, ease: EASE_EDITORIAL }}
                 className="rounded-3xl border border-border/40 bg-surface/30 backdrop-blur-md p-6 hover:border-accent/30 transition-all duration-300"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
@@ -459,19 +546,25 @@ function Home() {
                     "var(--muted-foreground)",
                     "var(--primary)",
                     "var(--accent)",
-                  ].map((c) => (
-                    <div
+                  ].map((c, idx) => (
+                    <motion.div
                       key={c}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: idx * 0.08, ease: EASE_EDITORIAL }}
                       className="aspect-square rounded-xl border border-border/40"
                       style={{ background: c }}
                     />
                   ))}
                 </div>
                 <div className="mt-4 text-xs text-foreground font-mono">Obsidian Canvas · Champagne Gold</div>
-              </div>
+              </motion.div>
 
-              {/* Modular Grid Card */}
-              <div
+              {/* Rhythm Line Animation Card */}
+              <motion.div
+                whileHover={{ scale: reduced ? 1 : 1.01 }}
+                transition={{ duration: 0.35, ease: EASE_EDITORIAL }}
                 className="rounded-3xl border border-border/40 bg-surface/30 backdrop-blur-md p-6 hover:border-accent/30 transition-all duration-300"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
@@ -479,21 +572,25 @@ function Home() {
                   Rhythms
                 </div>
                 <div className="mt-4 space-y-2">
-                  {[20, 45, 75, 100].map((w) => (
-                    <div
+                  {[20, 45, 75, 100].map((w, idx) => (
+                    <motion.div
                       key={w}
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: idx * 0.1, ease: EASE_EDITORIAL }}
                       className="h-1.5 rounded-full bg-accent/80"
-                      style={{ width: `${w}%` }}
+                      style={{ originX: 0, width: `${w}%` }}
                     />
                   ))}
                 </div>
                 <div className="mt-4 text-xs text-foreground font-mono">Modular grid · 8px base offsets</div>
-              </div>
+              </motion.div>
             </motion.div>
           </Stagger>
         </section>
 
-        {/* ─── SECTION 06: About Story (Editorial Magazine Split) ─── */}
+        {/* ─── SECTION 06: About Story (Soft Mask Portrait & Independent Fade) ─── */}
         <section className="space-y-12">
           <div className="text-right max-w-xl ml-auto">
             <SectionHeader
@@ -507,21 +604,51 @@ function Home() {
 
           <Reveal className="grid grid-cols-1 gap-12 md:grid-cols-12 items-center">
             <div className="md:col-span-5">
-              <PlaceholderCard label="NEERAJ GOPI" aspect="aspect-[4/5]" />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.98, filter: "blur(8px)" }}
+                whileInView={{ opacity: 1, scale: 1, filter: "none" }}
+                viewport={{ once: true }}
+                transition={{ duration: 1, ease: EASE_EDITORIAL }}
+              >
+                <PlaceholderCard label="NEERAJ GOPI" aspect="aspect-[4/5]" />
+              </motion.div>
             </div>
             <div className="space-y-6 md:col-span-7">
-              <p className="text-2xl leading-relaxed text-foreground font-light">
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.75, ease: EASE_EDITORIAL }}
+                className="text-2xl leading-relaxed text-foreground font-light"
+              >
                 I'm Gopi Neeraj Kumar — a UI/UX designer with one year of full-time experience designing production digital systems.
-              </p>
-              <p className="text-base leading-relaxed text-muted-foreground">
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.75, delay: 0.15, ease: EASE_EDITORIAL }}
+                className="text-base leading-relaxed text-muted-foreground"
+              >
                 I recently collaborated on an internal HRMS product where I designed four core modules end-to-end. I focus on translating complex business logic into clean, modular layouts, ensuring employee tools remain simple, clear, and highly usable.
-              </p>
-              <div className="grid grid-cols-2 gap-6 border-t border-border/30 pt-8">
+              </motion.p>
+              
+              {/* Finishing Signature Accent */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.3, ease: EASE_EDITORIAL }}
+                className="grid grid-cols-2 gap-6 border-t border-border/30 pt-8"
+              >
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
                     Core tools
                   </div>
-                  <div className="mt-2 font-display text-lg text-foreground">Figma · Lovable</div>
+                  <div className="mt-2 font-display text-lg text-foreground flex items-center gap-2">
+                    <span>Figma · Lovable</span>
+                    <CheckCircle2 className="h-4 w-4 text-accent" />
+                  </div>
                 </div>
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
@@ -529,7 +656,7 @@ function Home() {
                   </div>
                   <div className="mt-2 font-display text-lg text-foreground">Open to roles</div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </Reveal>
         </section>
@@ -543,15 +670,23 @@ function Home() {
             <h2 className="font-display text-5xl sm:text-7xl md:text-[85px] lg:text-[110px] xl:text-[130px] leading-[0.85] tracking-tight text-foreground font-light select-none">
               READY TO BUILD<br />
               SOMETHING<br />
-              <span className="text-accent">UNFORGETTABLE?</span>
+              <motion.span
+                className="text-accent inline-block"
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, delay: 0.25, ease: EASE_EDITORIAL }}
+              >
+                UNFORGETTABLE?
+              </motion.span>
             </h2>
           </Reveal>
 
           <div className="mt-14 flex justify-center">
-            <Magnetic strength={0.4}>
+            <Magnetic strength={0.25}>
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-3 rounded-full bg-accent px-10 py-5 text-base font-semibold text-accent-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_40px_rgb(220,120,80,0.3)]"
+                className="group inline-flex items-center gap-3 rounded-full bg-accent px-10 py-5 text-base font-semibold text-accent-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_12px_40px_rgb(220,120,80,0.3)]"
               >
                 Let's talk
                 <ArrowUpRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -559,13 +694,13 @@ function Home() {
             </Magnetic>
           </div>
 
-          {/* Animated Divider */}
+          {/* Animated Line Divider */}
           <div className="mt-32 w-full relative h-[1px] bg-border/20 overflow-hidden">
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.5, ease: EASE_OUT_EXPO }}
+              transition={{ duration: 1.4, ease: EASE_EDITORIAL }}
               className="absolute inset-0 bg-accent origin-left"
             />
           </div>
@@ -580,14 +715,14 @@ function Home() {
             ].map(({ to, label, Icon }, i) => (
               <motion.div
                 key={to}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1, ease: "easeOut" }}
+                transition={{ duration: 0.5, delay: i * 0.08, ease: EASE_EDITORIAL }}
               >
                 <Link
                   to={to}
-                  className="group flex flex-col items-center justify-center rounded-2xl border border-border/40 bg-surface/15 backdrop-blur-sm p-6 text-sm text-muted-foreground transition-all duration-300 hover:-translate-y-0.5 hover:bg-surface/30 hover:text-accent hover:border-accent/30 hover:shadow-[var(--shadow-float)]"
+                  className="group flex flex-col items-center justify-center rounded-2xl border border-border/40 bg-surface/15 backdrop-blur-sm p-6 text-sm text-muted-foreground transition-all duration-300 hover:scale-[1.02] hover:bg-surface/30 hover:text-accent hover:border-accent/30 hover:shadow-[var(--shadow-float)]"
                 >
                   <Icon className="h-5 w-5 text-accent/80 group-hover:text-accent transition-colors mb-3" strokeWidth={1.75} />
                   <span className="text-[10px] uppercase tracking-wider text-muted-foreground group-hover:text-foreground">{label}</span>

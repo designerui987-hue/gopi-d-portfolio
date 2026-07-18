@@ -53,8 +53,7 @@ const items = [
   { to: "/contact", label: "Contact", icon: Mail },
 ] as const;
 
-const RESUME_URL = "/neeraj_ui_ux_resume_updaetd_v1_7148.pdf";
-const EASE_SPRING = { type: "spring", stiffness: 360, damping: 28 } as const;
+const EASE_EDITORIAL = { duration: 0.45, ease: [0.16, 1, 0.3, 1] } as const;
 
 /* ─── Main component ───────────────────────────────────────── */
 export function FloatingNav() {
@@ -80,8 +79,8 @@ export function FloatingNav() {
   // Derived visual values from scroll
   const navPaddingX = useTransform(smoothProgress, [0, 1], [6, 4]);
   const navPaddingY = useTransform(smoothProgress, [0, 1], [6, 4]);
-  const navScale    = useTransform(smoothProgress, [0, 1], [1, 0.97]);
-  const navOpacity  = useTransform(smoothProgress, [0, 1], [1, 0.92]);
+  const navScale    = useTransform(smoothProgress, [0, 1], [1, 0.98]);
+  const navOpacity  = useTransform(smoothProgress, [0, 1], [1, 0.94]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     // Update scroll progress for visual shrink (capped at 120px)
@@ -122,10 +121,10 @@ export function FloatingNav() {
   return (
     <>
       <motion.div
-        initial={{ y: -100, x: "-50%" }}
-        animate={{ y: visible ? 0 : -100, x: "-50%" }}
-        style={{ scale: reduced ? 1 : navScale, opacity: navOpacity }}
-        transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ y: -60, opacity: 0, x: "-50%" }}
+        animate={{ y: visible ? 0 : -100, opacity: visible ? 1 : 0, x: "-50%" }}
+        style={{ scale: reduced ? 1 : navScale }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-6 left-1/2 z-50 w-full max-w-[92%] md:max-w-max"
       >
         {/* ── Glass pill shell ── */}
@@ -154,9 +153,9 @@ export function FloatingNav() {
           >
             <motion.div
               className="flex items-center justify-center h-9 w-9 rounded-full text-accent"
-              whileHover={{ scale: 1.15 }}
-              whileTap={{ scale: 0.92 }}
-              transition={EASE_SPRING}
+              whileHover={{ scale: reduced ? 1 : 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              transition={EASE_EDITORIAL}
             >
               <Sparkles className="h-3.5 w-3.5" />
             </motion.div>
@@ -194,16 +193,16 @@ export function FloatingNav() {
                           ? "text-accent"
                           : "text-muted-foreground",
                       )}
-                      whileHover={{ scale: reduced ? 1 : 1.06 }}
-                      whileTap={{ scale: reduced ? 1 : 0.95 }}
-                      transition={EASE_SPRING}
+                      whileHover={{ scale: reduced ? 1 : 1.02 }}
+                      whileTap={{ scale: reduced ? 1 : 0.98 }}
+                      transition={EASE_EDITORIAL}
                     >
                       {/* Hover ghost pill — slides between items */}
                       {isHovered && !active && (
                         <motion.div
                           layoutId="nav-hover-bg"
                           className="absolute inset-0 rounded-full bg-white/[0.06]"
-                          transition={EASE_SPRING}
+                          transition={EASE_EDITORIAL}
                         />
                       )}
 
@@ -212,7 +211,7 @@ export function FloatingNav() {
                         <motion.div
                           layoutId="nav-active-capsule"
                           className="absolute inset-0 rounded-full bg-accent/[0.12] border border-accent/30"
-                          transition={EASE_SPRING}
+                          transition={EASE_EDITORIAL}
                         />
                       )}
 
@@ -228,8 +227,6 @@ export function FloatingNav() {
                         strokeWidth={1.75}
                         aria-hidden="true"
                       />
-
-
                     </motion.div>
                   </MagneticSlot>
                 </Link>
@@ -243,7 +240,7 @@ export function FloatingNav() {
           {/* ── Action tools ── */}
           <div className="flex items-center gap-0.5">
             <a
-              href={RESUME_URL}
+              href="/neeraj_ui_ux_resume_updaetd_v1_7148.pdf"
               target="_blank"
               rel="noopener noreferrer"
               download
@@ -252,9 +249,9 @@ export function FloatingNav() {
               <MagneticSlot>
                 <motion.div
                   className="relative flex h-8 items-center justify-center rounded-full px-3 text-[10px] font-semibold tracking-wider uppercase border border-border/50 bg-surface/30 text-muted-foreground hover:text-accent hover:border-accent/40 hover:bg-surface/50"
-                  whileHover={{ scale: reduced ? 1 : 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={EASE_SPRING}
+                  whileHover={{ scale: reduced ? 1 : 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={EASE_EDITORIAL}
                 >
                   <span className="hidden md:inline">Resume</span>
                   <FileDown className="md:hidden h-3.5 w-3.5" strokeWidth={1.75} aria-hidden="true" />
@@ -271,18 +268,18 @@ export function FloatingNav() {
               <MagneticSlot>
                 <motion.div
                   className="flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground"
-                  whileHover={{ scale: reduced ? 1 : 1.1, color: "var(--foreground)" }}
-                  whileTap={{ scale: 0.9 }}
-                  transition={EASE_SPRING}
+                  whileHover={{ scale: reduced ? 1 : 1.02, color: "var(--foreground)" }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={EASE_EDITORIAL}
                 >
                   <AnimatePresence mode="wait" initial={false}>
                     <motion.div
                       key={theme}
-                      initial={{ opacity: 0, rotate: -25, scale: 0.75 }}
+                      initial={{ opacity: 0, rotate: -15, scale: 0.85 }}
                       animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                      exit={{ opacity: 0, rotate: 25, scale: 0.75 }}
+                      exit={{ opacity: 0, rotate: 15, scale: 0.85 }}
                       transition={
-                        reduced ? { duration: 0 } : { duration: 0.22, ease: "easeInOut" }
+                        reduced ? { duration: 0 } : { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
                       }
                       className="absolute flex items-center justify-center"
                     >
