@@ -37,16 +37,16 @@ function FadeUp({
   );
 }
 
-/* ─── CHAPTER 01: Projects Rebuilding Living System Architecture ─── */
+/* ─── CHAPTER 02: Projects Rebuilding Living System Architecture ─── */
 function ProjectsRebuildingEditorial() {
   const reduced = useReducedMotion();
 
   return (
-    <section className="relative w-full py-16 md:py-24">
+    <section className="relative w-full py-16 md:py-24 border-t border-border/20">
       {/* Chapter Label */}
       <div className="flex items-center gap-3 mb-10">
         <span className="text-[10px] uppercase tracking-[0.35em] text-accent font-semibold">
-          CHAPTER 01 · SYSTEM IN REFACTOR
+          CHAPTER 02 · INTENTIONAL REFACTOR
         </span>
         <motion.div
           className="h-px bg-accent/40 rounded-full"
@@ -61,7 +61,7 @@ function ProjectsRebuildingEditorial() {
       {/* Asymmetrical 12-Column Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         
-        {/* Left Column (5 Cols): Text Announcement */}
+        {/* Left Column (5 Cols): Narrative Announcement */}
         <div className="lg:col-span-5 space-y-8 text-left">
           
           {/* Status badge with pulsing dot */}
@@ -97,7 +97,7 @@ function ProjectsRebuildingEditorial() {
             </h2>
           </Reveal>
 
-          {/* Body */}
+          {/* Body Narrative */}
           <motion.p
             initial={{ opacity: 0, y: reduced ? 0 : 14 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -106,6 +106,16 @@ function ProjectsRebuildingEditorial() {
             className="text-base md:text-lg leading-[1.8] text-muted-foreground font-light"
           >
             I’m currently redesigning this portfolio with deeper case studies, stronger visuals, and a more immersive experience.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: reduced ? 0 : 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.75, ease: EASE_EDITORIAL, delay: 0.35 }}
+            className="text-xs md:text-sm leading-[1.75] text-muted-foreground/80 font-light"
+          >
+            Instead of showing flat mockups, I am documenting the real structural trade-offs, wireframe iterations, and design token rules behind each system.
           </motion.p>
 
           {/* Progress Visualization Bar */}
@@ -135,21 +145,15 @@ function ProjectsRebuildingEditorial() {
             className="pt-4 border-t border-border/25 flex items-center justify-between"
           >
             <span className="text-xs text-muted-foreground/60 font-mono tracking-wider">
-              EST. COMPLETION · SOON
+              EST. RE-RELEASE · SOON
             </span>
             <span className="text-xs text-accent font-medium tracking-wide">
               New work will be added soon.
             </span>
           </motion.div>
-
-          {/* Technical Metadata Node */}
-          <div className="grid grid-cols-2 gap-4 pt-2 text-[10px] font-mono text-muted-foreground/50 uppercase tracking-widest">
-            <div>FRAMEWORK: TANSTACK START</div>
-            <div>STATUS: SHIPPED V2.4</div>
-          </div>
         </div>
 
-        {/* Right Column (7 Cols): Abstract Blueprint & Component Architecture Canvas */}
+        {/* Right Column (7 Cols): Abstract Blueprint Canvas */}
         <div className="lg:col-span-7">
           <Reveal>
             <div className="relative overflow-hidden rounded-3xl border border-border/40 bg-surface/25 backdrop-blur-xl p-6 md:p-8 shadow-[var(--shadow-soft)] group">
@@ -157,7 +161,7 @@ function ProjectsRebuildingEditorial() {
               {/* Background Blueprint Grid */}
               <div className="absolute inset-0 grid-bg opacity-[0.18] pointer-events-none" />
               
-              {/* Top Bar Architectural Details */}
+              {/* Top Bar Details */}
               <div className="relative z-10 flex items-center justify-between border-b border-border/30 pb-4 mb-6">
                 <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
                   <span className="h-2 w-2 rounded-full bg-accent/80 animate-pulse" />
@@ -245,9 +249,9 @@ function ProjectsRebuildingEditorial() {
                     <div className="flex items-center justify-between text-[10px] font-mono text-muted-foreground mb-2">
                       <span className="flex items-center gap-1">
                         <Cpu className="h-3 w-3 text-accent" />
-                        Framer Physics
+                        Framer Motion Physics
                       </span>
-                      <span>SPRING: 400</span>
+                      <span>EASE: 0.16_EXPO</span>
                     </div>
                     <div className="space-y-2 pt-1">
                       <motion.div
@@ -288,7 +292,7 @@ function ProjectsRebuildingEditorial() {
               {/* Blueprint Footer Coordinate bar */}
               <div className="relative z-10 mt-6 pt-4 border-t border-border/20 flex justify-between text-[9px] font-mono text-muted-foreground/50">
                 <span>X_AXIS: 0.16_EXPO</span>
-                <span>STATE: IN_PROGRESS</span>
+                <span>STATE: REBUILDING</span>
                 <span>MODE: ASYMMETRICAL_CANVAS</span>
               </div>
             </div>
@@ -331,7 +335,7 @@ function Home() {
 
   return (
     <HeroScene>
-      {/* ─── SECTION 01: Hero (Line-by-Line Reveal & Slow Glow) ─── */}
+      {/* ─── CHAPTER 00: Hero (Who am I?) ─── */}
       <div className="relative h-screen min-h-[680px] w-full flex flex-col justify-center px-6 lg:pl-28 lg:pr-12 overflow-hidden border-b border-border/30">
         <div className="relative z-10 max-w-5xl space-y-0">
 
@@ -350,9 +354,8 @@ function Home() {
 
           <FadeUp delay={1.45} y={18} className="mt-8 max-w-xl">
             <p className="text-base md:text-[1.05rem] leading-[1.75] text-muted-foreground font-light">
-              One year into designing digital products. I translate complex
-              business logic into clean, simple interface flows.{" "}
-              <span className="text-foreground/60">Currently open to junior roles, internships &amp; freelance briefs.</span>
+              I translate complex software requirements into calm, quiet interfaces.{" "}
+              <span className="text-foreground/75">One year into building digital products with intention, clarity, and precision.</span>
             </p>
           </FadeUp>
 
@@ -408,26 +411,26 @@ function Home() {
       {/* ─── Main Content Container ─── */}
       <div className="relative mx-auto w-full max-w-6xl px-6 pb-32 lg:pl-28 lg:pr-12 pt-20 space-y-36">
 
-        {/* ─── SECTION 02: Key Metrics (Sequential Fade & Accent Dividers) ─── */}
+        {/* ─── CHAPTER 01: Key Metrics (Why should someone trust me?) ─── */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <div className="lg:col-span-4 space-y-3">
+          <div className="lg:col-span-4 space-y-4">
             <span className="text-[10px] uppercase tracking-[0.3em] text-accent font-semibold block">
-              PERFORMANCE &amp; EXPERIENCE
+              CHAPTER 01 · PROVEN FOUNDATIONS
             </span>
-            <h3 className="font-display text-3xl font-light text-foreground tracking-tight">
-              Metrics by the numbers.
+            <h3 className="font-display text-3xl font-light text-foreground tracking-tight leading-snug">
+              Trust is built through shipped work, not claims.
             </h3>
-            <p className="text-xs leading-relaxed text-muted-foreground">
-              Production output across full-time design roles, design systems, and shipped interfaces.
+            <p className="text-xs leading-relaxed text-muted-foreground font-light">
+              One year of full-time design. Four core enterprise modules designed end-to-end. Real tools built for real teams.
             </p>
           </div>
           <div className="lg:col-span-8">
             <StatsScrollReveal className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {[
-                ["1 yr", "designing full-time", "Experience", "col-span-1 sm:col-span-2 bg-surface/25 border-accent/20"],
-                ["2", "products shipped / designed", "Public Releases", "col-span-1"],
-                ["4", "modules designed end-to-end", "Product Focus", "col-span-1"],
-                ["Figma + Lovable", "primary toolset", "Tooling Stack", "col-span-1 sm:col-span-2"],
+                ["1 yr", "full-time product design experience", "Proven Experience", "col-span-1 sm:col-span-2 bg-surface/25 border-accent/20"],
+                ["2", "production releases shipped", "Public Releases", "col-span-1"],
+                ["4", "enterprise modules designed end-to-end", "Product Scope", "col-span-1"],
+                ["Figma + Lovable", "foundational design & dev stack", "Tooling Stack", "col-span-1 sm:col-span-2"],
               ].map(([k, v, category, extraClass], i) => (
                 <div
                   key={v}
@@ -450,28 +453,28 @@ function Home() {
           </div>
         </section>
 
-        {/* ─── SECTION 03: Projects Rebuilding Announcement (Living System) ─── */}
+        {/* ─── CHAPTER 02: Rebuilding Announcement (Why are they being rebuilt?) ─── */}
         <ProjectsRebuildingEditorial />
 
-        {/* ─── SECTION 04: Process (Viewport Step Reveal & Smooth Dividers) ─── */}
-        <section className="space-y-12">
+        {/* ─── CHAPTER 03: Process (How do I think?) ─── */}
+        <section className="space-y-12 border-t border-border/20 pt-16">
           <div className="text-right max-w-xl ml-auto">
             <SectionHeader
-              index="02"
-              eyebrow="How I work"
-              title="Considered loops, solid results."
-              description="A practical approach to digital design — understand, sketch, test, refine."
+              index="03"
+              eyebrow="How I think"
+              title="Good software is thought through before it's styled."
+              description="I don't guess layout logic or rely on decorative trends. Every decision starts with understanding the problem and testing structure early."
               linkTo="/process"
-              linkLabel="See full process"
+              linkLabel="See full workflow"
             />
           </div>
           
           <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-6" stagger={0.08}>
             {[
-              ["01", "Understand", "Deconstruct the brief. Define real user questions before wireframing.", "md:translate-y-0"],
-              ["02", "Sketch", "Ugly, low-fidelity paper wireframes to test structure and flows quickly.", "md:translate-y-8"],
-              ["03", "Feedback", "Gather input early from mentors and users to validate layout choices.", "md:translate-y-0"],
-              ["04", "Refine", "Figma pixel-polish, design systems mapping, and dev handoff logs.", "md:translate-y-8"],
+              ["01", "Understand", "Deconstruct the brief. Ask uncomfortable questions about user goals before drawing a single frame.", "md:translate-y-0"],
+              ["02", "Sketch", "Ugly, low-fidelity paper wireframes to test layout hierarchy and flow logic fast.", "md:translate-y-8"],
+              ["03", "Feedback", "Pressure-test wireframes with users and mentors before touching high-fidelity details.", "md:translate-y-0"],
+              ["04", "Refine", "Design system mapping, token alignment, and clean developer handoff documentation.", "md:translate-y-8"],
             ].map(([n, t, d, offsetClass]) => (
               <motion.div
                 key={n}
@@ -490,13 +493,13 @@ function Home() {
           </Stagger>
         </section>
 
-        {/* ─── SECTION 05: Design System Spec (Animated Rhythm Lines & Swatches) ─── */}
-        <section className="space-y-12">
+        {/* ─── CHAPTER 04: Design System (Why build systems instead of isolated screens?) ─── */}
+        <section className="space-y-12 border-t border-border/20 pt-16">
           <SectionHeader
-            index="03"
-            eyebrow="Design system"
-            title="Unified rules, balanced layouts."
-            description="Tuned colors, consistent typography, and layout rhythm aligned on a strict modular grid."
+            index="04"
+            eyebrow="System Architecture"
+            title="A screen is a moment. A system is a conversation."
+            description="Isolated screens break when software grows. I build modular token rules, type scales, and layout rhythms so interfaces stay calm as features multiply."
             linkTo="/design-system"
             linkLabel="Open system spec"
           />
@@ -518,7 +521,7 @@ function Home() {
                     Fraunces
                   </div>
                   <div className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">
-                    Inter Sans · Display Serif Spec
+                    Inter Sans · Display Serif Contrast
                   </div>
                 </div>
                 <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
@@ -558,7 +561,7 @@ function Home() {
                     />
                   ))}
                 </div>
-                <div className="mt-4 text-xs text-foreground font-mono">Obsidian Canvas · Champagne Gold</div>
+                <div className="mt-4 text-xs text-foreground font-mono">Obsidian Canvas · Champagne Gold Accent</div>
               </motion.div>
 
               {/* Rhythm Line Animation Card */}
@@ -590,13 +593,13 @@ function Home() {
           </Stagger>
         </section>
 
-        {/* ─── SECTION 06: About Story (Soft Mask Portrait & Independent Fade) ─── */}
-        <section className="space-y-12">
+        {/* ─── CHAPTER 05: About Story (Why did I become a designer?) ─── */}
+        <section className="space-y-12 border-t border-border/20 pt-16">
           <div className="text-right max-w-xl ml-auto">
             <SectionHeader
-              index="04"
-              eyebrow="About"
-              title="Calm interfaces, focused details."
+              index="05"
+              eyebrow="Perspective"
+              title="Software should make complex tasks feel quiet, not overwhelming."
               linkTo="/about"
               linkLabel="More about me"
             />
@@ -621,16 +624,25 @@ function Home() {
                 transition={{ duration: 0.75, ease: EASE_EDITORIAL }}
                 className="text-2xl leading-relaxed text-foreground font-light"
               >
-                I'm Gopi Neeraj Kumar — a UI/UX designer with one year of full-time experience designing production digital systems.
+                I’m Gopi Neeraj Kumar — a UI/UX designer focused on building quiet, considered digital tools.
               </motion.p>
               <motion.p
                 initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.75, delay: 0.15, ease: EASE_EDITORIAL }}
-                className="text-base leading-relaxed text-muted-foreground"
+                className="text-base leading-relaxed text-muted-foreground font-light"
               >
-                I recently collaborated on an internal HRMS product where I designed four core modules end-to-end. I focus on translating complex business logic into clean, modular layouts, ensuring employee tools remain simple, clear, and highly usable.
+                I became a designer because most software is too loud. Confusing layouts and visual clutter waste human attention. My focus is stripping away noise until only clarity remains.
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.75, delay: 0.25, ease: EASE_EDITORIAL }}
+                className="text-sm leading-relaxed text-muted-foreground/80 font-light"
+              >
+                Recently, I collaborated on an enterprise HRMS platform where I designed four core modules end-to-end — turning tangled employee workflows into straightforward screen flows.
               </motion.p>
               
               {/* Finishing Signature Accent */}
@@ -638,7 +650,7 @@ function Home() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.3, ease: EASE_EDITORIAL }}
+                transition={{ duration: 0.7, delay: 0.35, ease: EASE_EDITORIAL }}
                 className="grid grid-cols-2 gap-6 border-t border-border/30 pt-8"
               >
                 <div>
@@ -661,10 +673,10 @@ function Home() {
           </Reveal>
         </section>
 
-        {/* ─── SECTION 07: Climax CTA & Studio Footer ─── */}
+        {/* ─── CHAPTER 06: Climax CTA & Studio Footer (Why contact me?) ─── */}
         <div className="border-t border-border/25 pt-24 text-center">
           <span className="text-[10px] uppercase tracking-[0.35em] text-accent font-semibold block mb-6">
-            CHAPTER 05 · NEXT LEVEL
+            CHAPTER 06 · COLLABORATION
           </span>
           <Reveal>
             <h2 className="font-display text-5xl sm:text-7xl md:text-[85px] lg:text-[110px] xl:text-[130px] leading-[0.85] tracking-tight text-foreground font-light select-none">
@@ -682,7 +694,11 @@ function Home() {
             </h2>
           </Reveal>
 
-          <div className="mt-14 flex justify-center">
+          <p className="mt-8 text-base md:text-lg text-muted-foreground font-light max-w-md mx-auto leading-relaxed">
+            Whether you're shaping a new product from scratch or refining an existing system, let's build something clear, calm, and memorable.
+          </p>
+
+          <div className="mt-12 flex justify-center">
             <Magnetic strength={0.25}>
               <Link
                 to="/contact"
