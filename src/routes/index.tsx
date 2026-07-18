@@ -8,12 +8,11 @@ import { HeroScene } from "@/components/hero-scene";
 import { StatsScrollReveal } from "@/components/stats-scroll-reveal";
 import { Magnetic } from "@/components/magnetic";
 import { GsapHeadline } from "@/components/gsap-headline";
-import { ComingSoonCard } from "@/components/coming-soon-card";
 
-/* Shared premium easing curve used site-wide */
+/* ─── Shared premium easing curve used site-wide ─────────── */
 const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
 
-/** Fade-up with optional blur — hero entrance variant */
+/* ─── Fade-up with optional blur — hero entrance variant ──── */
 function FadeUp({
   children,
   delay = 0,
@@ -38,6 +37,140 @@ function FadeUp({
   );
 }
 
+/* ─── Premium "rebuilding" announcement block ─────────────── */
+function ProjectsRebuildingBlock() {
+  const reduced = useReducedMotion();
+
+  /* Animated progress bar segments */
+  const bars = [
+    { w: "72%", delay: 0 },
+    { w: "48%", delay: 0.15 },
+    { w: "88%", delay: 0.3 },
+  ];
+
+  return (
+    <Reveal>
+      <div className="relative overflow-hidden rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md px-8 py-16 md:px-20 md:py-24 text-center"
+        style={{ boxShadow: "var(--shadow-soft)" }}
+      >
+        {/* ── Ambient grid bg ── */}
+        <div className="absolute inset-0 grid-bg opacity-[0.12] pointer-events-none" />
+
+        {/* ── Radial accent glow ── */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 55% at 50% 0%, oklch(0.82 0.12 75 / 0.07), transparent 70%)",
+          }}
+        />
+
+        {/* ── Animated top border line ── */}
+        <div className="absolute top-0 left-0 right-0 h-px overflow-hidden">
+          <motion.div
+            className="h-full bg-gradient-to-r from-transparent via-accent/60 to-transparent"
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.4, ease: EASE_OUT_EXPO, delay: 0.2 }}
+            style={{ originX: 0.5 }}
+          />
+        </div>
+
+        {/* ── Content ── */}
+        <div className="relative z-10 flex flex-col items-center gap-8 max-w-2xl mx-auto">
+
+          {/* Status badge */}
+          <motion.div
+            initial={{ opacity: 0, y: reduced ? 0 : 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.1 }}
+            className="inline-flex items-center gap-2.5 rounded-full border border-accent/25 bg-accent/[0.08] px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.3em] text-accent"
+          >
+            {/* Pulsing live dot */}
+            <span className="relative flex h-1.5 w-1.5">
+              {!reduced && (
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
+              )}
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent" />
+            </span>
+            Actively rebuilding
+          </motion.div>
+
+          {/* Main heading */}
+          <motion.h2
+            className="font-display text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4rem] leading-[0.95] tracking-tight text-foreground font-light"
+            initial={{ opacity: 0, y: reduced ? 0 : 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.2 }}
+          >
+            Projects are being{" "}
+            <span className="text-accent italic">rebuilt.</span>
+          </motion.h2>
+
+          {/* Supporting copy */}
+          <motion.p
+            className="text-base md:text-lg leading-[1.8] text-muted-foreground max-w-xl font-light"
+            initial={{ opacity: 0, y: reduced ? 0 : 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, ease: EASE_OUT_EXPO, delay: 0.35 }}
+          >
+            I'm currently redesigning this portfolio with deeper case studies,
+            stronger visuals, and a more immersive experience.
+          </motion.p>
+
+          {/* Animated progress bars */}
+          <motion.div
+            className="w-full max-w-sm space-y-2.5"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <div className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground/60 text-left mb-3">
+              Work in progress
+            </div>
+            {bars.map(({ w, delay }, i) => (
+              <div
+                key={i}
+                className="relative h-px w-full bg-border/30 rounded-full overflow-hidden"
+              >
+                <motion.div
+                  className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-accent/60 to-accent/20"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  style={{ originX: 0, width: w }}
+                  transition={{
+                    duration: reduced ? 0 : 1.2,
+                    ease: EASE_OUT_EXPO,
+                    delay: 0.6 + delay,
+                  }}
+                />
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Small footnote */}
+          <motion.p
+            className="text-xs text-muted-foreground/50 tracking-wide"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.9 }}
+          >
+            New work will be added soon.
+          </motion.p>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
+/* ─── Constants ───────────────────────────────────────────── */
 const LINKEDIN_URL = "https://www.linkedin.com/in/neeraj-kumar-gopi-b09391331";
 const BEHANCE_URL = "https://www.behance.net/neerajgopi";
 const EMAIL_ADDRESS = "neerajkumar.gopi2025@gmail.com";
@@ -64,8 +197,6 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-
-
   return (
     <HeroScene>
       {/* ─── Fullscreen Cinematic Hero ─── */}
@@ -96,7 +227,7 @@ function Home() {
             </p>
           </FadeUp>
 
-          {/* 4 ── CTA row — each button staggered independently */}
+          {/* 4 ── CTA row */}
           <div className="flex flex-wrap items-center gap-3.5 mt-10">
             <FadeUp delay={1.75} y={14}>
               <Magnetic strength={0.4}>
@@ -144,12 +275,12 @@ function Home() {
             </FadeUp>
           </div>
         </div>
-
-
       </div>
 
-      {/* Main Content Body */}
+      {/* ─── Main Content Body ─── */}
       <div className="relative mx-auto w-full max-w-6xl px-6 pb-32 lg:pl-28 lg:pr-12 pt-16">
+
+        {/* Stats row */}
         <StatsScrollReveal className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-6">
           {[
             ["1 yr", "designing full-time", "Experience"],
@@ -157,8 +288,8 @@ function Home() {
             ["4", "modules designed end-to-end", "Product Focus"],
             ["Figma + Lovable", "primary toolset", "Tooling Stack"],
           ].map(([k, v, category], i) => (
-            <div 
-              key={v} 
+            <div
+              key={v}
               className="relative group rounded-3xl border border-border/30 bg-surface/10 backdrop-blur-md p-6 overflow-hidden transition-all duration-300 hover:border-accent/20 hover:bg-surface/20 shadow-[var(--shadow-soft)]"
               data-stat
             >
@@ -176,37 +307,19 @@ function Home() {
           ))}
         </StatsScrollReveal>
 
-        {/* 02 · Featured work */}
+        {/* ── 02 · Projects rebuilding announcement ── */}
         <div className="mt-36">
           <SectionHeader
             index="02"
             eyebrow="Selected work"
-            title="Sleek layouts, real solutions."
-            description="Case studies detailing my work on production systems, design systems, and solo product builds."
-            linkTo="/projects"
-            linkLabel="All projects"
+            title="Projects are being rebuilt."
           />
-          <Stagger className="grid grid-cols-1 gap-8 md:grid-cols-12" stagger={0.12}>
-            {/* ── Placeholder cards while case studies are being rebuilt ── */}
-            <ComingSoonCard
-              colSpan="md:col-span-8"
-              aspect="aspect-[16/10]"
-              variant="featured"
-            />
-            <ComingSoonCard
-              colSpan="md:col-span-4"
-              aspect="aspect-[3/4]"
-              variant="featured"
-            />
-            <ComingSoonCard
-              colSpan="md:col-span-4"
-              aspect="aspect-[3/4]"
-              variant="featured"
-            />
-          </Stagger>
+          <div className="mt-12">
+            <ProjectsRebuildingBlock />
+          </div>
         </div>
 
-        {/* 03 · Process teaser */}
+        {/* ── 03 · Process teaser ── */}
         <div className="mt-36">
           <SectionHeader
             index="03"
@@ -238,7 +351,7 @@ function Home() {
           </Stagger>
         </div>
 
-        {/* 04 · System teaser */}
+        {/* ── 04 · Design system teaser ── */}
         <div className="mt-36">
           <SectionHeader
             index="04"
@@ -317,7 +430,7 @@ function Home() {
           </Stagger>
         </div>
 
-        {/* 05 · About teaser */}
+        {/* ── 05 · About teaser ── */}
         <div className="mt-36">
           <SectionHeader
             index="05"
@@ -355,7 +468,7 @@ function Home() {
           </Reveal>
         </div>
 
-        {/* Climax - CTA & Credits */}
+        {/* ── Climax — CTA & Credits ── */}
         <div className="mt-44 border-t border-border/25 pt-24 text-center">
           <span className="text-[10px] uppercase tracking-[0.35em] text-accent font-semibold block mb-6">
             06 · NEXT LEVEL
@@ -367,7 +480,7 @@ function Home() {
               <span className="text-accent">UNFORGETTABLE?</span>
             </h2>
           </Reveal>
-          
+
           <div className="mt-14 flex justify-center">
             <Magnetic strength={0.4}>
               <Link
@@ -391,7 +504,7 @@ function Home() {
             />
           </div>
 
-          {/* Social Nodes - Animate Individually */}
+          {/* Social Nodes */}
           <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-4 max-w-4xl mx-auto">
             {[
               { to: "/process" as const, label: "Workflow Spec", Icon: Workflow },
@@ -417,10 +530,10 @@ function Home() {
             ))}
           </div>
 
-          {/* Redesigned Premium Footer */}
+          {/* Premium Footer */}
           <footer className="mt-44 border-t border-border/20 pt-16 pb-20 select-none">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 text-left">
-              {/* Left Column: Brand & Description */}
+              {/* Brand */}
               <div className="md:col-span-6 space-y-4">
                 <div className="font-display text-2xl font-light text-foreground tracking-tight">
                   Gopi Neeraj <span className="text-accent">Kumar</span>
@@ -433,7 +546,7 @@ function Home() {
                 </div>
               </div>
 
-              {/* Middle Column: Credits Grid */}
+              {/* Credits Grid */}
               <div className="md:col-span-3 grid grid-cols-2 gap-4">
                 <div className="space-y-1">
                   <span className="text-[8px] uppercase tracking-[0.25em] text-muted-foreground/60 block font-semibold">DESIGN / CODE</span>
@@ -453,7 +566,7 @@ function Home() {
                 </div>
               </div>
 
-              {/* Right Column: Connect */}
+              {/* Connect */}
               <div className="md:col-span-3 space-y-3">
                 <span className="text-[8px] uppercase tracking-[0.25em] text-muted-foreground/60 block font-semibold">CONNECT</span>
                 <div className="flex flex-col gap-2.5 text-[11px] font-medium tracking-widest uppercase">
