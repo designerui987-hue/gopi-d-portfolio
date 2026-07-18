@@ -37,136 +37,89 @@ function FadeUp({
   );
 }
 
-/* ─── Premium "rebuilding" announcement block ─────────────── */
+/* ─── Projects rebuilding — premium editorial announcement ── */
 function ProjectsRebuildingBlock() {
   const reduced = useReducedMotion();
 
-  /* Animated progress bar segments */
-  const bars = [
-    { w: "72%", delay: 0 },
-    { w: "48%", delay: 0.15 },
-    { w: "88%", delay: 0.3 },
-  ];
-
   return (
-    <Reveal>
-      <div className="relative overflow-hidden rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md px-8 py-16 md:px-20 md:py-24 text-center"
-        style={{ boxShadow: "var(--shadow-soft)" }}
-      >
-        {/* ── Ambient grid bg ── */}
-        <div className="absolute inset-0 grid-bg opacity-[0.12] pointer-events-none" />
+    <div className="relative w-full py-24 md:py-32 flex flex-col items-center text-center gap-10">
 
-        {/* ── Radial accent glow ── */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 70% 55% at 50% 0%, oklch(0.82 0.12 75 / 0.07), transparent 70%)",
-          }}
+      {/* Top rule — animates in from center */}
+      <div className="w-full max-w-xs relative h-px overflow-hidden">
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/50 to-transparent"
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: EASE_OUT_EXPO, delay: 0.1 }}
+          style={{ originX: 0.5 }}
         />
-
-        {/* ── Animated top border line ── */}
-        <div className="absolute top-0 left-0 right-0 h-px overflow-hidden">
-          <motion.div
-            className="h-full bg-gradient-to-r from-transparent via-accent/60 to-transparent"
-            initial={{ scaleX: 0, opacity: 0 }}
-            whileInView={{ scaleX: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.4, ease: EASE_OUT_EXPO, delay: 0.2 }}
-            style={{ originX: 0.5 }}
-          />
-        </div>
-
-        {/* ── Content ── */}
-        <div className="relative z-10 flex flex-col items-center gap-8 max-w-2xl mx-auto">
-
-          {/* Status badge */}
-          <motion.div
-            initial={{ opacity: 0, y: reduced ? 0 : 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.1 }}
-            className="inline-flex items-center gap-2.5 rounded-full border border-accent/25 bg-accent/[0.08] px-4 py-2 text-[9px] font-semibold uppercase tracking-[0.3em] text-accent"
-          >
-            {/* Pulsing live dot */}
-            <span className="relative flex h-1.5 w-1.5">
-              {!reduced && (
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
-              )}
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent" />
-            </span>
-            Actively rebuilding
-          </motion.div>
-
-          {/* Main heading */}
-          <motion.h2
-            className="font-display text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4rem] leading-[0.95] tracking-tight text-foreground font-light"
-            initial={{ opacity: 0, y: reduced ? 0 : 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: EASE_OUT_EXPO, delay: 0.2 }}
-          >
-            Projects are being{" "}
-            <span className="text-accent italic">rebuilt.</span>
-          </motion.h2>
-
-          {/* Supporting copy */}
-          <motion.p
-            className="text-base md:text-lg leading-[1.8] text-muted-foreground max-w-xl font-light"
-            initial={{ opacity: 0, y: reduced ? 0 : 14 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: EASE_OUT_EXPO, delay: 0.35 }}
-          >
-            I'm currently redesigning this portfolio with deeper case studies,
-            stronger visuals, and a more immersive experience.
-          </motion.p>
-
-          {/* Animated progress bars */}
-          <motion.div
-            className="w-full max-w-sm space-y-2.5"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          >
-            <div className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground/60 text-left mb-3">
-              Work in progress
-            </div>
-            {bars.map(({ w, delay }, i) => (
-              <div
-                key={i}
-                className="relative h-px w-full bg-border/30 rounded-full overflow-hidden"
-              >
-                <motion.div
-                  className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-accent/60 to-accent/20"
-                  initial={{ scaleX: 0 }}
-                  whileInView={{ scaleX: 1 }}
-                  viewport={{ once: true }}
-                  style={{ originX: 0, width: w }}
-                  transition={{
-                    duration: reduced ? 0 : 1.2,
-                    ease: EASE_OUT_EXPO,
-                    delay: 0.6 + delay,
-                  }}
-                />
-              </div>
-            ))}
-          </motion.div>
-
-          {/* Small footnote */}
-          <motion.p
-            className="text-xs text-muted-foreground/50 tracking-wide"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-          >
-            New work will be added soon.
-          </motion.p>
-        </div>
       </div>
-    </Reveal>
+
+      {/* Live badge — single motion detail */}
+      <motion.div
+        className="inline-flex items-center gap-2.5 rounded-full border border-accent/20 bg-accent/[0.06] px-5 py-2 text-[9px] font-semibold uppercase tracking-[0.32em] text-accent"
+        initial={{ opacity: 0, y: reduced ? 0 : 8 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.2 }}
+      >
+        <span className="relative flex h-1.5 w-1.5 shrink-0">
+          {!reduced && (
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-50" />
+          )}
+          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent" />
+        </span>
+        Actively rebuilding
+      </motion.div>
+
+      {/* Main heading */}
+      <motion.h2
+        className="font-display text-[clamp(2.4rem,6vw,5rem)] leading-[0.92] tracking-[-0.04em] text-foreground font-light max-w-2xl"
+        initial={{ opacity: 0, y: reduced ? 0 : 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.85, ease: EASE_OUT_EXPO, delay: 0.3 }}
+      >
+        Projects are being{" "}
+        <em className="not-italic text-accent">rebuilt.</em>
+      </motion.h2>
+
+      {/* Body */}
+      <motion.p
+        className="text-base md:text-[1.05rem] leading-[1.85] text-muted-foreground font-light max-w-lg"
+        initial={{ opacity: 0, y: reduced ? 0 : 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: EASE_OUT_EXPO, delay: 0.45 }}
+      >
+        I'm currently redesigning this portfolio with deeper case studies,
+        stronger visuals, and a more immersive experience.
+      </motion.p>
+
+      {/* Footnote */}
+      <motion.p
+        className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground/40"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: EASE_OUT_EXPO, delay: 0.65 }}
+      >
+        New work will be added soon.
+      </motion.p>
+
+      {/* Bottom rule */}
+      <div className="w-full max-w-xs relative h-px overflow-hidden">
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-border/60 to-transparent"
+          initial={{ scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1.2, ease: EASE_OUT_EXPO, delay: 0.7 }}
+          style={{ originX: 0.5 }}
+        />
+      </div>
+    </div>
   );
 }
 
@@ -307,16 +260,9 @@ function Home() {
           ))}
         </StatsScrollReveal>
 
-        {/* ── 02 · Projects rebuilding announcement ── */}
+        {/* ── Projects rebuilding announcement — standalone, no section chrome ── */}
         <div className="mt-36">
-          <SectionHeader
-            index="02"
-            eyebrow="Selected work"
-            title="Projects are being rebuilt."
-          />
-          <div className="mt-12">
-            <ProjectsRebuildingBlock />
-          </div>
+          <ProjectsRebuildingBlock />
         </div>
 
         {/* ── 03 · Process teaser ── */}
