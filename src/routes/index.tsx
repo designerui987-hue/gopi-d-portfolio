@@ -505,7 +505,7 @@ function Home() {
           />
 
           <Stagger className="grid grid-cols-1 lg:grid-cols-12 gap-8" stagger={0.08}>
-            {/* Left Col (7 cols): Typography Spec */}
+            {/* Left Col (7 cols): Interactive Token & Type Architecture Spec */}
             <motion.div variants={staggerItem} className="lg:col-span-7">
               <motion.div
                 whileHover={{ scale: reduced ? 1 : 1.01 }}
@@ -514,23 +514,42 @@ function Home() {
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
                 <div>
-                  <div className="text-[10px] uppercase tracking-[0.2em] text-accent font-semibold">
-                    TYPOGRAPHIC HIERARCHY
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] uppercase tracking-[0.25em] text-accent font-semibold font-mono">
+                      FOUNDATION_SPEC // TYPE_SCALE
+                    </span>
+                    <span className="text-[9px] font-mono text-muted-foreground/60">
+                      WCAG_AA_PASSED
+                    </span>
                   </div>
-                  <div className="mt-6 font-display text-5xl md:text-6xl leading-none tracking-tight text-accent">
+
+                  <div className="font-display text-4xl sm:text-5xl leading-none tracking-tight text-accent">
                     Fraunces
                   </div>
-                  <div className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">
+                  <div className="mt-2 text-xs uppercase tracking-widest text-muted-foreground font-mono">
                     Inter Sans · Display Serif Contrast
                   </div>
+
+                  {/* Micro Token Spec Grid */}
+                  <div className="mt-8 grid grid-cols-2 gap-4 border-t border-border/25 pt-6 text-[11px] font-mono">
+                    <div>
+                      <span className="text-muted-foreground/60 block text-[9px] uppercase">DISPLAY_SCALE</span>
+                      <span className="text-foreground">72px / 1.02 lh</span>
+                    </div>
+                    <div>
+                      <span className="text-muted-foreground/60 block text-[9px] uppercase">BODY_SCALE</span>
+                      <span className="text-foreground">16px / 1.75 lh</span>
+                    </div>
+                  </div>
                 </div>
-                <p className="mt-8 text-sm leading-relaxed text-muted-foreground">
+
+                <p className="mt-8 text-xs leading-relaxed text-muted-foreground font-light">
                   Editorial voice paired with technical layout clarity. Strict fluid modular type scale matching viewport dimensions.
                 </p>
               </motion.div>
             </motion.div>
 
-            {/* Right Col (5 cols): Token Matrix */}
+            {/* Right Col (5 cols): Spatial Rhythm & Color Tokens */}
             <motion.div variants={staggerItem} className="lg:col-span-5 space-y-6">
               {/* Palette Card */}
               <motion.div
@@ -539,55 +558,70 @@ function Home() {
                 className="rounded-3xl border border-border/40 bg-surface/30 backdrop-blur-md p-6 hover:border-accent/30 transition-all duration-300"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
-                <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
-                  Palettes
+                <div className="flex justify-between items-center mb-4">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold font-mono">
+                    COLOR_TOKENS
+                  </span>
+                  <span className="text-[9px] font-mono text-accent">6 PROD_SWATCHES</span>
                 </div>
-                <div className="mt-5 grid grid-cols-5 gap-2">
+
+                <div className="grid grid-cols-6 gap-2">
                   {[
-                    "var(--background)",
-                    "var(--secondary)",
-                    "var(--muted-foreground)",
-                    "var(--primary)",
-                    "var(--accent)",
-                  ].map((c, idx) => (
+                    ["--background", "oklch(0.14)"],
+                    ["--surface", "oklch(0.18)"],
+                    ["--border", "oklch(0.30)"],
+                    ["--primary", "oklch(0.95)"],
+                    ["--secondary", "oklch(0.22)"],
+                    ["--accent", "oklch(0.82)"],
+                  ].map(([c, val], idx) => (
                     <motion.div
                       key={c}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: idx * 0.08, ease: EASE_EDITORIAL }}
-                      className="aspect-square rounded-xl border border-border/40"
-                      style={{ background: c }}
+                      className="group relative aspect-square rounded-xl border border-border/40 cursor-pointer"
+                      style={{ background: `var(${c})` }}
+                      title={`${c}: ${val}`}
                     />
                   ))}
                 </div>
                 <div className="mt-4 text-xs text-foreground font-mono">Obsidian Canvas · Champagne Gold Accent</div>
               </motion.div>
 
-              {/* Rhythm Line Animation Card */}
+              {/* Spatial 8pt Grid Card */}
               <motion.div
                 whileHover={{ scale: reduced ? 1 : 1.01 }}
                 transition={{ duration: 0.35, ease: EASE_EDITORIAL }}
                 className="rounded-3xl border border-border/40 bg-surface/30 backdrop-blur-md p-6 hover:border-accent/30 transition-all duration-300"
                 style={{ boxShadow: "var(--shadow-soft)" }}
               >
-                <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
-                  Rhythms
+                <div className="flex justify-between items-center mb-3">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold font-mono">
+                    8PT_SPACING_RHYTHM
+                  </span>
+                  <span className="text-[9px] font-mono text-muted-foreground/60">8px → 64px</span>
                 </div>
-                <div className="mt-4 space-y-2">
-                  {[20, 45, 75, 100].map((w, idx) => (
+
+                <div className="space-y-2">
+                  {[8, 16, 24, 32, 48].map((px, idx) => (
                     <motion.div
-                      key={w}
+                      key={px}
                       initial={{ scaleX: 0 }}
                       whileInView={{ scaleX: 1 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: idx * 0.1, ease: EASE_EDITORIAL }}
-                      className="h-1.5 rounded-full bg-accent/80"
-                      style={{ originX: 0, width: `${w}%` }}
-                    />
+                      transition={{ duration: 0.8, delay: idx * 0.08, ease: EASE_EDITORIAL }}
+                      className="flex items-center gap-3"
+                    >
+                      <span className="text-[9px] font-mono text-muted-foreground/60 w-8">{px}px</span>
+                      <div
+                        className="h-1.5 rounded-full bg-accent/80"
+                        style={{ originX: 0, width: `${(px / 48) * 100}%` }}
+                      />
+                    </motion.div>
                   ))}
                 </div>
-                <div className="mt-4 text-xs text-foreground font-mono">Modular grid · 8px base offsets</div>
+                <div className="mt-4 text-xs text-foreground font-mono">Mathematical layout rhythm</div>
               </motion.div>
             </motion.div>
           </Stagger>
