@@ -755,7 +755,7 @@ function StockAICaseStudy({ project }: { project: Project }) {
             {/* Meta row */}
             <div className="mt-12 flex flex-wrap gap-x-12 gap-y-6 pt-8 border-t border-border/20">
               {[
-                { k: "Role", v: project.role },
+                { k: "Role", v: "Designer & Developer (solo, full-stack)" },
                 { k: "Stack", v: "Next.js, FastAPI, Python, Figma" },
                 { k: "Year", v: project.year },
                 { k: "Scope", v: "End-to-end solo product" },
@@ -786,23 +786,23 @@ function StockAICaseStudy({ project }: { project: Project }) {
           </motion.div>
         </div>
 
-        {/* ════ 01 · THE CHALLENGE ════ */}
-        <SASection n="01" label="The Challenge">
+        {/* ════ 01 · THE PROBLEM ════ */}
+        <SASection n="01" label="The Problem">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-5">
               <h2 className="font-display text-4xl md:text-5xl font-light text-foreground leading-[1.1] tracking-tight">
-                Data was never the problem. Interpretation was.
+                Most retail investors don't need more charts. They need more clarity.
               </h2>
             </div>
             <div className="lg:col-span-7 space-y-5 text-[15px] leading-[1.85] text-muted-foreground font-light">
               <p>
-                Most retail investors open a stock app and see a wall of numbers: OHLC charts, order book depth, RSI curves, moving averages, Bollinger bands. Professional traders understand these tools. Everyone else is guessing.
+                Open Zerodha, Groww, or any modern trading terminal, and you are immediately hit by a wall of data. Candlestick charts, MACD oscillators, order book depth, and live tickers vie for attention. While professional day traders command these tools, they overwhelm normal people.
               </p>
               <p className="text-foreground/80">
-                The real question a first-time NIFTY 50 investor has is simple: <em className="not-italic font-normal text-accent">"Should I buy this stock today, and why?"</em> No existing retail platform answers that question directly. They all hand you more raw data instead.
+                Busy professionals simply do not have the time to analyze market trends and technical charts every day. Beginners struggle to parse conflicting financial signals and opinion pieces. As a result, investing today requires jumping between multiple apps, news sites, and chat groups, leading to <em className="not-italic font-normal text-accent">decision fatigue</em> rather than clear confidence.
               </p>
               <p>
-                StockAI was built to answer that question — clearly, with visible reasoning, without hiding the model's uncertainty behind a false sense of authority.
+                StockAI explores a different path: can a thoughtfully designed workspace synthesize these fragmented inputs into one quiet, decision-support interface? The goal is not to automate the human out of the loop, but to organize data so they can decide with clarity.
               </p>
             </div>
           </div>
@@ -810,9 +810,9 @@ function StockAICaseStudy({ project }: { project: Project }) {
           {/* Pain points */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { n: "01", title: "Information overload", body: "Zerodha, Groww, and Upstox show raw charts and indicators. Beginners have no entry point." },
-              { n: "02", title: "Black-box AI signals", body: "Some platforms offer 'AI tips' with no explanation. Trust in an opaque signal is close to zero." },
-              { n: "03", title: "Fragmented context", body: "Market sentiment, institutional flows, and stock-specific signals live in separate tools, requiring manual aggregation." },
+              { n: "01", title: "Information overload", body: "Trading terminals show dozens of indicators at once. Normal users have no entry point to begin understanding." },
+              { n: "02", title: "Conflicting signals", body: "An investor has to read newsletters, monitor news feeds, and check charts just to answer: should I hold or sell?" },
+              { n: "03", title: "Decision paralysis", body: "Fearing they missed a signal, users either make emotional panic trades or fail to take action altogether." },
             ].map((p) => (
               <div key={p.n} className="rounded-2xl border border-border/30 bg-surface/10 p-6 space-y-3">
                 <span className="font-mono text-xs text-accent">{p.n}</span>
@@ -823,69 +823,126 @@ function StockAICaseStudy({ project }: { project: Project }) {
           </div>
         </SASection>
 
-        {/* ════ 02 · OPPORTUNITY ════ */}
-        <SASection n="02" label="Opportunity">
+        {/* ════ 02 · WHY I BUILT STOCKAI ════ */}
+        <SASection n="02" label="Why I Built StockAI">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-5">
+              <h2 className="font-display text-4xl md:text-5xl font-light text-foreground leading-[1.1] tracking-tight">
+                Curiosity, complexity, and a personal challenge.
+              </h2>
+            </div>
+            <div className="lg:col-span-7 space-y-5 text-[15px] leading-[1.85] text-muted-foreground font-light">
+              <p>
+                This project was born out of my own frustration. When I first started looking at the stock market, I realized that modern platforms make you feel like you are looking at a dashboard in a nuclear power plant. The learning curve is steep, and the noise is deafening.
+              </p>
+              <p>
+                I observed my friends—busy professionals who wanted to manage their savings—spending hours scrolling through forums trying to decode technical terms. Experienced investors were equally stressed, manually tracking indicators in spreadsheet templates.
+              </p>
+              <p className="text-foreground/80">
+                I wanted to see if good design could bridge this gap. I set a challenge for myself: build a platform that presents complex stock analysis as if it were a clean, quiet document. That curiosity drove me to build StockAI end-to-end, writing both the design tokens and the API pipelines.
+              </p>
+            </div>
+          </div>
+        </SASection>
+
+        {/* ════ 03 · PRODUCT VISION ════ */}
+        <SASection n="03" label="Product Vision">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             <div className="lg:col-span-7 space-y-5 text-[15px] leading-[1.85] text-muted-foreground font-light">
               <p>
-                The opportunity was not to build a better trading terminal. It was to build a completely different kind of product — one that treats AI as a translator, converting market complexity into human-readable signals.
+                StockAI is a calm, unified workspace where AI coordinates technical indicators, institutional activity, portfolio data, and financial context into a single legible experience.
               </p>
               <p className="text-foreground/80">
-                The differentiator would be <em className="not-italic font-normal text-accent">explainability</em>. Every recommendation would show its confidence score, the specific market factors driving it, and a one-line plain-English reason. The interface would never tell users to trust the AI — it would show them exactly why the signal was generated.
+                We believe that the value of an interface lies in what it helps you filter out. By reducing cognitive friction and presenting explainable signals, the workspace helps users make structured decisions without feeling overwhelmed by raw numbers.
               </p>
             </div>
             <div className="lg:col-span-5">
               <div className="rounded-2xl border border-accent/20 bg-accent/[0.04] p-6 space-y-4">
-                <div className="text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">Design Hypothesis</div>
+                <div className="text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">Vision Statement</div>
                 <p className="text-lg font-display font-light text-foreground leading-snug">
-                  "If I show users not just what the AI recommends but precisely why it made that call, they will act with more confidence and make fewer panic decisions."
+                  "Create a calm workspace where AI organizes technical analysis, market sentiment, portfolio insights, and financial news into one understandable experience."
                 </p>
               </div>
             </div>
           </div>
         </SASection>
 
-        {/* ════ 03 · MY ROLE ════ */}
-        <SASection n="03" label="My Role">
-          <div className="space-y-8">
-            <h2 className="font-display text-4xl font-light text-foreground max-w-lg leading-[1.1]">
-              I owned everything.
-            </h2>
-            <p className="text-[15px] leading-[1.85] text-muted-foreground font-light max-w-3xl">
-              This was a solo end-to-end project. There was no PM, no engineering team, no design review. Every decision was mine — which is both liberating and clarifying. When you build the backend, you design with awareness of what state is actually available. When you design the component, you know which props the API will return.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {/* ════ 04 · USER TYPES ════ */}
+        <SASection n="04" label="User Types">
+          <div className="space-y-10">
+            <div className="max-w-3xl">
+              <h2 className="font-display text-4xl font-light text-foreground leading-[1.1] mb-5">
+                Two perspectives, one shared interface.
+              </h2>
+              <p className="text-[15px] leading-[1.85] text-muted-foreground font-light">
+                We design for two core personas. Both want better decision-making capabilities, but they approach the market with different constraints and levels of trust.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {[
-                { area: "Product Strategy", detail: "Defined scope, cut features, chose what not to build" },
-                { area: "UX Architecture", detail: "Designed the information hierarchy and component system" },
-                { area: "Frontend Dev", detail: "Built in Next.js with TypeScript, shadcn/ui, Framer Motion" },
-                { area: "Backend / AI", detail: "FastAPI server serving real market signals from Python" },
-              ].map((r) => (
-                <div key={r.area} className="rounded-2xl border border-border/30 bg-surface/10 p-5 space-y-2">
-                  <div className="text-[9px] uppercase tracking-[0.2em] text-accent font-semibold">{r.area}</div>
-                  <p className="text-xs text-muted-foreground font-light leading-relaxed">{r.detail}</p>
+                {
+                  title: "The Busy Investor",
+                  desc: "Needs quick confidence without spending hours analyzing raw data every single day.",
+                  needs: [
+                    "A 10-second summary of overall market direction.",
+                    "Quick validation of existing portfolio alerts.",
+                    "Actionable stock picks with clear, digestible rationale."
+                  ],
+                  feature: "Supported by: The macro index strip, high-confidence alert list, and direct AI picks."
+                },
+                {
+                  title: "The Beginner Investor",
+                  desc: "Needs explanations instead of raw indicators to build long-term confidence.",
+                  needs: [
+                    "Translating complex numbers into simple directions.",
+                    "Understanding why a stock is recommended (not just a tip).",
+                    "A quiet layout that doesn't trigger panic when red flags appear."
+                  ],
+                  feature: "Supported by: Plain-English reason strings and explainable confidence indicators."
+                }
+              ].map((user) => (
+                <div key={user.title} className="rounded-2xl border border-border/30 bg-surface/10 p-6 md:p-8 space-y-6">
+                  <div>
+                    <h3 className="font-display text-2xl text-foreground font-light mb-2">{user.title}</h3>
+                    <p className="text-sm text-muted-foreground font-light leading-relaxed">{user.desc}</p>
+                  </div>
+                  <div className="space-y-3 pt-4 border-t border-border/15">
+                    <span className="text-[9px] uppercase tracking-[0.2em] text-accent font-semibold">Core Needs</span>
+                    <ul className="space-y-2">
+                      {user.needs.map((need, idx) => (
+                        <li key={idx} className="flex items-start gap-2.5 text-xs text-muted-foreground font-light leading-relaxed">
+                          <span className="h-1.5 w-1.5 rounded-full bg-accent/60 shrink-0 mt-1.5" />
+                          {need}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="pt-4 border-t border-border/15">
+                    <p className="text-xs font-mono text-muted-foreground/60 italic">{user.feature}</p>
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </SASection>
 
-        {/* ════ 04 · PRODUCT GOALS ════ */}
-        <SASection n="04" label="Product Goals">
+        {/* ════ 05 · PRODUCT GOALS ════ */}
+        <SASection n="05" label="Product Goals">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-4">
               <h2 className="font-display text-4xl font-light text-foreground leading-[1.1]">
-                What "done" actually meant.
+                Designing for outcomes, not features.
               </h2>
             </div>
             <div className="lg:col-span-8">
               <div className="space-y-0">
                 {[
-                  { goal: "Answer the entry question", detail: "A non-expert investor should be able to open the dashboard and understand within 10 seconds whether the market is favorable today." },
-                  { goal: "Expose AI reasoning", detail: "Every signal must show its confidence percentage and a plain-English explanation. No black-box outputs." },
-                  { goal: "Unify fragmented data", detail: "Market indices, top movers, portfolio value, institutional flows, and AI picks — one canvas, one scroll." },
-                  { goal: "Build component-first", detail: "Every UI element maps to a TypeScript interface. The design file is also a spec document." },
-                  { goal: "Make trust earnable", detail: "The system should be honest about uncertainty. Low-confidence signals should look different from high-confidence ones." },
+                  { goal: "Reduce decision fatigue", detail: "Avoid walls of charts. Consolidate technical data, flows, and news into a structured grid that answers key questions directly." },
+                  { goal: "Make AI explainable", detail: "Never display isolated signals. Provide a specific confidence rating and a plain-English rationale for every pick." },
+                  { goal: "Establish visual trust", detail: "Design a clean, restrained dark layout. Use color intentionally (green/red only for actions, never for decoration) to prevent emotional panic." },
+                  { goal: "Simplify financial structures", detail: "Turn fragmented institutional data, moving averages, and sentiment scores into cohesive components that require no trading background." },
+                  { goal: "Support faster daily check-ins", detail: "Layout sections logically so users can scan indexes, review their portfolio status, and read alerts in under a minute." },
                 ].map((item, i) => (
                   <div key={item.goal} className="flex gap-6 py-5 border-b border-border/20 last:border-b-0">
                     <span className="font-mono text-xs text-accent/60 shrink-0 mt-0.5">0{i + 1}</span>
@@ -900,15 +957,15 @@ function StockAICaseStudy({ project }: { project: Project }) {
           </div>
         </SASection>
 
-        {/* ════ 05 · INFORMATION ARCHITECTURE ════ */}
-        <SASection n="05" label="Information Architecture">
+        {/* ════ 06 · INFORMATION ARCHITECTURE ════ */}
+        <SASection n="06" label="Information Architecture">
           <div className="space-y-10">
             <div className="max-w-3xl">
               <h2 className="font-display text-4xl font-light text-foreground leading-[1.1] mb-5">
-                The layout is a decision, not a default.
+                The layout is a product decision, not a template.
               </h2>
               <p className="text-[15px] leading-[1.85] text-muted-foreground font-light">
-                Every section on the dashboard was placed in a deliberate order. The hierarchy maps to how a trader actually processes the market — moving from macro context to individual opportunities.
+                The layout hierarchy mimics the steps an investor takes when triaging their day. We move systematically from high-level market context down to individual decisions.
               </p>
             </div>
 
@@ -916,16 +973,16 @@ function StockAICaseStudy({ project }: { project: Project }) {
             <div className="rounded-2xl border border-border/30 bg-surface/10 overflow-hidden">
               <div className="px-6 py-4 border-b border-border/20 flex items-center gap-3">
                 <span className="h-2 w-2 rounded-full bg-accent" />
-                <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Dashboard — Information Hierarchy</span>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Information Hierarchy & Rationale</span>
               </div>
               <div className="p-6">
                 {[
-                  { level: "L1 · Macro", items: ["NIFTY 50", "SENSEX", "BANKNIFTY", "NIFTYIT"], note: "Immediate market context — are we up or down?" },
-                  { level: "L2 · Movers", items: ["Top Gainers", "Top Losers"], note: "Where is momentum today?" },
-                  { level: "L3 · Portfolio", items: ["Current Value", "Total P&L", "Today's P&L"], note: "User's personal stake in the market" },
-                  { level: "L4 · Alerts", items: ["Buy Signals", "Breakout Alerts", "Risk Warnings"], note: "Action-required events, time-sensitive" },
-                  { level: "L5 · AI Picks", items: ["Stock", "Action Badge", "Confidence %", "Plain-English Reason"], note: "Synthesised recommendations with visible reasoning" },
-                  { level: "L6 · Sentiment", items: ["Bullish/Bearish Score", "FII Net", "DII Net", "PCR", "VIX"], note: "Institutional context — secondary, not primary" },
+                  { level: "L1 · Macro Context", items: ["NIFTY 50", "SENSEX", "BANKNIFTY", "NIFTYIT"], note: "Provides immediate context on whether the broader market is up or down before analyzing single assets." },
+                  { level: "L2 · Market Movers", items: ["Top Gainers", "Top Losers"], note: "Establishes daily momentum, highlighting which sectors are attracting capital today." },
+                  { level: "L3 · Personal Stake", items: ["Portfolio Value", "Overall P&L", "Daily returns"], note: "Tells the user exactly how their capital is performing relative to the macro trends." },
+                  { level: "L4 · Action Alerts", items: ["BUY Triggers", "Breakout alerts", "Risk Warnings"], note: "High-priority items requiring immediate attention or tactical adjustments." },
+                  { level: "L5 · AI Picks", items: ["Ticker symbol", "Action badge", "Confidence %", "Plain-English reason"], note: "Synthesized recommendation signals with transparent confidence ratings." },
+                  { level: "L6 · Underlying Sentiment", items: ["Score", "FII flows", "DII flows", "PCR & VIX"], note: "Exposes the institutional trends that confirm or challenge individual signals." },
                 ].map((row, i) => (
                   <div key={row.level} className={`flex gap-6 items-start py-4 ${i < 5 ? 'border-b border-border/15' : ''}`}>
                     <div className="w-28 shrink-0">
@@ -946,18 +1003,18 @@ function StockAICaseStudy({ project }: { project: Project }) {
           </div>
         </SASection>
 
-        {/* ════ 06 · DASHBOARD BREAKDOWN ════ */}
-        <SASection n="06" label="Dashboard Breakdown">
+        {/* ════ 07 · DASHBOARD OVERVIEW ════ */}
+        <SASection n="07" label="Dashboard Overview">
           <div className="space-y-10">
             <h2 className="font-display text-4xl font-light text-foreground max-w-xl leading-[1.1]">
-              What each panel actually does.
+              A synthesized canvas for stock triage.
             </h2>
 
-            {/* Full dashboard screenshot with annotations */}
+            {/* Full dashboard screenshot */}
             <div className="relative rounded-3xl border border-border/30 bg-surface/20 p-2 overflow-hidden">
               <img
                 src="/images/stockai/dashboard.png"
-                alt="StockAI Dashboard annotated"
+                alt="StockAI Dashboard layout"
                 className="w-full h-auto object-cover rounded-2xl"
               />
               <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background/80 to-transparent rounded-b-2xl" />
@@ -966,12 +1023,12 @@ function StockAICaseStudy({ project }: { project: Project }) {
             {/* Section-by-section breakdown */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                { title: "Index Strip", tag: "L1", body: "Four live index cards (NIFTY 50, SENSEX, BANKNIFTY, NIFTYIT) with percentage change. Shown first because they set the entire market context before any individual stock." },
-                { title: "Top Gainers / Losers", tag: "L2", body: "Side-by-side panels with percentage change and price. Ranked by day's movement. This is where momentum traders look first." },
-                { title: "Portfolio Card", tag: "L3", body: "Invested vs current value, total return percentage. Intentionally minimal — the goal is a quick health check, not a detailed breakdown." },
-                { title: "Alerts Panel", tag: "L4", body: "Colour-coded by severity: BUY signal (green), Breakout (amber), SELL signal (red), Risk Warning (orange). Never more than 4 alerts visible without scroll." },
-                { title: "AI Picks Panel", tag: "L5", body: "The core differentiator. Each row shows a stock ticker, an action badge (BUY/HOLD/SELL), confidence percentage, and a one-line plain-English reason for the signal." },
-                { title: "Market Sentiment", tag: "L6", body: "A circular gauge scoring the market from 0–100, labeled Bullish or Bearish. Below: FII Net, DII Net, PCR, VIX as secondary data. Sentiment is derived, not raw." },
+                { title: "Index Strip", tag: "L1", body: "Live indices (NIFTY 50, SENSEX) display the macro trend. Placed at the top because individual assets cannot be evaluated without knowing the market's direction." },
+                { title: "Top Movers", tag: "L2", body: "Gainers and losers panels ranked by price change. Helps users identify market momentum and sector rotation in real time." },
+                { title: "Portfolio Health", tag: "L3", body: "A summary of performance metrics. Designed as a quick health check rather than a complex grid to prevent daily over-trading." },
+                { title: "Alerts Panel", tag: "L4", body: "Color-coded list of breakout alerts and risk flags. Severity-ranked so that critical, time-sensitive signals catch the eye first." },
+                { title: "AI Recommendations", tag: "L5", body: "The core platform widget. Combines ticker, action badge, confidence score, and explainable reasons into a single, clean table." },
+                { title: "Market Sentiment", tag: "L6", body: "Translates institutional data (FII/DII net, PCR, VIX) into a simple, directional gauge, providing context behind AI recommendations." },
               ].map((panel) => (
                 <div key={panel.title} className="rounded-2xl border border-border/30 bg-surface/10 p-5 space-y-3">
                   <div className="flex items-center gap-2">
@@ -985,18 +1042,18 @@ function StockAICaseStudy({ project }: { project: Project }) {
           </div>
         </SASection>
 
-        {/* ════ 07 · AI DECISION SYSTEM ════ */}
-        <SASection n="07" label="AI Decision System">
+        {/* ════ 08 · AI DECISION SYSTEM ════ */}
+        <SASection n="08" label="AI Decision System">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-5 space-y-6">
               <h2 className="font-display text-4xl font-light text-foreground leading-[1.1]">
-                The model's reasoning is part of the UI.
+                Exposing the model's reasoning chain in the UI.
               </h2>
               <p className="text-[15px] leading-[1.85] text-muted-foreground font-light">
-                Most AI-powered tools treat the model output as a black box. You get a number or a label. You don't get to understand why.
+                Black-box tips invite skepticism. For a user to trust an AI recommendation, they must understand the inputs that triggered the signal.
               </p>
               <p className="text-[15px] leading-[1.85] text-muted-foreground font-light">
-                The design decision here was to make explainability a first-class layout element — not an afterthought in a tooltip or a modal.
+                The decision system explicitly avoids black-box labels. Instead, it exposes the confidence score and the underlying technical factors as the core UI hierarchy.
               </p>
             </div>
             <div className="lg:col-span-7">
@@ -1035,9 +1092,9 @@ function StockAICaseStudy({ project }: { project: Project }) {
                   </div>
                   {/* Reasoning string callout */}
                   <div className="rounded-xl border border-amber-500/20 bg-amber-500/[0.04] p-4">
-                    <div className="text-[9px] font-mono text-amber-500/80 uppercase tracking-wider mb-2">Key Design Decision</div>
+                    <div className="text-[9px] font-mono text-amber-500/80 uppercase tracking-wider mb-2">Product Alignment</div>
                     <p className="text-xs text-muted-foreground font-light leading-relaxed">
-                      The one-line plain-English reason (e.g. "JLR record volumes + EV momentum breakout") is not a marketing line. It is a stringified summary of the top 2 signals that crossed the confidence threshold. The backend constructs this string — the frontend renders it without modification.
+                      The plain-English explanation is generated by mapping top-weighted signals to readable strings. Exposing the reasoning directly on the screen ensures the recommendation is auditable and builds trust.
                     </p>
                   </div>
                 </div>
@@ -1048,16 +1105,16 @@ function StockAICaseStudy({ project }: { project: Project }) {
           {/* Signal pipeline */}
           <div className="mt-10 rounded-2xl border border-border/30 bg-surface/10 overflow-hidden">
             <div className="px-6 py-4 border-b border-border/20">
-              <span className="text-[9px] font-mono uppercase tracking-widest text-muted-foreground">Signal Pipeline — How a recommendation is generated</span>
+              <span className="text-[9px] font-mono uppercase tracking-widest text-muted-foreground">Signal Pipeline — Data Flow</span>
             </div>
             <div className="flex flex-wrap items-center gap-0 p-6">
               {[
-                { step: "Market Data", note: "OHLC, Volume, FII/DII flows" },
-                { step: "Technical Signals", note: "RSI, MACD, SMA crossovers" },
-                { step: "Confidence Score", note: "Signal convergence across 6 factors" },
-                { step: "Reason String", note: "Top 2 signals → plain English" },
-                { step: "Action Badge", note: "Threshold: BUY > 75%, HOLD 50–75%, SELL < 50%" },
-                { step: "UI Render", note: "Component receives typed props" },
+                { step: "Market Data", note: "OHLC, Volume, institutional activity" },
+                { step: "Technical Signals", note: "MACD, RSI, and SMA averages" },
+                { step: "Confidence Score", note: "Weighted signal calculation" },
+                { step: "Reason String", note: "Conversion to readable text" },
+                { step: "Action Badge", note: "Threshold assignment (75% / 50%)" },
+                { step: "UI Render", note: "Component displays signal card" },
               ].map((s, i, arr) => (
                 <div key={s.step} className="flex items-center">
                   <div className="flex flex-col items-center text-center px-3">
@@ -1076,94 +1133,33 @@ function StockAICaseStudy({ project }: { project: Project }) {
           </div>
         </SASection>
 
-        {/* ════ 08 · COMPONENT SYSTEM ════ */}
-        <SASection n="08" label="Component System">
-          <div className="space-y-10">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-              <div className="lg:col-span-5">
-                <h2 className="font-display text-4xl font-light text-foreground leading-[1.1]">
-                  Every component is a typed contract.
-                </h2>
-              </div>
-              <div className="lg:col-span-7 space-y-5 text-[15px] leading-[1.85] text-muted-foreground font-light">
-                <p>
-                  The component system was designed alongside the TypeScript interfaces, not after them. Every visual decision had to have a corresponding prop. If the design required a confidence percentage, the interface exported a <code className="text-xs bg-surface/40 border border-border/30 rounded px-1.5 py-0.5 font-mono text-accent">confidence: number</code> field.
-                </p>
-                <p>
-                  This constraint eliminated ambiguity during development. The component knew exactly what data it would receive.
-                </p>
-              </div>
-            </div>
-
-            {/* Component map */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[
-                {
-                  component: "<AIPickRow />",
-                  props: ["ticker: string", "action: 'BUY' | 'HOLD' | 'SELL'", "confidence: number", "reason: string"],
-                  note: "Core AI recommendation row. Renders action badge, confidence score, and plain-English reason."
-                },
-                {
-                  component: "<IndexCard />",
-                  props: ["name: string", "value: number", "change: number", "changePercent: number"],
-                  note: "Market index display card with colour-coded positive/negative delta."
-                },
-                {
-                  component: "<SentimentGauge />",
-                  props: ["score: number", "label: 'Bullish' | 'Bearish' | 'Neutral'", "fii: number", "dii: number"],
-                  note: "Circular gauge translating institutional flow data into a directional market score."
-                },
-                {
-                  component: "<AlertItem />",
-                  props: ["type: 'buy' | 'sell' | 'breakout' | 'risk'", "stock: string", "message: string", "timestamp: Date"],
-                  note: "Time-sensitive alert item with severity-mapped icon and colour treatment."
-                },
-              ].map((c) => (
-                <div key={c.component} className="rounded-2xl border border-border/30 bg-surface/10 overflow-hidden">
-                  <div className="px-5 py-3 border-b border-border/20 bg-background/20">
-                    <code className="text-xs font-mono text-accent">{c.component}</code>
-                  </div>
-                  <div className="p-5 space-y-3">
-                    <div className="flex flex-wrap gap-1.5">
-                      {c.props.map(p => (
-                        <span key={p} className="font-mono text-[9px] text-muted-foreground/80 border border-border/30 rounded px-2 py-0.5 bg-background/20">{p}</span>
-                      ))}
-                    </div>
-                    <p className="text-[11px] text-muted-foreground font-light leading-relaxed">{c.note}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </SASection>
-
-        {/* ════ 09 · KEY DESIGN DECISIONS ════ */}
-        <SASection n="09" label="Key Design Decisions">
+        {/* ════ 09 · KEY PRODUCT DECISIONS ════ */}
+        <SASection n="09" label="Key Product Decisions">
           <div className="space-y-6">
             <h2 className="font-display text-4xl font-light text-foreground max-w-xl leading-[1.1]">
-              The choices that shaped what the product is.
+              Strategic product choices behind the layout.
             </h2>
             <div className="space-y-4">
               {[
                 {
-                  decision: "Sidebar navigation, not top tabs",
-                  why: "Top tab navigation collapses on mobile into a hamburger, losing the product's wayfinding entirely. A sidebar with icon-only collapse mode scales from 1440px desktop to 375px mobile without changing the user's mental model."
+                  decision: "The AI recommendation is placed first because users primarily visit to answer one question.",
+                  why: "Should I buy, hold, or wait? Hiding recommendations below technical charts forces users to scroll and self-triage. Placing explainable picks first delivers immediate utility. The supporting analysis follows to let users verify the recommendation."
                 },
                 {
-                  decision: "Confidence score as the primary AI affordance, not the action badge",
-                  why: "Users trust a number more than a label when money is involved. The badge (BUY/HOLD/SELL) is a quick visual scan, but the confidence percentage is the actual signal of strength. Leading with the number prevents users from acting on low-confidence recommendations without noticing."
+                  decision: "Prioritize confidence ratings over isolated BUY/SELL badges.",
+                  why: "Binary signals hide uncertainty. By establishing confidence percentages as the primary focus, the system shows that financial predictions are probabilistic. A buy signal at 88% confidence warrants more attention than one at 76%."
                 },
                 {
-                  decision: "Market Sentiment as a derived score, not raw FII/DII tables",
-                  why: "Raw institutional flow data (FII bought ₹647 Cr) means nothing to a retail investor. A derived directional score (72 — Bullish) gives immediate context. The raw numbers appear below for users who want to verify the calculation."
+                  decision: "Abstract institutional flows into a single Market Sentiment index.",
+                  why: "Presenting raw buy/sell values in massive tables causes cognitive fatigue for retail investors. Converting flows, volume, and volatility indexes into a bullish/bearish direction meter provides immediate macro context."
                 },
                 {
-                  decision: "Alerts ranked by severity, not time",
-                  why: "Time-ordered alerts force users to manually triage. Severity-ranked alerts (BUY signal → Breakout → SELL → Risk Warning) match the mental hierarchy of trading decisions — act first on the strongest signal, not the newest one."
+                  decision: "Group alerts by severity rather than chronological order.",
+                  why: "Chronological lists force users to scan and evaluate urgency manually. Severity grouping (Action Required → Warnings → Watchlist Alerts) ensures that the most critical risk events are processed first."
                 },
                 {
-                  decision: "Demo Mode badge in the header",
-                  why: "Trust in a financial product is fragile. Showing a 'Demo Mode · v1.0' badge in the header was a deliberate honesty signal — it tells users explicitly that this data is not live-connected. When the product goes live, the badge changes to 'Market Open' or 'Market Closed', not removed."
+                  decision: "Make Demo Mode explicitly clear in the header.",
+                  why: "Because money is involved, trust is everything. Displaying a clear, persistent warning that the platform runs in sandboxed mode ensures transparency and prevents any confusion regarding live capital placement."
                 },
               ].map((item, i) => (
                 <div key={item.decision} className="grid grid-cols-1 lg:grid-cols-12 gap-6 py-6 border-b border-border/20 last:border-b-0">
@@ -1184,18 +1180,18 @@ function StockAICaseStudy({ project }: { project: Project }) {
         <SASection n="10" label="Design System">
           <div className="space-y-10">
             <h2 className="font-display text-4xl font-light text-foreground max-w-xl leading-[1.1]">
-              Dark + data-dense — without feeling heavy.
+              A consistent foundation for data density.
             </h2>
 
             {/* Color tokens */}
             <div>
-              <div className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground/60 font-semibold mb-4">Colour Tokens</div>
+              <div className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground/60 font-semibold mb-4">Color Tokens</div>
               <div className="flex flex-wrap gap-4">
                 {[
                   { name: "Background", hex: "#0A0A0A", cls: "bg-[#0A0A0A] border-white/10" },
                   { name: "Surface", hex: "#111111", cls: "bg-[#111111] border-white/10" },
                   { name: "Border", hex: "#222222", cls: "bg-[#222222] border-white/10" },
-                  { name: "Accent / Gold", hex: "#DC7850", cls: "bg-[#DC7850] border-transparent" },
+                  { name: "Accent", hex: "#DC7850", cls: "bg-[#DC7850] border-transparent" },
                   { name: "Bullish", hex: "#22C55E", cls: "bg-[#22C55E] border-transparent" },
                   { name: "Bearish", hex: "#EF4444", cls: "bg-[#EF4444] border-transparent" },
                   { name: "Foreground", hex: "#F0F0F0", cls: "bg-[#F0F0F0] border-white/10" },
@@ -1243,34 +1239,34 @@ function StockAICaseStudy({ project }: { project: Project }) {
           </div>
         </SASection>
 
-        {/* ════ 11 · FRONTEND IMPLEMENTATION ════ */}
-        <SASection n="11" label="Frontend Implementation">
+        {/* ════ 11 · TECHNICAL IMPLEMENTATION ════ */}
+        <SASection n="11" label="Technical Implementation">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             <div className="lg:col-span-5 space-y-5">
               <h2 className="font-display text-4xl font-light text-foreground leading-[1.1]">
-                Design meets the build layer.
+                Bridging UI specs and frontend engineering.
               </h2>
               <p className="text-[15px] leading-[1.85] text-muted-foreground font-light">
-                Building the frontend myself exposed decisions that look fine in Figma but add engineering complexity — or vice versa, find simpler implementations than the designed spec assumed.
+                Owning both ends of the product exposed how layout choices affect performance, state management, and asset delivery.
               </p>
             </div>
             <div className="lg:col-span-7 space-y-4">
               {[
                 {
-                  title: "Component-to-TypeScript mapping",
-                  detail: "Every Figma component has a corresponding TypeScript interface. This made the handoff document the actual code — not a separate spec sheet."
+                  title: "Direct interface contracts",
+                  detail: "Figma design tokens map directly to TypeScript constants. Colors, sizes, and spacing definitions remain unified across design file and build output."
                 },
                 {
-                  title: "Framer Motion for state transitions",
-                  detail: "Alert items animate in on arrival. Confidence bars fill on mount. These are not decorative — they draw attention to new information without a notification ping."
+                  title: "Motion standards with framer-motion",
+                  detail: "Implemented hardware-accelerated transforms for confidence level loading bars and alerts, honoring user reduced-motion preferences automatically."
                 },
                 {
-                  title: "shadcn/ui as the component foundation",
-                  detail: "Used shadcn/ui's unstyled primitives (Table, Badge, Tooltip) to avoid rebuilding accessibility behaviour. Custom tokens overrode the visual layer while keeping keyboard nav and ARIA intact."
+                  title: "Access-friendly structural foundation",
+                  detail: "Based layouts on accessible HTML grid frameworks, ensuring tabular data maintains correct reading hierarchy for assistive technologies."
                 },
                 {
-                  title: "FastAPI backend serving typed responses",
-                  detail: "The Python backend returns strictly typed JSON matching the frontend interfaces. No transformation layer needed — the API response structure was co-designed with the UI."
+                  title: "Clean API mapping with FastAPI",
+                  detail: "FastAPI endpoints emit JSON matching the data structures required by frontend components. This eliminates translation layers and simplifies state updates."
                 },
               ].map((item, i) => (
                 <div key={item.title} className="flex gap-5 items-start py-4 border-b border-border/20 last:border-b-0">
@@ -1287,55 +1283,54 @@ function StockAICaseStudy({ project }: { project: Project }) {
 
         {/* ════ 12 · REFLECTION ════ */}
         <SASection n="12" label="Reflection">
-          <div className="space-y-8">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-              <div className="lg:col-span-5">
-                <h2 className="font-display text-4xl font-light text-foreground leading-[1.1]">
-                  What I'd do differently.
-                </h2>
-              </div>
-              <div className="lg:col-span-7 space-y-5 text-[15px] leading-[1.85] text-muted-foreground font-light">
-                <p>
-                  This was a solo prototype with no external user validation. I didn't test the interface with actual NIFTY 50 investors. That's a real gap — I made assumptions about what a "beginner investor" needs that haven't been challenged by real users.
-                </p>
-                <p className="text-foreground/80">
-                  If I were to take this further, I'd run 5 structured interviews with first-time retail investors before building. I'd want to know: do they trust a confidence percentage, or does a number feel arbitrary? Does "plain-English reason" actually reduce cognitive load, or does it just shift the uncertainty somewhere else?
-                </p>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div className="lg:col-span-5">
+              <h2 className="font-display text-4xl md:text-5xl font-light text-foreground leading-[1.1] tracking-tight">
+                Reflections on clarity over charts.
+              </h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                { title: "No user research", body: "All decisions were based on observed pain points in existing tools, not tested hypotheses. Honest limitation." },
-                { title: "No live market testing", body: "The platform runs in demo mode. Real-world latency, API reliability, and stale data edge cases are unresolved." },
-                { title: "Mobile view incomplete", body: "The dashboard was designed desktop-first. The mobile breakpoint is functional but not optimised — it's on the roadmap." },
-              ].map((r) => (
-                <div key={r.title} className="rounded-2xl border border-amber-500/15 bg-amber-500/[0.03] p-5 space-y-2">
-                  <h3 className="text-sm font-semibold text-foreground">{r.title}</h3>
-                  <p className="text-xs text-muted-foreground font-light leading-relaxed">{r.body}</p>
-                </div>
-              ))}
+            <div className="lg:col-span-7 space-y-5 text-[15px] leading-[1.85] text-muted-foreground font-light">
+              <p>
+                Building StockAI completely shifted my understanding of dashboard design. I started the project assuming that investors wanted faster tools to scan raw indicators. I realized that users rarely need more information. They need better prioritization.
+              </p>
+              <p className="text-foreground/80">
+                In complex domains like finance, trust, explainability, and visual calm are far more valuable than visual complexity. When we show AI predictions, the transparency of the logic matters as much as the accuracy of the model itself.
+              </p>
+              <p>
+                This first-principles approach—starting with the core user query and designing the visual hierarchy around explainable signals—is a principle I intend to apply to every complex platform interface I design.
+              </p>
             </div>
           </div>
         </SASection>
 
-        {/* ════ 13 · FINAL THOUGHT ════ */}
-        <SASection n="13" label="Final Thought" isLast>
-          <div className="max-w-3xl mx-auto text-center space-y-8 py-8">
-            <Reveal>
-              <h2 className="font-display text-4xl md:text-5xl font-light text-foreground leading-[1.1]">
-                AI should explain itself.
-              </h2>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <p className="text-[15px] leading-[1.85] text-muted-foreground font-light max-w-2xl mx-auto">
-                The most important design decision in StockAI wasn't the layout or the colour system. It was the conviction that an AI recommendation without a visible reason is just a coin flip with better marketing. Every interface pattern in this product was built around making that reasoning legible.
-              </p>
-            </Reveal>
-            <Reveal delay={0.25}>
-              <p className="text-[15px] leading-[1.85] text-muted-foreground font-light max-w-2xl mx-auto">
-                That's the kind of thinking I want to bring to every product I work on — not just fintech, not just AI interfaces. Good design explains itself.
-              </p>
-            </Reveal>
+        {/* ════ 13 · WHAT COMES NEXT ════ */}
+        <SASection n="13" label="What Comes Next" isLast>
+          <div className="space-y-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+              <div className="lg:col-span-5">
+                <h2 className="font-display text-4xl font-light text-foreground leading-[1.1]">
+                  The next iterations.
+                </h2>
+                <p className="text-sm text-muted-foreground mt-4 font-light leading-relaxed">
+                  While the initial workspace prototype validates the narrative flow, several core product areas require deep refinement before release.
+                </p>
+              </div>
+              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { title: "Real investor testing", body: "Conducting user studies to check if investors interpret confidence scores correctly under live market conditions." },
+                  { title: "Mobile layout focus", body: "Refining the desktop-first card modules into a clean single-column view optimized for mobile check-ins." },
+                  { title: "Explainable onboarding", body: "Designing a step-by-step introduction that explains how signals are generated to prevent skepticism." },
+                  { title: "Portfolio insights", body: "Extending AI signals to analyze current holdings and flag rising volatility or divergence warnings." },
+                  { title: "Semantic accessibility", body: "Auditing color tokens and table elements to guarantee contrast standards and screen-reader usability." },
+                  { title: "AI model clarity", body: "Exposing dynamic signal breakdowns so users can explore the exact factors behind a confidence rating." },
+                ].map((item) => (
+                  <div key={item.title} className="rounded-2xl border border-border/30 bg-surface/10 p-5 space-y-2">
+                    <h3 className="text-xs font-semibold text-foreground">{item.title}</h3>
+                    <p className="text-[11px] text-muted-foreground font-light leading-relaxed">{item.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </SASection>
 
@@ -1362,343 +1357,6 @@ function StockAICaseStudy({ project }: { project: Project }) {
     </motion.div>
   );
 }
-
-/* ── StockAI Section primitive ── */
-function SASection({
-  n,
-  label,
-  children,
-  isLast = false,
-}: {
-  n: string;
-  label: string;
-  children: React.ReactNode;
-  isLast?: boolean;
-}) {
-  return (
-    <section className={`pt-24 ${!isLast ? 'pb-0 border-b border-border/15 mb-0' : 'pb-8'}`}>
-      <div className="flex items-center gap-3 mb-12">
-        <span className="font-mono text-xs text-accent font-semibold">{n}</span>
-        <span className="h-px flex-1 bg-border/20" />
-        <span className="text-[9px] uppercase tracking-[0.3em] text-muted-foreground/50 font-semibold">{label}</span>
-      </div>
-      {children}
-    </section>
-  );
-}
-
-
-
-function HeroSection({ project }: { project: Project }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const scale   = useTransform(scrollYProgress, [0, 1], [1, reduced ? 1 : 1.06]);
-  const yImg    = useTransform(scrollYProgress, [0, 1], ["0%", reduced ? "0%" : "-8%"]);
-
-  return (
-    <div ref={ref} className="relative">
-      {/* Top meta bar */}
-      <div className="px-10 pt-12 pb-8 border-b border-slate-100">
-        <div className="flex items-center gap-3 mb-2">
-          <span className="text-[9px] uppercase tracking-[0.3em] text-slate-400 font-semibold">Case Study</span>
-          <span className="text-slate-200">·</span>
-          <span className="text-[9px] uppercase tracking-[0.3em] text-accent font-semibold">{project.category}</span>
-          <span className="text-slate-200">·</span>
-          <span className="text-[9px] uppercase tracking-[0.3em] text-slate-400 font-semibold">{project.year}</span>
-        </div>
-        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.05] tracking-tight mt-4 max-w-3xl">
-          HRMS
-        </h1>
-        <h2 className="font-display text-xl md:text-2xl font-light text-slate-500 mt-2">
-          Modern Employee Management Platform
-        </h2>
-        <p className="mt-4 text-base text-slate-500 leading-relaxed max-w-xl">
-          Simplifying Attendance, Leaves, Payroll &amp; Employee Onboarding
-        </p>
-
-        {/* Quick meta row */}
-        <div className="flex flex-wrap gap-8 mt-8 pt-6 border-t border-slate-100">
-          {[
-            { k: "Role", v: project.role },
-            { k: "Duration", v: "8 months" },
-            { k: "Tools", v: "Figma, Figma, Lovable" },
-            { k: "Platform", v: "Responsive Web" },
-          ].map(({ k, v }) => (
-            <div key={k}>
-              <div className="text-[9px] uppercase tracking-[0.22em] text-slate-400 font-semibold">{k}</div>
-              <div className="text-sm text-slate-700 font-medium mt-1">{v}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Hero image */}
-      <div className="overflow-hidden">
-        <motion.div style={{ scale, y: yImg }}>
-          {project.coverImage ? (
-            <img
-              src={project.coverImage}
-              alt={project.title}
-              className="w-full h-auto object-cover max-h-[600px]"
-            />
-          ) : (
-            <div className="aspect-[16/7] bg-gradient-to-br from-slate-100 via-slate-50 to-white flex items-center justify-center">
-              <span className="text-slate-200 text-sm uppercase tracking-widest">HRMS Dashboard Preview</span>
-            </div>
-          )}
-        </motion.div>
-      </div>
-    </div>
-  );
-}
-
-function CanvasSection({
-  label,
-  title,
-  icon: Icon,
-  children,
-  tinted = false,
-  last = false,
-}: {
-  label: string;
-  title: string;
-  icon: React.ElementType;
-  children: React.ReactNode;
-  tinted?: boolean;
-  last?: boolean;
-}) {
-  const ref    = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
-  return (
-    <motion.section
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.65, ease: EASE }}
-      className={`px-8 md:px-12 lg:px-16 py-16 ${tinted ? "bg-slate-50/60" : "bg-white"} ${!last ? "border-b border-slate-100" : ""}`}
-    >
-      {/* Section label */}
-      <div className="flex items-center gap-3 mb-8">
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 text-accent">
-          <Icon className="h-4 w-4" strokeWidth={1.75} />
-        </span>
-        <div className="flex items-baseline gap-2.5">
-          <span className="text-[10px] font-mono text-accent font-semibold">{label}</span>
-          <span className="text-[10px] uppercase tracking-[0.28em] text-slate-400 font-semibold">{title}</span>
-        </div>
-        <div className="flex-1 h-px bg-slate-100 ml-2" />
-      </div>
-
-      {children}
-    </motion.section>
-  );
-}
-
-function CanvasPainPoint({ text, index }: { text: string; index: number }) {
-  const ref    = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: -12 }}
-      animate={inView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5, ease: EASE, delay: index * 0.07 }}
-      className="flex items-start gap-4 py-4 border-b border-slate-100 last:border-0 group"
-    >
-      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-red-50 mt-0.5">
-        <span className="h-2 w-2 rounded-full bg-red-400" />
-      </span>
-      <p className="text-[15px] text-slate-600 leading-relaxed">{text}</p>
-    </motion.div>
-  );
-}
-
-function CanvasGoalCard({ goal, detail, index }: { goal: string; detail: string; index: number }) {
-  const ref    = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 16 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, ease: EASE, delay: index * 0.07 }}
-      whileHover={{ y: -3, boxShadow: "0 8px 30px rgb(0,0,0,0.06)" }}
-      className="rounded-2xl border border-slate-100 bg-white p-6 space-y-3 cursor-default transition-shadow"
-    >
-      <div className="flex items-start gap-3">
-        <CheckCircle2 className="h-4.5 w-4.5 text-accent shrink-0 mt-0.5" strokeWidth={2} />
-        <span className="text-sm font-semibold text-slate-800 leading-snug">{goal}</span>
-      </div>
-      <p className="text-xs text-slate-400 leading-relaxed pl-7">{detail}</p>
-    </motion.div>
-  );
-}
-
-function PersonaCard({ persona }: {
-  persona: {
-    role: string; name: string; age: string;
-    goal: string; pains: string[];
-    color: string; accent: string; dot: string;
-  }
-}) {
-  const ref    = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.55, ease: EASE }}
-      whileHover={{ y: -4, boxShadow: "0 12px 36px rgb(0,0,0,0.08)" }}
-      className={`rounded-2xl border p-6 space-y-5 cursor-default transition-shadow ${persona.color}`}
-    >
-      {/* Avatar + name */}
-      <div className="flex items-center gap-3">
-        <div className="h-12 w-12 rounded-full bg-white border border-slate-100 flex items-center justify-center shadow-sm">
-          <span className="text-lg">👤</span>
-        </div>
-        <div>
-          <div className={`text-sm font-bold ${persona.accent}`}>{persona.name}</div>
-          <div className="text-[10px] text-slate-400 uppercase tracking-wider">{persona.role} · {persona.age}y</div>
-        </div>
-      </div>
-
-      {/* Goal */}
-      <div>
-        <div className="text-[9px] uppercase tracking-[0.22em] text-slate-400 font-semibold mb-2">Goal</div>
-        <p className="text-xs text-slate-600 leading-relaxed">{persona.goal}</p>
-      </div>
-
-      {/* Pain points */}
-      <div>
-        <div className="text-[9px] uppercase tracking-[0.22em] text-slate-400 font-semibold mb-2">Pain Points</div>
-        <ul className="space-y-1.5">
-          {persona.pains.map((pain) => (
-            <li key={pain} className="flex items-center gap-2 text-xs text-slate-600">
-              <span className={`h-1.5 w-1.5 rounded-full shrink-0 ${persona.dot}`} />
-              {pain}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </motion.div>
-  );
-}
-
-function WireframeCard({ label }: { label: string }) {
-  const ref    = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 12 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, ease: EASE }}
-      whileHover={{ y: -3, boxShadow: "0 8px 24px rgb(0,0,0,0.06)" }}
-      className="space-y-2 cursor-default"
-    >
-      <div className="aspect-[4/3] rounded-xl border border-slate-200 bg-slate-50 overflow-hidden relative">
-        {/* Wireframe lines simulation */}
-        <div className="absolute inset-3 space-y-2">
-          <div className="h-3 bg-slate-200 rounded w-3/4" />
-          <div className="h-2 bg-slate-100 rounded w-full" />
-          <div className="h-2 bg-slate-100 rounded w-5/6" />
-          <div className="h-8 bg-slate-200/60 rounded mt-2" />
-          <div className="grid grid-cols-3 gap-1 mt-1">
-            <div className="h-6 bg-slate-200/50 rounded" />
-            <div className="h-6 bg-slate-200/50 rounded" />
-            <div className="h-6 bg-slate-200/50 rounded" />
-          </div>
-          <div className="h-2 bg-slate-100 rounded w-2/3 mt-1" />
-        </div>
-      </div>
-      <p className="text-[10px] text-slate-400 text-center">{label}</p>
-    </motion.div>
-  );
-}
-
-function HiFiCard({ decision }: { decision: { title: string; detail: string; image?: string; caption?: string } }) {
-  const ref    = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 16 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, ease: EASE }}
-      whileHover={{ y: -4, boxShadow: "0 12px 40px rgb(0,0,0,0.1)" }}
-      className="rounded-xl overflow-hidden border border-slate-100 cursor-default transition-shadow"
-    >
-      <div className="aspect-[4/3] bg-slate-50 overflow-hidden">
-        {decision.image ? (
-          <img
-            src={decision.image}
-            alt={decision.title}
-            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-            loading="lazy"
-          />
-        ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center gap-2">
-            <Monitor className="h-8 w-8 text-slate-200" strokeWidth={1} />
-            <span className="text-[9px] text-slate-300 uppercase tracking-widest">{decision.title}</span>
-          </div>
-        )}
-      </div>
-      <div className="px-4 py-3 bg-white border-t border-slate-100">
-        <p className="text-[11px] text-slate-500 font-medium">{decision.title}</p>
-      </div>
-    </motion.div>
-  );
-}
-
-function UXDecisionCard({ title, detail, index }: { title: string; detail: string; index: number }) {
-  const ref    = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 16 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, ease: EASE, delay: index * 0.06 }}
-      whileHover={{ y: -2, boxShadow: "0 6px 24px rgb(0,0,0,0.06)" }}
-      className="rounded-2xl border border-slate-100 bg-white p-6 space-y-3 cursor-default transition-shadow"
-    >
-      <div className="flex items-start gap-3">
-        <CheckCircle2 className="h-4.5 w-4.5 text-accent shrink-0 mt-0.5" strokeWidth={2} />
-        <h3 className="text-sm font-semibold text-slate-800 leading-snug">{title}</h3>
-      </div>
-      <p className="text-[13px] text-slate-500 leading-relaxed pl-7">{detail}</p>
-    </motion.div>
-  );
-}
-
-function OutcomeStatCard({ stat, label, sub }: { stat: string; label: string; sub: string }) {
-  const ref    = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={inView ? { opacity: 1, scale: 1 } : {}}
-      transition={{ duration: 0.55, ease: EASE }}
-      className="rounded-2xl border border-slate-100 bg-white p-6 text-center space-y-1.5 shadow-sm"
-    >
-      <div className="font-display text-4xl font-bold text-accent">{stat}</div>
-      <div className="text-sm font-semibold text-slate-700">{label}</div>
-      <div className="text-[11px] text-slate-400">{sub}</div>
-    </motion.div>
-  );
-}
-
 /* ══════════════════════════════════════════════════════════════
    Standard (non-HRMS) Case Study
 ══════════════════════════════════════════════════════════════ */
