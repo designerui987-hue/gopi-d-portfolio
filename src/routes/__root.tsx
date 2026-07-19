@@ -17,7 +17,7 @@ import { ScrollProgress } from "../components/scroll-progress";
 import { SmoothScroll } from "../components/smooth-scroll";
 import { CustomCursor } from "../components/custom-cursor";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 function NotFoundComponent() {
   return (
