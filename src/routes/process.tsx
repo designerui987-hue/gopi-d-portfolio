@@ -72,11 +72,12 @@ const principles = [
 ];
 
 function StepCard({ step }: { step: Step }) {
+  const reduced = useReducedMotion();
   return (
     <motion.article
-      whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 260, damping: 24 }}
-      className="group relative overflow-hidden rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 md:p-10 hover:border-accent/30 hover:shadow-[var(--shadow-premium)] w-full h-full flex flex-col justify-between"
+      whileHover={reduced ? undefined : { y: -3 }}
+      transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+      className="group relative overflow-hidden rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 md:p-10 hover:border-accent/40 hover:shadow-[var(--shadow-float)] w-full h-full flex flex-col justify-between transition-colors duration-[180ms]"
     >
       {/* Accent glow top right */}
       <div className="absolute -top-16 -right-16 h-36 w-36 rounded-full bg-accent/5 blur-2xl group-hover:bg-accent/10 transition-colors" />
@@ -84,14 +85,14 @@ function StepCard({ step }: { step: Step }) {
       <div>
         <div className="flex items-start justify-between relative z-10">
           <div className="font-display text-sm text-accent font-semibold">{step.n}</div>
-          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-border/40 bg-background/50 text-muted-foreground group-hover:text-accent group-hover:border-accent/30 transition-all duration-300">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full border border-border/40 bg-background/50 text-muted-foreground group-hover:text-accent group-hover:border-accent/30 transition-all duration-[180ms]">
             <step.Icon className="h-4 w-4" strokeWidth={1.75} />
           </div>
         </div>
-        <h3 className="mt-6 font-display text-2xl text-foreground font-medium group-hover:text-accent transition-colors duration-300">
+        <h3 className="mt-6 font-display text-2xl text-foreground font-medium group-hover:text-accent transition-colors duration-[180ms]">
           {step.t}
         </h3>
-        <p className="mt-4 text-sm leading-relaxed text-muted-foreground group-hover:text-foreground/90 transition-colors duration-300">
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground group-hover:text-foreground/90 transition-colors duration-[180ms]">
           {step.d}
         </p>
       </div>
@@ -105,7 +106,7 @@ function StepCard({ step }: { step: Step }) {
           {step.outputs.map((o) => (
             <li
               key={o}
-              className="rounded-full border border-border/40 bg-background/40 px-3 py-1 text-xs text-foreground/80 hover:text-foreground hover:border-accent/30 transition-colors"
+              className="rounded-full border border-border/40 bg-background/40 px-3 py-1 text-xs text-foreground/80 hover:text-foreground hover:border-accent/30 transition-colors duration-[180ms]"
             >
               {o}
             </li>
@@ -198,7 +199,7 @@ function Process() {
             <motion.div
               key={t}
               variants={staggerItem}
-              className="bg-surface/20 backdrop-blur-sm p-8 md:p-10 hover:bg-surface/30 transition-all duration-300"
+              className="bg-surface/20 backdrop-blur-sm p-8 md:p-10 hover:bg-surface/30 transition-all duration-[180ms]"
             >
               <div className="font-display text-xl text-foreground font-medium flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />

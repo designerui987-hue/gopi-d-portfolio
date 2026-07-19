@@ -194,12 +194,12 @@ function AboutPage() {
             ].map((principle, idx) => (
               <motion.div
                 key={principle.t}
-                initial={{ opacity: 0, y: reduced ? 0 : 12 }}
+                initial={{ opacity: 0, y: reduced ? 0 : 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{
-                  duration: 0.7,
-                  delay: idx * 0.1,
+                  duration: 0.35,
+                  delay: idx * 0.06,
                   ease: EASE_EDITORIAL,
                 }}
                 className="rounded-3xl border border-border/30 bg-surface/10 p-6 space-y-3"
@@ -319,7 +319,7 @@ function AboutPage() {
                 href={LINKEDIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2.5 rounded-full border border-border/40 bg-surface/30 px-7 py-4 text-sm font-medium text-foreground transition-all duration-300 hover:scale-[1.02] hover:bg-surface/50 hover:text-accent hover:border-accent/30 shadow-[var(--shadow-soft)]"
+                className="group inline-flex items-center gap-2.5 rounded-full border border-border/40 bg-surface/30 px-7 py-4 text-sm font-medium text-foreground transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.01] hover:bg-surface/50 hover:text-accent hover:border-accent/30 active:scale-[0.98] shadow-[var(--shadow-soft)]"
               >
                 <Linkedin className="h-4 w-4 text-accent" strokeWidth={1.75} />
                 LinkedIn
@@ -328,7 +328,7 @@ function AboutPage() {
                 href={RESUME_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-accent-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_8px_30px_rgb(220,120,80,0.22)]"
+                className="inline-flex items-center gap-2 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-accent-foreground transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.01] hover:shadow-[0_8px_30px_rgb(220,120,80,0.25)] active:scale-[0.98]"
               >
                 <FileDown className="h-4 w-4" strokeWidth={1.75} />
                 Resume PDF

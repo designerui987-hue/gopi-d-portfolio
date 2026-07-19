@@ -26,18 +26,18 @@ export function StatsScrollReveal({
     const items = el.querySelectorAll<HTMLElement>("[data-stat]");
     if (!items.length) return;
 
-    gsap.set(items, { y: 28, opacity: 0, filter: "blur(8px)" });
+    gsap.set(items, { y: 12, opacity: 0, filter: "blur(4px)" });
 
     const tween = gsap.to(items, {
       y: 0,
       opacity: 1,
       filter: "blur(0px)",
-      duration: 0.9,
-      ease: "expo.out",
-      stagger: 0.09,
+      duration: 0.35,
+      ease: "power2.out",
+      stagger: 0.06,
       scrollTrigger: {
         trigger: el,
-        start: "top 82%",
+        start: "top 85%",
         toggleActions: "play none none reverse",
       },
     });

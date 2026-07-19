@@ -1,4 +1,4 @@
-﻿import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Layers, Cpu } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
@@ -53,7 +53,7 @@ function ProjectsIndex() {
                 <Link
                   to="/projects/$slug"
                   params={{ slug: p.slug }}
-                  className="group relative flex flex-col md:flex-row gap-0 overflow-hidden rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-sm transition-all duration-500 hover:border-accent/30 hover:bg-surface/30 hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(0,0,0,0.4)]"
+                  className="group relative flex flex-col md:flex-row gap-0 overflow-hidden rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-sm transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-accent/40 hover:bg-surface/30 hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
                 >
                   {/* Cover */}
                   <div className="relative md:w-[45%] shrink-0 overflow-hidden bg-surface/30">
@@ -61,7 +61,7 @@ function ProjectsIndex() {
                       <img
                         src={p.coverImage}
                         alt={p.title}
-                        className="w-full h-full object-cover aspect-[16/10] md:aspect-auto md:absolute md:inset-0 transition-transform duration-700 group-hover:scale-[1.03]"
+                        className="w-full h-full object-cover aspect-[16/10] md:aspect-auto md:absolute md:inset-0 transition-transform duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.008]"
                         loading="lazy"
                       />
                     ) : (
@@ -84,7 +84,7 @@ function ProjectsIndex() {
                           {p.year}
                         </span>
                       </div>
-                      <h2 className="font-display text-2xl md:text-3xl font-light text-foreground leading-[1.15] tracking-tight group-hover:text-accent/90 transition-colors duration-300">
+                      <h2 className="font-display text-2xl md:text-3xl font-light text-foreground leading-[1.15] tracking-tight group-hover:text-accent/90 transition-colors duration-[180ms]">
                         {p.title}
                       </h2>
                       <p className="text-sm text-muted-foreground font-light leading-relaxed max-w-lg">
@@ -108,9 +108,9 @@ function ProjectsIndex() {
                           </span>
                         )}
                       </div>
-                      <span className="inline-flex items-center gap-1.5 text-xs font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="inline-flex items-center gap-1.5 text-xs font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-[180ms] ease-out">
                         Read case study
-                        <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 duration-[180ms]" />
                       </span>
                     </div>
                   </div>

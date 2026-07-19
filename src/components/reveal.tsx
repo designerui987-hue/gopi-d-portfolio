@@ -1,12 +1,12 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function Reveal({
   children,
   delay = 0,
-  y = 16,
+  y = 12,
   blur = true,
   className,
   as = "div",
@@ -27,13 +27,13 @@ export function Reveal({
     hidden: {
       opacity: 0,
       y: reduced ? 0 : y,
-      filter: blur && !reduced ? "blur(6px)" : "blur(0px)",
+      filter: blur && !reduced ? "blur(4px)" : "blur(0px)",
     },
     show: {
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
-      transition: { duration: 0.7, ease: EASE, delay },
+      transition: { duration: 0.5, ease: EASE, delay },
     },
   };
 
@@ -43,7 +43,7 @@ export function Reveal({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: "-60px" }}
       variants={variants}
     >
       {children}
@@ -54,7 +54,7 @@ export function Reveal({
 export function Stagger({
   children,
   className,
-  stagger = 0.08,
+  stagger = 0.06,
   delay = 0,
 }: {
   children: ReactNode;
@@ -67,7 +67,7 @@ export function Stagger({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-60px" }}
+      viewport={{ once: true, margin: "-40px" }}
       variants={{
         hidden: {},
         show: { transition: { staggerChildren: stagger, delayChildren: delay } },
@@ -79,11 +79,11 @@ export function Stagger({
 }
 
 export const staggerItem: Variants = {
-  hidden: { opacity: 0, y: 14, filter: "blur(6px)" },
+  hidden: { opacity: 0, y: 10, filter: "blur(4px)" },
   show: {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.6, ease: EASE },
+    transition: { duration: 0.35, ease: EASE },
   },
 };

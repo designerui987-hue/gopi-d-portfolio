@@ -70,18 +70,18 @@ function HomeProjectsSection() {
 
       <div className="space-y-5">
         {projects.map((p, i) => (
-          <Reveal key={p.slug} delay={i * 0.1}>
+          <Reveal key={p.slug} delay={i * 0.08}>
             <Link
               to="/projects/$slug"
               params={{ slug: p.slug }}
-              className="group relative flex flex-col md:flex-row overflow-hidden rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-sm transition-all duration-500 hover:border-accent/30 hover:bg-surface/30 hover:-translate-y-1 hover:shadow-[0_24px_64px_rgba(0,0,0,0.45)]"
+              className="group relative flex flex-col md:flex-row overflow-hidden rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-sm transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-accent/40 hover:bg-surface/30 hover:-translate-y-0.5 hover:shadow-[0_20px_50px_rgba(0,0,0,0.35)]"
             >
               <div className="relative md:w-[42%] shrink-0 overflow-hidden bg-surface/30 aspect-[16/9] md:aspect-auto">
                 {p.coverImage ? (
                   <img
                     src={p.coverImage}
                     alt={p.title}
-                    className="w-full h-full object-cover md:absolute md:inset-0 transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="w-full h-full object-cover md:absolute md:inset-0 transition-transform duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.008]"
                     loading="lazy"
                   />
                 ) : (
@@ -98,7 +98,7 @@ function HomeProjectsSection() {
                     <span className="text-border/60">&middot;</span>
                     <span className="text-[9px] font-mono text-muted-foreground/50">{p.year}</span>
                   </div>
-                  <h3 className="font-display text-2xl md:text-3xl font-light text-foreground leading-[1.15] tracking-tight group-hover:text-accent/90 transition-colors duration-300">
+                  <h3 className="font-display text-2xl md:text-3xl font-light text-foreground leading-[1.15] tracking-tight group-hover:text-accent/90 transition-colors duration-[180ms]">
                     {p.title}
                   </h3>
                   <p className="text-sm text-muted-foreground font-light leading-relaxed max-w-md">
@@ -113,8 +113,8 @@ function HomeProjectsSection() {
                       </span>
                     ))}
                   </div>
-                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    Read case study <ArrowUpRight className="h-3.5 w-3.5" />
+                  <span className="inline-flex items-center gap-1.5 text-xs font-medium text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-[180ms] ease-out">
+                    Read case study <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-[180ms] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
               </div>
@@ -192,33 +192,29 @@ function Home() {
 
           <div className="flex flex-wrap items-center gap-3.5 mt-10">
             <FadeUp delay={1.75} y={14}>
-              <Magnetic strength={0.25}>
+              <Magnetic strength={0.22}>
                 <Link
                   to="/contact"
                   data-cursor="talk"
-                  className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-accent-foreground shadow-[0_4px_24px_rgb(220,120,80,0.18)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_10px_40px_rgb(220,120,80,0.32)]"
+                  className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-accent-foreground shadow-[0_4px_20px_rgb(220,120,80,0.15)] transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.01] hover:shadow-[0_8px_30px_rgb(220,120,80,0.25)] active:scale-[0.98]"
                 >
                   Let's talk
-                  <motion.span
-                    className="inline-flex"
-                    whileHover={{ x: 2, y: -2 }}
-                    transition={{ duration: 0.3, ease: EASE_EDITORIAL }}
-                  >
+                  <span className="inline-block transition-transform duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                     <ArrowUpRight className="h-4 w-4" />
-                  </motion.span>
+                  </span>
                 </Link>
               </Magnetic>
             </FadeUp>
 
             <FadeUp delay={1.95} y={14}>
-              <Magnetic strength={0.25}>
+              <Magnetic strength={0.22}>
                 <a
                   href={LINKEDIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 rounded-full border border-border/40 px-7 py-4 text-sm font-medium text-muted-foreground bg-surface/20 backdrop-blur-sm transition-all duration-300 hover:scale-[1.02] hover:text-foreground hover:border-accent/40 hover:bg-surface/40"
+                  className="group inline-flex items-center gap-2 rounded-full border border-border/40 px-7 py-4 text-sm font-medium text-muted-foreground bg-surface/20 backdrop-blur-sm transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.01] hover:text-foreground hover:border-accent/40 hover:bg-surface/40 active:scale-[0.98]"
                 >
-                  <Linkedin className="h-4 w-4 text-accent transition-transform duration-300 group-hover:scale-105" strokeWidth={1.75} />
+                  <Linkedin className="h-4 w-4 text-accent transition-transform duration-[180ms] group-hover:scale-105" strokeWidth={1.75} />
                   LinkedIn
                 </a>
               </Magnetic>
@@ -229,9 +225,9 @@ function Home() {
                 href={RESUME_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                className="group inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-[180ms] hover:text-foreground active:scale-[0.98]"
               >
-                <FileDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" strokeWidth={1.75} />
+                <FileDown className="h-3.5 w-3.5 transition-transform duration-[180ms] group-hover:-translate-y-0.5" strokeWidth={1.75} />
                 Resume
               </a>
             </FadeUp>

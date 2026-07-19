@@ -165,6 +165,7 @@ function RootComponent() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [booted, setBooted] = useState(false);
   const [progress, setProgress] = useState(0);
+  const reduced = useReducedMotion();
 
   useEffect(() => {
     // Disable default browser scroll restoration to prevent jumps and layout freezing
@@ -234,7 +235,7 @@ function RootComponent() {
           <motion.div
             key="boot"
             initial={{ y: 0 }}
-            exit={{ y: "-100%", filter: "blur(10px)" }}
+            exit={{ y: "-100%", filter: reduced ? "none" : "blur(10px)" }}
             transition={{ duration: 0.85, ease: [0.76, 0, 0.24, 1] }}
             aria-hidden="true"
             role="status"
@@ -284,10 +285,10 @@ function RootComponent() {
         <AnimatePresence mode="wait">
           <motion.div
             key={pathname}
-            initial={{ opacity: 0, y: 15, filter: "blur(4px)" }}
+            initial={{ opacity: 0, y: reduced ? 0 : 12, filter: reduced ? "blur(0px)" : "blur(4px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: -15, filter: "blur(4px)" }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            exit={{ opacity: 0, y: reduced ? 0 : -12, filter: reduced ? "blur(0px)" : "blur(4px)" }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           >
             <Outlet />
           </motion.div>

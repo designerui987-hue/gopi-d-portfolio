@@ -223,7 +223,7 @@ function Contact() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgb(220,120,80,0.2)] disabled:opacity-70 disabled:translate-y-0 disabled:cursor-not-allowed"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3.5 text-sm font-semibold text-accent-foreground transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.01] hover:shadow-[0_8px_30px_rgb(220,120,80,0.25)] active:scale-[0.98] disabled:opacity-70 disabled:scale-100 disabled:cursor-not-allowed"
                 >
                   {status === "submitting" ? (
                     <>
@@ -233,7 +233,7 @@ function Contact() {
                   ) : (
                     <>
                       Send message
-                      <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                      <ArrowUpRight className="h-4 w-4 transition-transform duration-[180ms] group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </>
                   )}
                 </button>
@@ -268,7 +268,7 @@ function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit LinkedIn profile"
-            className="group flex items-center justify-between rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 transition-colors hover:border-accent/20"
+            className="group flex items-center justify-between rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-accent/30 hover:bg-surface/30 hover:-translate-y-0.5 active:scale-[0.99]"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
             <div className="flex items-center gap-3">
@@ -282,7 +282,7 @@ function Contact() {
                 </span>
               </div>
             </div>
-            <ArrowUpRight className="h-4.5 w-4.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+            <ArrowUpRight className="h-4.5 w-4.5 text-muted-foreground transition-all duration-[180ms] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
           </a>
 
           <a
@@ -290,7 +290,7 @@ function Contact() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit Behance profile"
-            className="group flex items-center justify-between rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 transition-colors hover:border-accent/20"
+            className="group flex items-center justify-between rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-accent/30 hover:bg-surface/30 hover:-translate-y-0.5 active:scale-[0.99]"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
             <div className="flex items-center gap-3">
@@ -304,13 +304,13 @@ function Contact() {
                 </span>
               </div>
             </div>
-            <ArrowUpRight className="h-4.5 w-4.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+            <ArrowUpRight className="h-4.5 w-4.5 text-muted-foreground transition-all duration-[180ms] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
           </a>
 
           <a
             href={`mailto:${EMAIL_ADDRESS}`}
             aria-label="Send email"
-            className="group flex items-center justify-between rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 transition-colors hover:border-accent/20"
+            className="group flex items-center justify-between rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-accent/30 hover:bg-surface/30 hover:-translate-y-0.5 active:scale-[0.99]"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
             <div className="flex items-center gap-3">
@@ -324,7 +324,7 @@ function Contact() {
                 </span>
               </div>
             </div>
-            <ArrowUpRight className="h-4.5 w-4.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+            <ArrowUpRight className="h-4.5 w-4.5 text-muted-foreground transition-all duration-[180ms] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
           </a>
 
           <a
@@ -333,7 +333,7 @@ function Contact() {
             rel="noopener noreferrer"
             download
             aria-label="Download resume PDF"
-            className="group flex items-center justify-between rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 transition-colors hover:border-accent/20"
+            className="group flex items-center justify-between rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-accent/30 hover:bg-surface/30 hover:-translate-y-0.5 active:scale-[0.99]"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
             <div className="flex items-center gap-3">
@@ -347,7 +347,7 @@ function Contact() {
                 </span>
               </div>
             </div>
-            <ArrowUpRight className="h-4.5 w-4.5 text-muted-foreground transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
+            <ArrowUpRight className="h-4.5 w-4.5 text-muted-foreground transition-all duration-[180ms] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
           </a>
         </Reveal>
       </div>

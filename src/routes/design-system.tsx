@@ -110,8 +110,8 @@ function ColorTokenCard({ token }: { token: (typeof colorTokens)[number] }) {
   return (
     <motion.div
       onClick={copyToken}
-      whileHover={{ scale: 1.01, y: -2 }}
-      transition={{ duration: 0.3, ease: EASE_EDITORIAL }}
+      whileHover={{ scale: 1.008, y: -1.5 }}
+      transition={{ duration: 0.18, ease: EASE_EDITORIAL }}
       className="group relative cursor-pointer overflow-hidden rounded-2xl border border-border/40 bg-surface/30 backdrop-blur-md p-4 transition-colors hover:border-accent/40"
     >
       <div className="flex items-center justify-between mb-3">

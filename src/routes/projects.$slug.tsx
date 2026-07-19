@@ -27,7 +27,7 @@ import {
   Lightbulb,
   BarChart3,
 } from "lucide-react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { PlaceholderCard } from "@/components/page-shell";
 import { Reveal, Stagger, staggerItem } from "@/components/reveal";
 import { getProject, projects, type Project } from "@/lib/projects";
@@ -735,6 +735,7 @@ function StockAICaseStudy({ project }: { project: Project }) {
   const idx  = projects.findIndex((p) => p.slug === project.slug);
   const next = projects[(idx + 1) % projects.length];
   const reduced = useReducedMotion();
+  const [activeAnno, setActiveAnno] = useState<string | null>(null);
 
   return (
     <motion.div
@@ -1099,28 +1100,45 @@ function StockAICaseStudy({ project }: { project: Project }) {
                 </div>
                 <div className="p-5 space-y-4">
                   {/* Simulated AI pick row */}
-                  <div className="flex items-start gap-4 p-4 rounded-xl border border-border/20 bg-background/30">
+                  <div className="flex items-start gap-4 p-4 rounded-xl border border-border/20 bg-background/30 transition-colors duration-[180ms]">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <span className="font-mono text-sm font-bold text-foreground">TATAMOTORS</span>
-                        <span className="rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider">BUY</span>
+                        <span className={`font-mono text-sm font-bold rounded px-1.5 py-0.5 transition-all duration-[180ms] ${activeAnno === "ticker" ? "bg-accent/15 text-accent ring-1 ring-accent/35" : "text-foreground"}`}>
+                          TATAMOTORS
+                        </span>
+                        <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider transition-all duration-[180ms] ${activeAnno === "badge" ? "bg-accent text-accent-foreground ring-4 ring-accent/20 scale-[1.03]" : "bg-emerald-500/15 border border-emerald-500/30 text-emerald-400"}`}>
+                          BUY
+                        </span>
                       </div>
                       <p className="text-[11px] text-muted-foreground font-light">JLR record volumes + EV momentum breakout</p>
                     </div>
                     <div className="text-right shrink-0">
-                      <div className="text-lg font-display font-light text-foreground">87.2%</div>
+                      <div className={`text-lg font-display font-light transition-all duration-[180ms] px-1 rounded ${activeAnno === "confidence" ? "text-accent bg-accent/[0.08] ring-1 ring-accent/30" : "text-foreground"}`}>
+                        87.2%
+                      </div>
                       <div className="text-[9px] text-muted-foreground">confidence</div>
                     </div>
                   </div>
                   {/* Annotation labels */}
                   <div className="grid grid-cols-3 gap-3 text-center">
                     {[
-                      { label: "Ticker", note: "Searchable, links to full analysis" },
-                      { label: "Action Badge", note: "BUY / HOLD / SELL — never ambiguous" },
-                      { label: "Confidence %", note: "Derived from signal convergence across 6 indicators" },
+                      { key: "ticker", label: "Ticker", note: "Searchable, links to full analysis" },
+                      { key: "badge", label: "Action Badge", note: "BUY / HOLD / SELL — never ambiguous" },
+                      { key: "confidence", label: "Confidence %", note: "Derived from signal convergence across 6 indicators" },
                     ].map((a) => (
-                      <div key={a.label} className="rounded-xl border border-border/20 bg-background/20 p-3 space-y-1">
-                        <div className="text-[9px] font-mono text-accent uppercase tracking-wider">{a.label}</div>
+                      <div
+                        key={a.label}
+                        onMouseEnter={() => setActiveAnno(a.key)}
+                        onMouseLeave={() => setActiveAnno(null)}
+                        className={`rounded-xl border p-3 space-y-1 cursor-crosshair transition-all duration-[180ms] ${
+                          activeAnno === a.key
+                            ? "border-accent/40 bg-accent/[0.04] scale-[1.01]"
+                            : "border-border/20 bg-background/20"
+                        }`}
+                      >
+                        <div className={`text-[9px] font-mono uppercase tracking-wider transition-colors duration-[180ms] ${activeAnno === a.key ? 'text-accent' : 'text-accent/70'}`}>
+                          {a.label}
+                        </div>
                         <p className="text-[9px] text-muted-foreground font-light leading-tight">{a.note}</p>
                       </div>
                     ))}

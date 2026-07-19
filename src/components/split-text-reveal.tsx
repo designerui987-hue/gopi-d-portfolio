@@ -1,12 +1,12 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function SplitTextReveal({
   text,
   className,
   delay = 0,
-  stagger = 0.028,
+  stagger = 0.02,
   as: Tag = "span",
 }: {
   text: string;
@@ -26,13 +26,13 @@ export function SplitTextReveal({
     hidden: {
       y: reduced ? "0%" : "110%",
       opacity: reduced ? 1 : 0,
-      filter: reduced ? "blur(0px)" : "blur(6px)"
+      filter: reduced ? "blur(0px)" : "blur(4px)"
     },
     show: {
       y: "0%",
       opacity: 1,
       filter: "blur(0px)",
-      transition: { duration: reduced ? 0 : 0.85, ease: EASE },
+      transition: { duration: reduced ? 0 : 0.7, ease: EASE },
     },
   };
 

@@ -16,6 +16,12 @@ export function GsapHeadline({
 
     const chars = el.querySelectorAll(".gsap-char");
     
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      gsap.set(chars, { y: "0%", rotateZ: 0, opacity: 1 });
+      return;
+    }
+
     gsap.fromTo(
       chars,
       {
