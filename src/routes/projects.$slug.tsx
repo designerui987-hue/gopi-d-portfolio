@@ -758,11 +758,22 @@ function StockAICaseStudy({ project }: { project: Project }) {
                 { k: "Role", v: "Designer & Developer (solo, full-stack)" },
                 { k: "Stack", v: "Next.js, FastAPI, Python, Figma" },
                 { k: "Year", v: project.year },
-                { k: "Scope", v: "End-to-end solo product" },
-              ].map(({ k, v }) => (
+                { k: "GitHub", v: "designerui987-hue/ai-stock-analyzer", href: "https://github.com/designerui987-hue/ai-stock-analyzer.git" },
+              ].map(({ k, v, href }) => (
                 <div key={k}>
                   <div className="text-[9px] uppercase tracking-[0.22em] text-accent font-semibold mb-1">{k}</div>
-                  <div className="text-sm text-foreground/80 font-light">{v}</div>
+                  {href ? (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-foreground/80 font-light hover:text-accent transition-colors duration-300 inline-flex items-center gap-1"
+                    >
+                      {v} <ArrowUpRight className="h-3 w-3" />
+                    </a>
+                  ) : (
+                    <div className="text-sm text-foreground/80 font-light">{v}</div>
+                  )}
                 </div>
               ))}
             </div>
