@@ -1,7 +1,7 @@
 export type Project = {
   slug: string;
   title: string;
-  category: "SaaS Dashboard" | "Landing Page" | "Mobile App" | "UI Exploration" | "Fintech / Dashboard";
+  category: "SaaS Dashboard" | "Landing Page" | "Mobile App" | "UI Exploration" | "Fintech / Dashboard" | "AI Product Design";
   description: string;
   role: string;
   tools: string[];
@@ -77,55 +77,55 @@ export const projects: Project[] = [
     ]
   },
   {
-    slug: "nova",
-    title: "Nova — AI Stock Analysis Dashboard",
-    category: "Fintech / Dashboard",
+    slug: "stockai",
+    title: "StockAI — AI-Powered Stock Analysis Platform",
+    category: "AI Product Design",
     description:
-      "An AI-powered stock analysis platform that gives beginners clear Buy/Hold/Sell recommendations instead of raw market data. Designed an interactive dashboard combining candlestick charts, company overview, technical indicators, and AI insight cards, with a premium dark theme suited to fintech products.",
+      "A full-stack AI stock analysis platform designed to replace raw trading terminals with plain-language buy/hold/sell signals, explainable AI recommendations, and a calm, structured dashboard built for investors who are not professional traders.",
     role: "Designer & Developer (solo, full-stack)",
-    tools: ["Next.js", "TypeScript", "Tailwind", "shadcn/ui", "Framer Motion", "FastAPI", "Python", "Figma"],
+    tools: ["Figma", "Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Framer Motion", "FastAPI", "Python"],
     year: "2026",
-    cover: "Nova Dashboard",
-    coverImage: "/images/nova/cover.png",
+    cover: "StockAI Dashboard",
+    coverImage: "/images/stockai/cover.png",
     problem:
-      "Most stock analysis tools are designed for professional day traders — they overwhelm beginner investors with raw candlestick charts, technical indicators, and order books. Non-expert investors struggle to answer the simple question: 'Is this stock a good buy right now, and why?'",
+      "Most retail stock apps are built for professional day traders. They show raw OHLC candlestick data, order books, and dozens of overlapping technical indicators that require years of domain knowledge to interpret. A first-time investor looking at NIFTY 50 has no way to answer the most basic question: 'Should I buy this stock today, and why?'. Existing platforms answer with more data, not with clarity.",
     constraints: [
-      "Solo project requiring ownership of the entire lifecycle — from visual design and typography choices in Figma to full-stack React and FastAPI development",
-      "Designing for trust and clarity in fintech, ensuring that AI-generated buy/sell recommendations are presented with clear confidence scores and explainable risk levels rather than black-box suggestions",
-      "Simplifying complex financial data (moving averages, volume charts, company profiles) into a cohesive dashboard structure that works seamlessly across desktop and mobile screens"
+      "Solo end-to-end ownership — responsible for UX research, component design, frontend React development, and a Python FastAPI backend that serves real market signals",
+      "Designing for trust in a high-stakes domain — every AI recommendation needed to expose its confidence level and reasoning chain, not just output a result",
+      "No external design validation: this was a personal prototype with no formal user research. Decisions were based on observed pain points and first-principles product thinking"
     ],
     decisions: [
       {
-        title: "AI Recommendation Cards",
+        title: "AI Picks with Explainable Signals",
         detail:
-          "Designed plain-language Buy/Hold/Sell recommendation blocks at the top of the interface. Each card displays a confidence score, a risk level rating, and a clear bulleted breakdown of the key factors driving the AI's recommendation.",
-        image: "/images/nova/insight-cards.png",
-        caption: "Plain-language AI recommendation cards displaying confidence levels, risk ratings, and underlying analysis."
+          "Each AI recommendation shows a confidence score, a plain-English reason string, and a colour-coded action badge. The design prioritises explainability over authority — the interface never tells users to trust the AI, it shows them exactly why the signal was generated.",
+        image: "/images/stockai/dashboard.png",
+        caption: "AI Picks panel showing confidence scores, signal badges, and one-line plain-English reasoning for each recommendation."
       },
       {
-        title: "Interactive Charts & Technical Indicators",
+        title: "Market Sentiment System",
         detail:
-          "Simplified candlestick charting for beginners by overlaying simple moving averages and technical indicators as toggleable layers, allowing users to switch between simplified views and detailed historical data.",
-        image: "/images/nova/chart-view.png",
-        caption: "Interactive candlestick charts with toggleable technical indicators and simple moving averages."
+          "Instead of showing raw FII/DII data in a table, designed a circular gauge showing a Bullish/Bearish score derived from institutional flows. Supporting metrics (FII Net, DII Net, PCR, VIX) appear below as secondary context, not primary information.",
+        image: "/images/stockai/dashboard.png",
+        caption: "Market Sentiment gauge — translates raw institutional flow data into a single, readable directional score."
       },
       {
-        title: "Unified Stock Dashboard Layout",
+        title: "Dashboard Information Architecture",
         detail:
-          "Arranged stock search, real-time price charts, company financial overviews, and AI-powered insights into a responsive grid that prioritizes the most actionable recommendations first, adapting beautifully to phones and tablets.",
-        image: "/images/nova/dashboard.png",
-        caption: "The unified stock dashboard layout presenting charts, company overview, and AI recommendation side-by-side."
+          "Structured the dashboard with a strict information hierarchy: index overview → market movers → portfolio → alerts → AI picks → market status. The order was deliberate — it mirrors how a trader actually scans the market, moving from macro to micro.",
+        image: "/images/stockai/dashboard.png",
+        caption: "Full dashboard layout — indexes, top gainers/losers, portfolio, alerts, and AI picks in one scannable canvas."
       }
     ],
     outcomes: [
-      "Successfully designed and built the complete stock analysis platform end-to-end (Next.js, FastAPI, Python)",
-      "Reduced cognitive load for non-expert investors by replacing complex spreadsheets with clean, plain-language cards",
-      "Tested the interface with beginner investors, who reported high confidence in understanding the Buy/Hold/Sell recommendations"
+      "Designed and shipped a full-stack AI stock analysis platform from Figma to production deployment",
+      "Replaced raw market data tables with structured, plain-language AI signals that are readable by non-expert investors",
+      "Built a reusable component system that maps directly to TypeScript interfaces, making the design-to-code handoff straightforward"
     ],
     learnings: [
-      "Designing for trust and clarity in fintech is critical — users need to understand the 'why' behind AI-generated recommendations before risking capital",
-      "Simplifying complex financial data into a clean, minimalist UI requires aggressive prioritization and cutting out unnecessary data density",
-      "Owning a project end-to-end (design + frontend + backend) taught me how to budget my time and make pragmatic design compromises for engineering speed"
+      "AI explainability is a design problem, not just an engineering one — the interface must make the model's reasoning legible before users will trust its output",
+      "Information hierarchy in dashboards is more important than visual polish — the order in which data is presented determines how quickly users can act on it",
+      "Owning the full stack (design + frontend + backend) exposed the real cost of design decisions at the implementation layer, which changed how I think about component scope and state management"
     ]
   }
 ];
