@@ -68,6 +68,30 @@ export const Route = createFileRoute("/projects/$slug")({
 });
 
 /* ─── shared ─────────────────────────────────────────────────── */
+/* ── StockAI Section primitive ── */
+function SASection({
+  n,
+  label,
+  children,
+  isLast = false,
+}: {
+  n: string;
+  label: string;
+  children: React.ReactNode;
+  isLast?: boolean;
+}) {
+  return (
+    <section className={`pt-24 ${!isLast ? 'pb-0 border-b border-border/15 mb-0' : 'pb-8'}`}>
+      <div className="flex items-center gap-3 mb-12">
+        <span className="font-mono text-xs text-accent font-semibold">{n}</span>
+        <span className="h-px flex-1 bg-border/20" />
+        <span className="text-[9px] uppercase tracking-[0.3em] text-muted-foreground/50 font-semibold">{label}</span>
+      </div>
+      {children}
+    </section>
+  );
+}
+
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 /* ─── 404 ────────────────────────────────────────────────────── */
