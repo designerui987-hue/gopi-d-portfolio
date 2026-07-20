@@ -72,65 +72,65 @@
 :root {
   --radius: 1.25rem;
 
-  /* ── LUXURY DARK EDITORIAL PALETTE (Warm Charcoal & Champagne Gold) ── */
-  /* Surface System: 4 Distinct Levels */
-  --canvas: oklch(0.145 0.006 50);            /* Level 1: Warm Graphite Canvas (#131315) */
+  /* ── SOFT GRAPHITE EDITORIAL PALETTE (Apple, Linear, Vercel Inspired) ── */
+  /* Surface System: 4 Distinct Depth Levels */
+  --canvas: #111315;                          /* Level 1: Canvas Background (#111315) */
   --background: var(--canvas);
-  --section: oklch(0.165 0.006 50);           /* Level 2: Section Surface (#17171a) */
-  --surface: oklch(0.19 0.007 50);            /* Level 3: Card Surface (#1c1c20) */
-  --surface-elevated: oklch(0.22 0.008 50);   /* Level 4: Interactive Hover (#232328) */
+  --section: #17191C;                         /* Level 2: Section Surface (#17191C) */
+  --surface: #1E2125;                         /* Level 3: Card Surface (#1E2125) */
+  --surface-elevated: #262A2F;                /* Level 4: Interactive Surface (#262A2F) */
 
   --card: var(--surface);
-  --card-foreground: oklch(0.96 0.004 85);
+  --card-foreground: #F5F2EC;
   --popover: var(--surface);
-  --popover-foreground: oklch(0.96 0.004 85);
+  --popover-foreground: #F5F2EC;
 
   /* Typography Color Hierarchy */
-  --heading-primary: oklch(0.96 0.004 85);    /* Crisp Warm Off-White (#f4f4f6) */
+  --heading-primary: #F5F2EC;                  /* Primary Text (#F5F2EC) */
   --foreground: var(--heading-primary);
-  --heading-secondary: oklch(0.89 0.005 85);  /* Soft Warm Pearl (#e1e1e5) */
-  --body-text: oklch(0.83 0.006 85);          /* Ergonomic Warm Gray (#d0d0d5, Contrast > 11:1) */
-  --muted: oklch(0.20 0.007 50);
-  --muted-foreground: oklch(0.66 0.007 85);   /* Warm Silver Muted Text (#9a9aa2) */
-  --disabled-text: oklch(0.44 0.006 85);      /* Subtle Disabled Text (#5e5e66) */
+  --heading-secondary: #C9C5BD;                /* Secondary Text (#C9C5BD) */
+  --body-text: #C9C5BD;                        /* Body Text (#C9C5BD) */
+  --muted: #17191C;
+  --muted-foreground: #9B9892;                 /* Muted Text (#9B9892) */
+  --disabled-text: #5C5A55;                    /* Disabled Text */
 
   /* Button System */
-  --primary: oklch(0.79 0.09 75);             /* Primary Button: Champagne Gold (#dcb880) */
-  --primary-foreground: oklch(0.145 0.006 50);/* Dark Charcoal Text (#131315) */
-  --primary-hover: oklch(0.83 0.095 75);      /* Luminous Gold Hover (#e5c590) */
+  --primary: #D6C2A1;                          /* Primary Button (#D6C2A1) */
+  --primary-foreground: #111315;              /* Dark Graphite Text (#111315) */
+  --primary-hover: #E4D1B3;                    /* Primary Hover (#E4D1B3) */
 
-  --secondary: oklch(0.20 0.007 50);          /* Secondary Button: Dark Tint Surface */
-  --secondary-foreground: oklch(0.96 0.004 85);
-  --secondary-hover: oklch(0.24 0.008 50);
+  --secondary: transparent;                   /* Secondary Button: Transparent */
+  --secondary-foreground: #F5F2EC;
+  --secondary-hover: #262A2F;
 
-  /* Luxury Champagne Gold Accent System (Restrained & Purposeful) */
-  --accent: oklch(0.79 0.09 75);              /* Warm Champagne Gold (#dcb880) */
-  --accent-foreground: oklch(0.145 0.006 50);
-  --accent-hover: oklch(0.83 0.095 75);       /* Hover Luminous Gold (#e5c590) */
-  --accent-soft: oklch(0.79 0.09 75 / 0.15);  /* Soft Gold Ambient Tint */
+  /* Accent Strategy (Restrained Champagne Accent) */
+  --accent: #D6C2A1;                          /* Primary Accent (#D6C2A1) */
+  --accent-foreground: #111315;
+  --accent-hover: #E4D1B3;                    /* Hover Accent (#E4D1B3) */
+  --accent-soft: rgba(214, 194, 161, 0.12);   /* Ambient Accent Tint */
 
-  /* Borders & Hairline Dividers */
-  --border: oklch(1 0 0 / 0.08);              /* Soft Tonal Border */
-  --border-hover: oklch(0.79 0.09 75 / 0.35); /* Interactive Gold Accent Border */
-  --divider: oklch(1 0 0 / 0.05);             /* Hairline Divider */
-  --input: oklch(0.22 0.007 50);
-  --ring: oklch(0.79 0.09 75);                /* Focus Ring Gold Highlight */
+  /* Borders & Dividers */
+  --border: rgba(255, 255, 255, 0.08);        /* Soft Tonal Border (rgba 255,255,255,0.08) */
+  --border-hover: rgba(214, 194, 161, 0.35);  /* Interactive Accent Border */
+  --divider: rgba(255, 255, 255, 0.05);       /* Hairline Divider */
+  --input: #1E2125;
+  --ring: #D6C2A1;                            /* Focus Ring */
 
   /* Feedback & State Tokens */
-  --success: oklch(0.72 0.16 142);           /* Soft Emerald (#52c41a) */
-  --warning: oklch(0.76 0.15 75);            /* Warm Amber (#faad14) */
-  --error: oklch(0.63 0.22 25);              /* Muted Crimson (#ff4d4f) */
+  --success: #6AAE8D;                         /* Success (#6AAE8D) */
+  --warning: #D4A44F;                         /* Warning (#D4A44F) */
+  --error: #D66C6C;                           /* Error (#D66C6C) */
   --destructive: var(--error);
-  --destructive-foreground: oklch(0.96 0.004 85);
-  --info: oklch(0.65 0.18 245);               /* Soft Sapphire (#1677ff) */
+  --destructive-foreground: #F5F2EC;
+  --info: #78A9FF;
 
   /* Shadows & Atmospheric Glows */
-  --shadow-soft: 0 4px 24px oklch(0 0 0 / 0.18);
-  --shadow-float: 0 10px 40px oklch(0 0 0 / 0.28);
-  --shadow-premium: 0 20px 80px oklch(0 0 0 / 0.40);
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.22);
+  --shadow-float: 0 10px 40px rgba(0, 0, 0, 0.32);
+  --shadow-premium: 0 20px 80px rgba(0, 0, 0, 0.45);
 
-  --glow-1: radial-gradient(circle, oklch(0.79 0.09 75 / 0.06), transparent 70%);
-  --glow-2: radial-gradient(circle, oklch(0.68 0.08 190 / 0.04), transparent 70%);
+  --glow-1: radial-gradient(circle, rgba(214, 194, 161, 0.05), transparent 70%);
+  --glow-2: radial-gradient(circle, rgba(120, 169, 255, 0.03), transparent 70%);
 }
 
 .light {
