@@ -84,8 +84,8 @@ export default function HeroBackground() {
         const cy = (b.y + Math.cos(t * b.speed * 1.3 + b.phase) * 0.1 - mouseY * 0.25) * h;
         const rad = Math.min(w, h) * b.r;
         const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
-        const opacityMain = isLight ? 0.22 : 0.55;
-        const opacityMid = isLight ? 0.08 : 0.18;
+        const opacityMain = isLight ? 0.15 : 0.22;
+        const opacityMid = isLight ? 0.05 : 0.08;
         g.addColorStop(0, `rgba(${b.hue}, ${opacityMain})`);
         g.addColorStop(0.5, `rgba(${b.hue}, ${opacityMid})`);
         g.addColorStop(1, `rgba(${b.hue}, 0)`);
@@ -106,7 +106,7 @@ export default function HeroBackground() {
         const px = (p.x + Math.sin(t * p.driftSpeed + p.phase) * 0.04 + mouseX * 0.06) * w;
         const py = p.y * h;
 
-        ctx.fillStyle = `${pColor}${p.opacity})`;
+        ctx.fillStyle = `${pColor}${p.opacity * 0.6})`;
         ctx.beginPath();
         ctx.arc(px, py, p.size * dpr, 0, Math.PI * 2);
         ctx.fill();
@@ -140,8 +140,8 @@ export default function HeroBackground() {
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="absolute inset-0 h-full w-full opacity-70"
-      style={{ filter: "blur(40px) saturate(1.2)" }}
+      className="absolute inset-0 h-full w-full opacity-45"
+      style={{ filter: "blur(120px) saturate(0.85)" }}
     />
   );
 }
