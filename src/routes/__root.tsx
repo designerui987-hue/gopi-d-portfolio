@@ -175,45 +175,21 @@ function RootComponent() {
   }, []);
 
   useEffect(() => {
-    // Fast-forward loader if document is already fully loaded
-    const isLoaded = typeof document !== "undefined" && document.readyState === "complete";
-    
-    // Failsafe: force completion after 2s max to optimize speed
-    const failsafe = setTimeout(() => setBooted(true), 2000);
-
+    // Smooth, guaranteed 0% -> 100% preloader animation
     const interval = setInterval(() => {
-      setProgress((p) => {
-        if (p >= 100) {
+      setProgress((prev) => {
+        if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => setBooted(true), 200);
+          setTimeout(() => setBooted(true), 300);
           return 100;
         }
-        // Step faster if already loaded
-        const step = isLoaded ? 25 : Math.floor(Math.random() * 15) + 5;
-        return p + step;
+        // Increment smoothly by 2-4% every 25ms (~1.0s to 1.2s duration)
+        const next = prev + Math.floor(Math.random() * 3) + 2;
+        return next >= 100 ? 100 : next;
       });
-    }, isLoaded ? 20 : 60);
+    }, 25);
 
-    const handleLoad = () => {
-      setProgress(100);
-      setBooted(true);
-    };
-
-    if (typeof window !== "undefined") {
-      if (document.readyState === "complete") {
-        handleLoad();
-      } else {
-        window.addEventListener("load", handleLoad);
-      }
-    }
-
-    return () => {
-      clearInterval(interval);
-      clearTimeout(failsafe);
-      if (typeof window !== "undefined") {
-        window.removeEventListener("load", handleLoad);
-      }
-    };
+    return () => clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -282,17 +258,14 @@ function RootComponent() {
       </AnimatePresence>
 
       <main className="relative min-h-screen">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={pathname}
-            initial={{ opacity: 0, y: reduced ? 0 : 12, filter: reduced ? "blur(0px)" : "blur(4px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, y: reduced ? 0 : -12, filter: reduced ? "blur(0px)" : "blur(4px)" }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Outlet />
-          </motion.div>
-        </AnimatePresence>
+        <motion.div
+          key={pathname}
+          initial={{ opacity: 0, y: reduced ? 0 : 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <Outlet />
+        </motion.div>
       </main>
     </QueryClientProvider>
   );
