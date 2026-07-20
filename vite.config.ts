@@ -14,7 +14,9 @@ export default defineConfig({
         entry: "src/server.ts",
       },
     }),
-    nitro(),
+    nitro({
+      preset: "vercel",
+    }),
     react(),
   ],
 });
