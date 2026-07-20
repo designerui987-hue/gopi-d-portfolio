@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { Reveal } from "@/components/reveal";
+import { ProductDesignExpertise } from "@/components/expertise-system";
 import { motion, useReducedMotion } from "framer-motion";
 
 const EASE_EDITORIAL = [0.16, 1, 0.3, 1] as const;
@@ -215,45 +216,8 @@ function AboutPage() {
           </div>
         </section>
 
-        {/* ── CHAPTER 05: Current Toolkit ── */}
-        <section className="space-y-12 border-t border-border/20 pt-16">
-          <ChapterHeader n="05" label="THE STACK" title="Tools for building & handoff." />
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <ToolGroupCard
-              n="01"
-              label="DESIGN"
-              tools={[
-                "Figma",
-                "FigJam",
-                "Component systems",
-                "Token architecture",
-                "Responsive layout matrices",
-              ]}
-            />
-            <ToolGroupCard
-              n="02"
-              label="DEVELOPMENT"
-              tools={[
-                "TypeScript",
-                "React",
-                "TanStack Router",
-                "Framer Motion",
-                "Tailwind CSS",
-                "Vite",
-              ]}
-            />
-            <ToolGroupCard
-              n="03"
-              label="RAPID PROTOTYPING"
-              tools={[
-                "Lovable",
-                "AI-assisted UI staging",
-                "Figma to code handoff logs",
-              ]}
-            />
-          </div>
-        </section>
+        {/* ── CHAPTER 05: Product Design Expertise System ── */}
+        <ProductDesignExpertise />
 
         {/* ── CHAPTER 06: Currently Learning ── */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-8 border-t border-border/20">

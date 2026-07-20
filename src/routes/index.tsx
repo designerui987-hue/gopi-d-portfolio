@@ -8,6 +8,7 @@ import { HeroScene } from "@/components/hero-scene";
 import { StatsScrollReveal } from "@/components/stats-scroll-reveal";
 import { Magnetic } from "@/components/magnetic";
 import { GsapHeadline } from "@/components/gsap-headline";
+import { ProductDesignExpertise } from "@/components/expertise-system";
 import { projects } from "@/lib/projects";
 
 /* ─── Unified Site-Wide Motion System Standards ─── */
@@ -323,139 +324,8 @@ function Home() {
           </Stagger>
         </section>
 
-        {/* ─── CHAPTER 04: Design System (Why build systems instead of isolated screens?) ─── */}
-        <section className="space-y-12 border-t border-border/20 pt-16">
-          <SectionHeader
-            index="04"
-            eyebrow="System Architecture"
-            title="A screen is a moment. A system is a conversation."
-            description="Isolated screens break when software grows. I build modular token rules, type scales, and layout rhythms so interfaces stay calm as features multiply."
-            linkTo="/design-system"
-            linkLabel="Open system spec"
-          />
-
-          <Stagger className="grid grid-cols-1 lg:grid-cols-12 gap-8" stagger={0.08}>
-            {/* Left Col (7 cols): Interactive Token & Type Architecture Spec */}
-            <motion.div variants={staggerItem} className="lg:col-span-7">
-              <motion.div
-                whileHover={{ scale: reduced ? 1 : 1.01 }}
-                transition={{ duration: 0.35, ease: EASE_EDITORIAL }}
-                className="h-full rounded-3xl border border-border/40 bg-surface/30 backdrop-blur-md p-8 flex flex-col justify-between hover:border-accent/30 transition-all duration-300"
-                style={{ boxShadow: "var(--shadow-soft)" }}
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] uppercase tracking-[0.25em] text-accent font-semibold font-mono">
-                      FOUNDATION_SPEC // TYPE_SCALE
-                    </span>
-                    <span className="text-[9px] font-mono text-muted-foreground/60">
-                      WCAG_AA_PASSED
-                    </span>
-                  </div>
-
-                  <div className="font-display text-4xl sm:text-5xl leading-none tracking-tight text-accent">
-                    Fraunces
-                  </div>
-                  <div className="mt-2 text-xs uppercase tracking-widest text-muted-foreground font-mono">
-                    Inter Sans · Display Serif Contrast
-                  </div>
-
-                  {/* Micro Token Spec Grid */}
-                  <div className="mt-8 grid grid-cols-2 gap-4 border-t border-border/25 pt-6 text-[11px] font-mono">
-                    <div>
-                      <span className="text-muted-foreground/60 block text-[9px] uppercase">DISPLAY_SCALE</span>
-                      <span className="text-foreground">72px / 1.02 lh</span>
-                    </div>
-                    <div>
-                      <span className="text-muted-foreground/60 block text-[9px] uppercase">BODY_SCALE</span>
-                      <span className="text-foreground">16px / 1.75 lh</span>
-                    </div>
-                  </div>
-                </div>
-
-                <p className="mt-8 text-xs leading-relaxed text-muted-foreground font-light">
-                  Editorial voice paired with technical layout clarity. Strict fluid modular type scale matching viewport dimensions.
-                </p>
-              </motion.div>
-            </motion.div>
-
-            {/* Right Col (5 cols): Spatial Rhythm & Color Tokens */}
-            <motion.div variants={staggerItem} className="lg:col-span-5 space-y-6">
-              {/* Palette Card */}
-              <motion.div
-                whileHover={{ scale: reduced ? 1 : 1.01 }}
-                transition={{ duration: 0.35, ease: EASE_EDITORIAL }}
-                className="rounded-3xl border border-border/40 bg-surface/30 backdrop-blur-md p-6 hover:border-accent/30 transition-all duration-300"
-                style={{ boxShadow: "var(--shadow-soft)" }}
-              >
-                <div className="flex justify-between items-center mb-4">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold font-mono">
-                    COLOR_TOKENS
-                  </span>
-                  <span className="text-[9px] font-mono text-accent">6 PROD_SWATCHES</span>
-                </div>
-
-                <div className="grid grid-cols-6 gap-2">
-                  {[
-                    ["--background", "oklch(0.14)"],
-                    ["--surface", "oklch(0.18)"],
-                    ["--border", "oklch(0.30)"],
-                    ["--primary", "oklch(0.95)"],
-                    ["--secondary", "oklch(0.22)"],
-                    ["--accent", "oklch(0.82)"],
-                  ].map(([c, val], idx) => (
-                    <motion.div
-                      key={c}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: idx * 0.08, ease: EASE_EDITORIAL }}
-                      className="group relative aspect-square rounded-xl border border-border/40 cursor-pointer"
-                      style={{ background: `var(${c})` }}
-                      title={`${c}: ${val}`}
-                    />
-                  ))}
-                </div>
-                <div className="mt-4 text-xs text-foreground font-mono">Obsidian Canvas · Champagne Gold Accent</div>
-              </motion.div>
-
-              {/* Spatial 8pt Grid Card */}
-              <motion.div
-                whileHover={{ scale: reduced ? 1 : 1.01 }}
-                transition={{ duration: 0.35, ease: EASE_EDITORIAL }}
-                className="rounded-3xl border border-border/40 bg-surface/30 backdrop-blur-md p-6 hover:border-accent/30 transition-all duration-300"
-                style={{ boxShadow: "var(--shadow-soft)" }}
-              >
-                <div className="flex justify-between items-center mb-3">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold font-mono">
-                    8PT_SPACING_RHYTHM
-                  </span>
-                  <span className="text-[9px] font-mono text-muted-foreground/60">8px → 64px</span>
-                </div>
-
-                <div className="space-y-2">
-                  {[8, 16, 24, 32, 48].map((px, idx) => (
-                    <motion.div
-                      key={px}
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: idx * 0.08, ease: EASE_EDITORIAL }}
-                      className="flex items-center gap-3"
-                    >
-                      <span className="text-[9px] font-mono text-muted-foreground/60 w-8">{px}px</span>
-                      <div
-                        className="h-1.5 rounded-full bg-accent/80"
-                        style={{ originX: 0, width: `${(px / 48) * 100}%` }}
-                      />
-                    </motion.div>
-                  ))}
-                </div>
-                <div className="mt-4 text-xs text-foreground font-mono">Mathematical layout rhythm</div>
-              </motion.div>
-            </motion.div>
-          </Stagger>
-        </section>
+        {/* ─── CHAPTER 04: Product Design Expertise System ─── */}
+        <ProductDesignExpertise />
 
         {/* ─── CHAPTER 05: About Story (Why did I become a designer?) ─── */}
         <section className="space-y-12 border-t border-border/20 pt-16">
