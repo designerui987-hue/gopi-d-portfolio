@@ -106,13 +106,8 @@ function AboutPage() {
 
         {/* ── CHAPTER 01: The Statement ── */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start pt-8 border-t border-border/20">
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5">
             <ChapterHeader n="01" label="THE STATEMENT" title="A manifesto for quiet software." />
-            <div className="relative overflow-hidden rounded-3xl border border-border/40 bg-surface/20 p-2 backdrop-blur-sm shadow-[var(--shadow-soft)] max-w-xs">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
-                <img src="/neeraj.jpg" alt="Gopi Neeraj Kumar" className="h-full w-full object-cover" />
-              </div>
-            </div>
           </div>
           <div className="lg:col-span-7 space-y-6 text-base leading-[1.8] text-muted-foreground font-light">
             <p>
