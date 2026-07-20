@@ -248,17 +248,24 @@ function Contact() {
             className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 md:p-8"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
-            <div className="flex items-center gap-2 text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-              </span>
-              Availability
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2 text-[9px] uppercase tracking-[0.25em] text-accent font-semibold">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                  </span>
+                  Availability
+                </div>
+                <div className="mt-3 font-display text-2xl text-foreground font-light">
+                  Available now
+                </div>
+              </div>
+              <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-border/50 shadow-md">
+                <img src="/neeraj.jpg" alt="Gopi Neeraj Kumar" className="h-full w-full object-cover" />
+              </div>
             </div>
-            <div className="mt-3 font-display text-2xl text-foreground font-light">
-              Available now
-            </div>
-            <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+            <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
               Open to junior UI/UX roles, internships, and small freelance briefs.
             </p>
           </div>

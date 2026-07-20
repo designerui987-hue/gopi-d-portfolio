@@ -170,7 +170,10 @@ function Home() {
       <div className="relative h-screen min-h-[680px] w-full flex flex-col justify-center px-6 lg:pl-28 lg:pr-12 overflow-hidden border-b border-border/30">
         <div className="relative z-10 max-w-5xl space-y-0">
 
-          <FadeUp delay={0.15} className="mb-6">
+          <FadeUp delay={0.15} className="mb-6 flex flex-wrap items-center gap-3">
+            <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-accent/40 shadow-md">
+              <img src="/neeraj.jpg" alt="Gopi Neeraj Kumar" className="h-full w-full object-cover" />
+            </div>
             <span className="inline-flex items-center gap-2.5 text-[10px] uppercase tracking-[0.4em] text-accent font-semibold">
               <span className="inline-block h-px w-6 bg-accent/60 rounded-full" />
               UI/UX Designer &amp; Product Developer
