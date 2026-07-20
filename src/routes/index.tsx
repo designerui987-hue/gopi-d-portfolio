@@ -167,74 +167,121 @@ function Home() {
 
   return (
     <HeroScene>
-      {/* ─── CHAPTER 00: Hero (Who am I?) ─── */}
-      <div className="relative h-screen min-h-[680px] w-full flex flex-col justify-center px-6 lg:pl-28 lg:pr-12 overflow-hidden border-b border-border/30">
-        <div className="relative z-10 max-w-5xl space-y-0">
-          <FadeUp delay={0.15} className="mb-6 flex flex-wrap items-center gap-3">
-            <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-accent/40 shadow-md">
-              <img src="/neeraj.jpg" alt="Gopi Neeraj Kumar" className="h-full w-full object-cover" />
+      {/* ─── CHAPTER 00: Hero (Editorial Composition) ─── */}
+      <div className="relative min-h-[90vh] w-full flex flex-col justify-center px-6 lg:pl-28 lg:pr-12 py-20 overflow-hidden border-b border-border/25">
+        {/* Signature Typographic Backdrop (Oversized Low-Contrast Architectural Watermark) */}
+        <div
+          className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none overflow-hidden opacity-[0.03] pr-4 lg:pr-12 text-right z-0"
+          aria-hidden="true"
+        >
+          <span className="font-display text-[18vw] font-light leading-none tracking-tighter text-foreground block">
+            SYSTEMS
+          </span>
+        </div>
+
+        <div className="relative z-10 max-w-6xl space-y-10">
+
+          {/* Top Editorial Label Bar */}
+          <FadeUp delay={0.15} className="flex flex-wrap items-center justify-between gap-4 border-b border-border/20 pb-5">
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-xs font-semibold text-accent">01</span>
+              <span className="h-3 w-px bg-border/40" />
+              <div className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full border border-accent/40 shadow-sm">
+                <img src="/neeraj.jpg" alt="Gopi Neeraj Kumar" className="h-full w-full object-cover" />
+              </div>
+              <span className="text-xs font-mono text-foreground/90 font-medium">Gopi Neeraj Kumar</span>
             </div>
-            <span className="inline-flex items-center gap-2.5 text-[10px] uppercase tracking-[0.4em] text-accent font-semibold">
-              <span className="inline-block h-px w-6 bg-accent/60 rounded-full" />
-              UI/UX Designer &amp; Product Designer
-              <span className="inline-block h-px w-6 bg-accent/60 rounded-full" />
-            </span>
+
+            <div className="flex items-center gap-3 text-[9px] font-mono uppercase tracking-[0.35em] text-accent/90 font-semibold">
+              <span>PRODUCT DESIGNER</span>
+              <span className="text-accent/30">&middot;</span>
+              <span>2026 PORTFOLIO</span>
+              <span className="hidden sm:inline-block text-accent/30">&middot;</span>
+              <span className="hidden sm:inline-block text-muted-foreground/70">AVAILABLE FOR OPPORTUNITIES</span>
+            </div>
           </FadeUp>
 
-          <GsapHeadline
-            text="Designing calm digital experiences."
-            className="font-display tracking-tight text-foreground leading-[0.86] text-[clamp(2.8rem,8vw,7.5rem)]"
-          />
+          {/* Main Display Headline (Intentional Broken Rhythm & Serif Contrast) */}
+          <div className="space-y-4 max-w-5xl">
+            <FadeUp delay={0.35}>
+              <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] xl:text-[5.8rem] tracking-tight text-foreground font-light leading-[0.92] select-none">
+                Designing <span className="text-accent italic font-normal">calm</span> digital<br />
+                experiences for<br />
+                complex workflows.
+              </h1>
+            </FadeUp>
+          </div>
 
-          <FadeUp delay={1.45} y={18} className="mt-8 max-w-xl">
-            <p className="text-base md:text-[1.05rem] leading-[1.75] text-muted-foreground font-light">
-              I translate complex software requirements into calm, structured digital interfaces.{" "}
-              <span className="text-foreground/75">Designing products through UX strategy, interface design, interaction design, and scalable design systems.</span>
-            </p>
-          </FadeUp>
-
-          <div className="flex flex-wrap items-center gap-3.5 mt-10">
-            <FadeUp delay={1.75} y={14}>
-              <Magnetic strength={0.22}>
-                <Link
-                  to="/contact"
-                  data-cursor="talk"
-                  className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-4 text-sm font-semibold text-accent-foreground shadow-[0_4px_20px_rgb(220,120,80,0.15)] transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.01] hover:shadow-[0_8px_30px_rgb(220,120,80,0.25)] active:scale-[0.98]"
-                >
-                  Let's talk
-                  <span className="inline-block transition-transform duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    <ArrowUpRight className="h-4 w-4" />
-                  </span>
-                </Link>
-              </Magnetic>
+          {/* Asymmetric 2-Column Positioning & Editorial Caption */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-2">
+            <FadeUp delay={0.65} y={16} className="lg:col-span-7 space-y-4">
+              <p className="text-base md:text-lg leading-[1.75] text-muted-foreground font-light max-w-xl">
+                I translate complex business requirements into calm, structured digital interfaces.{" "}
+                <span className="text-foreground/90">Designing products through UX strategy, interface design, interaction design, and scalable design systems so software feels quiet, effortless, and clear.</span>
+              </p>
             </FadeUp>
 
-            <FadeUp delay={1.95} y={14}>
-              <Magnetic strength={0.22}>
-                <a
-                  href={LINKEDIN_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2 rounded-full border border-border/40 px-7 py-4 text-sm font-medium text-muted-foreground bg-surface/20 backdrop-blur-sm transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.01] hover:text-foreground hover:border-accent/40 hover:bg-surface/40 active:scale-[0.98]"
-                >
-                  <Linkedin className="h-4 w-4 text-accent transition-transform duration-[180ms] group-hover:scale-105" strokeWidth={1.75} />
-                  LinkedIn
-                </a>
-              </Magnetic>
+            <FadeUp delay={0.85} y={16} className="lg:col-span-5 hidden lg:block">
+              <div className="rounded-2xl border border-border/30 bg-surface/15 backdrop-blur-sm p-6 space-y-3 shadow-[var(--shadow-soft)]">
+                <div className="flex items-center justify-between text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold border-b border-border/20 pb-2">
+                  <span>DESIGN PHILOSOPHY</span>
+                  <span>01 / 06</span>
+                </div>
+                <p className="text-xs text-muted-foreground/90 font-light leading-relaxed">
+                  Usability over noise. Systems over isolated screens. Predictability as the core product metric.
+                </p>
+              </div>
             </FadeUp>
+          </div>
 
-            <FadeUp delay={2.1} y={14}>
+          {/* Two Distinct CTA Journeys & Supporting Links */}
+          <FadeUp delay={1.05} y={14} className="flex flex-wrap items-center gap-4 pt-4 border-t border-border/20">
+            {/* Primary Journey CTA */}
+            <Magnetic strength={0.2}>
+              <Link
+                to="/projects"
+                className="group inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-sm font-semibold text-accent-foreground shadow-[0_4px_20px_rgb(220,120,80,0.15)] transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_8px_30px_rgb(220,120,80,0.25)] active:scale-[0.98]"
+              >
+                <span>Explore Selected Work</span>
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </Magnetic>
+
+            {/* Secondary Journey CTA */}
+            <Magnetic strength={0.2}>
+              <Link
+                to="/about"
+                className="group inline-flex items-center gap-2 rounded-full border border-border/40 px-7 py-4 text-sm font-medium text-muted-foreground bg-surface/20 backdrop-blur-sm transition-all duration-300 hover:scale-[1.01] hover:text-foreground hover:border-accent/40 hover:bg-surface/35 active:scale-[0.98]"
+              >
+                <span>Read My Design Philosophy</span>
+                <ArrowUpRight className="h-4 w-4 text-accent transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </Magnetic>
+
+            {/* Additional Direct Channels */}
+            <div className="flex items-center gap-4 ml-auto text-xs font-mono text-muted-foreground">
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
+              >
+                <Linkedin className="h-3.5 w-3.5 text-accent" />
+                <span>LinkedIn</span>
+              </a>
+              <span className="text-border">&middot;</span>
               <a
                 href={RESUME_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-[180ms] hover:text-foreground active:scale-[0.98]"
+                className="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
               >
-                <FileDown className="h-3.5 w-3.5 transition-transform duration-[180ms] group-hover:-translate-y-0.5" strokeWidth={1.75} />
-                Resume
+                <FileDown className="h-3.5 w-3.5 text-accent" />
+                <span>Resume</span>
               </a>
-            </FadeUp>
-          </div>
+            </div>
+          </FadeUp>
+
         </div>
       </div>
 
