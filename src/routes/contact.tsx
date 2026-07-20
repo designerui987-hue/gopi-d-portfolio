@@ -2,12 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowUpRight,
   FileDown,
-  Linkedin,
   CheckCircle2,
   AlertCircle,
   Loader2,
-  Mail,
-  ExternalLink,
+  Sparkles,
 } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { Reveal, Stagger, staggerItem } from "@/components/reveal";
@@ -22,13 +20,13 @@ const FORMSPREE_URL = "https://formspree.io/f/xpwrjznp";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Let's Build Something Thoughtful — Gopi Neeraj Kumar" },
+      { title: "Let's Build Something Worth Remembering — Gopi Neeraj Kumar" },
       {
         name: "description",
         content:
           "The closing chapter of Gopi Neeraj Kumar's product design portfolio. Open for UI/UX roles, product design opportunities, and creative collaborations.",
       },
-      { property: "og:title", content: "Let's Build Something Thoughtful — Gopi Neeraj Kumar" },
+      { property: "og:title", content: "Let's Build Something Worth Remembering — Gopi Neeraj Kumar" },
       {
         property: "og:description",
         content:
@@ -41,27 +39,13 @@ export const Route = createFileRoute("/contact")({
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
-const WORKING_PRINCIPLES = [
-  {
-    num: "01",
-    title: "Problem First",
-    detail: "I understand the problem before designing.",
-  },
-  {
-    num: "02",
-    title: "Team Synergy",
-    detail: "I value collaboration over assumptions.",
-  },
-  {
-    num: "03",
-    title: "Systemic Thinking",
-    detail: "I design systems before individual screens.",
-  },
-  {
-    num: "04",
-    title: "Clear Communication",
-    detail: "I believe clear communication leads to better products.",
-  },
+const COLLABORATION_CATEGORIES = [
+  { num: "01", title: "Product Design", detail: "End-to-end UX/UI strategy & execution" },
+  { num: "02", title: "Enterprise Platforms", detail: "Complex workflow simplification & data UI" },
+  { num: "03", title: "AI Products", detail: "AI interaction patterns & human-in-the-loop interfaces" },
+  { num: "04", title: "Design Systems", detail: "Scalable component libraries & design tokens" },
+  { num: "05", title: "UX Strategy", detail: "Information architecture & journey mapping" },
+  { num: "06", title: "Freelance Collaborations", detail: "Targeted product design consultations & sprints" },
 ] as const;
 
 function Contact() {
@@ -167,190 +151,243 @@ function Contact() {
   return (
     <PageShell
       eyebrow="CHAPTER 06 · COLLABORATION"
-      title="Let's Build Something Thoughtful"
-      description="I enjoy solving meaningful product problems through thoughtful UI/UX design, systems thinking, and close cross-functional collaboration. Whether you have an open role or an opportunity to discuss, I'd love to connect."
+      title="The Closing Chapter"
+      description="An open invitation to build calm, thoughtful digital products together."
     >
-      <div className="relative mt-16 space-y-24">
+      <div className="relative mt-8 sm:mt-12 space-y-28 sm:space-y-36">
 
-        {/* ── 2-COLUMN EDITORIAL LAYOUT ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-
-          {/* ── LEFT COLUMN: Collaborator Profile & Specifications ── */}
-          <Reveal className="lg:col-span-5 space-y-8">
-            {/* Collaborator Profile Header */}
-            <div
-              className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 sm:p-8 space-y-6"
-              style={{ boxShadow: "var(--shadow-soft)" }}
-            >
-              <div className="flex items-center justify-between gap-4 border-b border-border/20 pb-6">
-                <div>
-                  <div className="flex items-center gap-2 text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold">
-                    <span className="relative flex h-2 w-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
-                      <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-                    </span>
-                    AVAILABILITY
-                  </div>
-                  <div className="mt-2 font-display text-2xl text-foreground font-light">
-                    Currently Open
-                  </div>
-                </div>
-                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl border border-border/40 shadow-sm">
-                  <img src="/neeraj.jpg" alt="Gopi Neeraj Kumar" className="h-full w-full object-cover" />
-                </div>
-              </div>
-
-              {/* Opportunities List */}
-              <div className="space-y-3">
-                <span className="text-[8px] font-mono uppercase tracking-[0.25em] text-muted-foreground/60 block">
-                  OPEN FOR
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    "UI/UX Designer Opportunities",
-                    "Product Design Roles",
-                    "Freelance Design Projects",
-                    "Creative Collaborations",
-                  ].map((opp) => (
-                    <span
-                      key={opp}
-                      className="inline-flex items-center gap-1.5 rounded-md border border-border/30 bg-surface/30 px-3 py-1.5 text-xs font-mono text-muted-foreground/90"
-                    >
-                      <span className="h-1 w-1 rounded-full bg-accent/50" />
-                      {opp}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Operational Specs Grid */}
-              <div className="grid grid-cols-2 gap-4 border-t border-border/20 pt-6 text-xs font-mono">
-                <div>
-                  <span className="text-[8px] uppercase tracking-[0.25em] text-muted-foreground/50 block">
-                    LOCATION
-                  </span>
-                  <span className="text-foreground/90 font-light mt-1 block">
-                    Visakhapatnam, India
-                  </span>
-                </div>
-                <div>
-                  <span className="text-[8px] uppercase tracking-[0.25em] text-muted-foreground/50 block">
-                    WORKING STYLE
-                  </span>
-                  <span className="text-foreground/90 font-light mt-1 block">
-                    Remote · Hybrid · On-site
-                  </span>
-                </div>
-                <div className="col-span-2 pt-2 border-t border-border/15">
-                  <span className="text-[8px] uppercase tracking-[0.25em] text-muted-foreground/50 block">
-                    RESPONSE TIME
-                  </span>
-                  <span className="text-accent font-light mt-1 block">
-                    Usually within 24 hours
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Direct Channels List (Refined Typography) */}
-            <div className="space-y-3">
-              <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-muted-foreground/60 block px-1">
-                PREFERRED CONTACT CHANNELS
-              </span>
-              <div className="space-y-2">
-                <a
-                  href={`mailto:${EMAIL_ADDRESS}`}
-                  className="group flex items-center justify-between rounded-2xl border border-border/30 bg-surface/15 p-4 sm:p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/30"
-                >
-                  <div className="space-y-0.5">
-                    <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-accent font-semibold block">
-                      EMAIL
-                    </span>
-                    <span className="text-xs sm:text-sm font-mono text-foreground font-light break-all">
-                      {EMAIL_ADDRESS}
-                    </span>
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
-                </a>
-
-                <a
-                  href={LINKEDIN_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between rounded-2xl border border-border/30 bg-surface/15 p-4 sm:p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/30"
-                >
-                  <div className="space-y-0.5">
-                    <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-accent font-semibold block">
-                      LINKEDIN
-                    </span>
-                    <span className="text-xs sm:text-sm font-mono text-foreground font-light">
-                      /in/neeraj-kumar-gopi
-                    </span>
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
-                </a>
-
-                <a
-                  href={BEHANCE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between rounded-2xl border border-border/30 bg-surface/15 p-4 sm:p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/30"
-                >
-                  <div className="space-y-0.5">
-                    <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-accent font-semibold block">
-                      BEHANCE
-                    </span>
-                    <span className="text-xs sm:text-sm font-mono text-foreground font-light">
-                      /neerajgopi
-                    </span>
-                  </div>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
-                </a>
-
-                <a
-                  href={RESUME_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download
-                  className="group flex items-center justify-between rounded-2xl border border-border/30 bg-surface/15 p-4 sm:p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/30"
-                >
-                  <div className="space-y-0.5">
-                    <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-accent font-semibold block">
-                      RESUME
-                    </span>
-                    <span className="text-xs sm:text-sm font-mono text-foreground font-light">
-                      Download PDF Document
-                    </span>
-                  </div>
-                  <FileDown className="h-4 w-4 text-muted-foreground shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:text-accent" />
-                </a>
-              </div>
-            </div>
+        {/* ── SECTION 01: MASSIVE EDITORIAL HERO ── */}
+        <section className="space-y-8 sm:space-y-12">
+          {/* Dramatic Line-Broken Headline */}
+          <Reveal>
+            <h1 className="font-display text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] xl:text-[7.2rem] font-light tracking-tight text-foreground leading-[0.92] select-none">
+              Let's build<br />
+              products<br />
+              <span className="text-accent italic font-normal">worth</span> remembering.
+            </h1>
           </Reveal>
 
-          {/* ── RIGHT COLUMN: Conversational Contact Form ── */}
-          <Reveal className="lg:col-span-7">
+          {/* Thoughtful Positioning Paragraph */}
+          <Reveal delay={0.25} className="pt-2 sm:pt-4">
+            <p className="text-base sm:text-xl md:text-2xl font-light leading-relaxed text-muted-foreground/90 max-w-3xl">
+              I enjoy solving meaningful product problems through thoughtful UI/UX design, systems thinking, and close cross-functional collaboration. Whether shaping a new product experience or scaling a complex platform, every great product begins with a quiet conversation.
+            </p>
+          </Reveal>
+
+          {/* Editorial Specs Bar */}
+          <Reveal delay={0.35} className="pt-6 border-t border-border/20 flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-muted-foreground/80">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+              </span>
+              <span className="text-foreground font-medium">Available for Opportunities</span>
+            </div>
+
+            <div className="flex items-center gap-6">
+              <span>LOCATION · VISAKHAPATNAM, INDIA</span>
+              <span className="hidden md:inline">&middot;</span>
+              <span className="hidden md:inline">RESPONSE · WITHIN 24 HOURS</span>
+            </div>
+          </Reveal>
+        </section>
+
+
+        {/* ── SECTION 02: EDITORIAL MANIFESTO ── */}
+        <section className="border-t border-border/20 pt-20 sm:pt-28 space-y-10 sm:space-y-14">
+          <Reveal>
+            <span className="text-[9px] font-mono uppercase tracking-[0.35em] text-accent font-semibold block mb-4">
+              EDITORIAL MANIFESTO
+            </span>
+            <h2 className="font-display text-3xl sm:text-5xl md:text-6xl font-light text-foreground tracking-tight max-w-4xl leading-[1.05]">
+              Good products begin with understanding, not assumptions.
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.2} className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 text-sm sm:text-base leading-relaxed text-muted-foreground font-light">
+            <div className="space-y-6">
+              <p>
+                Digital products should not demand attention—they should create space for it. I believe the most effective user interfaces feel invisible, allowing people to focus on their goals without cognitive noise or unnecessary friction.
+              </p>
+              <p>
+                Great design isn't about applying aesthetic trends to wireframes. It is about understanding the core problem, aligning user needs with business strategy, and crafting predictable systems that scale gracefully.
+              </p>
+            </div>
+            <div className="space-y-6">
+              <p>
+                From enterprise platforms with complex data workflows to consumer products requiring human clarity, I approach every project with curiosity, empathy, and technical awareness for smooth engineering collaboration.
+              </p>
+              <p className="text-foreground/90 font-normal">
+                If you value systems over noise, clarity over complexity, and digital products designed to endure—let's create something exceptional together.
+              </p>
+            </div>
+          </Reveal>
+        </section>
+
+
+        {/* ── SECTION 03: COLLABORATION CATEGORIES (Typographic Layout) ── */}
+        <section className="border-t border-border/20 pt-20 sm:pt-28 space-y-12">
+          <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span className="text-[9px] font-mono uppercase tracking-[0.35em] text-accent font-semibold block">
+                COLLABORATION SCOPE
+              </span>
+              <h3 className="font-display text-3xl sm:text-4xl font-light text-foreground tracking-tight mt-2">
+                Ways We Can Work Together
+              </h3>
+            </div>
+            <span className="text-xs font-mono text-muted-foreground/70">
+              06 EDITORIAL DISCIPLINES
+            </span>
+          </Reveal>
+
+          {/* Typographic List Layout (No heavy cards!) */}
+          <Stagger className="divide-y divide-border/20 border-t border-b border-border/20" stagger={0.06}>
+            {COLLABORATION_CATEGORIES.map((cat) => (
+              <div
+                key={cat.num}
+                className="group flex flex-col sm:flex-row sm:items-center justify-between py-6 sm:py-8 gap-4 transition-colors duration-300 hover:bg-surface/10 px-2 sm:px-4"
+              >
+                <div className="flex items-center gap-4 sm:gap-6">
+                  <span className="font-mono text-xs font-semibold text-accent/80 group-hover:text-accent transition-colors">
+                    {cat.num}
+                  </span>
+                  <h4 className="font-display text-xl sm:text-3xl text-foreground font-light tracking-tight group-hover:text-accent transition-colors duration-300">
+                    {cat.title}
+                  </h4>
+                </div>
+                <span className="text-xs font-mono text-muted-foreground/80 font-light max-w-md sm:text-right group-hover:text-foreground/90 transition-colors">
+                  {cat.detail}
+                </span>
+              </div>
+            ))}
+          </Stagger>
+        </section>
+
+
+        {/* ── SECTION 04: OVERSIZED DIRECT COMMUNICATION LINKS ── */}
+        <section className="border-t border-border/20 pt-20 sm:pt-28 space-y-10">
+          <Reveal>
+            <span className="text-[9px] font-mono uppercase tracking-[0.35em] text-accent font-semibold block mb-2">
+              DIRECT COMMUNICATION
+            </span>
+            <h3 className="font-display text-2xl sm:text-3xl text-foreground font-light tracking-tight">
+              Preferred Channels
+            </h3>
+          </Reveal>
+
+          {/* Full-Width Oversized Navigation Links */}
+          <div className="divide-y divide-border/25 border-t border-b border-border/25">
+            {/* EMAIL */}
+            <a
+              href={`mailto:${EMAIL_ADDRESS}`}
+              className="group flex items-center justify-between py-8 sm:py-12 transition-all duration-300 px-2 hover:px-4"
+            >
+              <div className="space-y-1">
+                <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-accent block font-semibold">
+                  PRIMARY EMAIL
+                </span>
+                <span className="font-display text-2xl sm:text-4xl md:text-5xl font-light text-foreground group-hover:text-accent transition-colors duration-300">
+                  {EMAIL_ADDRESS}
+                </span>
+              </div>
+              <ArrowUpRight className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent shrink-0 ml-4" />
+            </a>
+
+            {/* LINKEDIN */}
+            <a
+              href={LINKEDIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between py-8 sm:py-12 transition-all duration-300 px-2 hover:px-4"
+            >
+              <div className="space-y-1">
+                <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-accent block font-semibold">
+                  PROFESSIONAL NETWORK
+                </span>
+                <span className="font-display text-2xl sm:text-4xl md:text-5xl font-light text-foreground group-hover:text-accent transition-colors duration-300">
+                  LinkedIn
+                </span>
+              </div>
+              <ArrowUpRight className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent shrink-0 ml-4" />
+            </a>
+
+            {/* BEHANCE */}
+            <a
+              href={BEHANCE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-between py-8 sm:py-12 transition-all duration-300 px-2 hover:px-4"
+            >
+              <div className="space-y-1">
+                <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-accent block font-semibold">
+                  DESIGN PORTFOLIO
+                </span>
+                <span className="font-display text-2xl sm:text-4xl md:text-5xl font-light text-foreground group-hover:text-accent transition-colors duration-300">
+                  Behance
+                </span>
+              </div>
+              <ArrowUpRight className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-accent shrink-0 ml-4" />
+            </a>
+
+            {/* RESUME */}
+            <a
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              download
+              className="group flex items-center justify-between py-8 sm:py-12 transition-all duration-300 px-2 hover:px-4"
+            >
+              <div className="space-y-1">
+                <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-accent block font-semibold">
+                  CURRICULUM VITAE
+                </span>
+                <span className="font-display text-2xl sm:text-4xl md:text-5xl font-light text-foreground group-hover:text-accent transition-colors duration-300">
+                  Download Resume PDF
+                </span>
+              </div>
+              <FileDown className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground transition-transform duration-300 group-hover:-translate-y-1 group-hover:text-accent shrink-0 ml-4" />
+            </a>
+          </div>
+        </section>
+
+
+        {/* ── SECTION 05: INVISIBLE EDITORIAL CONTACT FORM ── */}
+        <section className="border-t border-border/20 pt-20 sm:pt-28 space-y-12 max-w-4xl mx-auto">
+          <Reveal className="space-y-3">
+            <span className="text-[9px] font-mono uppercase tracking-[0.35em] text-accent font-semibold block">
+              INITIATE A CONVERSATION
+            </span>
+            <h3 className="font-display text-3xl sm:text-5xl font-light text-foreground tracking-tight">
+              Tell me about your product or team.
+            </h3>
+            <p className="text-sm text-muted-foreground font-light">
+              Fill out a few details below and I'll respond within 24 hours.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.2}>
             {status === "success" ? (
               /* Calm, Human Success State */
               <div
                 role="alert"
                 aria-live="polite"
-                className="rounded-3xl border border-emerald-500/30 bg-emerald-500/[0.06] backdrop-blur-md p-6 sm:p-10 md:p-14 flex flex-col items-center text-center gap-6"
+                className="border-y border-emerald-500/30 py-16 flex flex-col items-center text-center gap-6"
               >
                 <div className="h-12 w-12 rounded-full border border-emerald-500/40 bg-emerald-500/10 flex items-center justify-center">
                   <CheckCircle2 className="h-6 w-6 text-emerald-400" strokeWidth={1.5} />
                 </div>
-                <div className="space-y-2 max-w-md">
-                  <h3 className="font-display text-2xl text-foreground font-light">
+                <div className="space-y-3 max-w-md">
+                  <h4 className="font-display text-3xl text-foreground font-light">
                     Thank you for reaching out.
-                  </h3>
+                  </h4>
                   <p className="text-sm text-muted-foreground leading-relaxed font-light">
-                    I'll read your message carefully and respond as soon as possible.
+                    I read every message carefully and will respond to your email within 24 hours.
                   </p>
                 </div>
                 <button
                   onClick={() => setStatus("idle")}
-                  className="mt-2 text-xs font-mono uppercase tracking-[0.2em] text-accent hover:underline"
+                  className="mt-4 text-xs font-mono uppercase tracking-[0.2em] text-accent hover:underline"
                 >
                   Send another message
                 </button>
@@ -360,15 +397,16 @@ function Contact() {
                 onSubmit={handleSubmit}
                 noValidate
                 aria-label="Contact form"
-                className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 sm:p-8 md:p-10 space-y-7 shadow-[var(--shadow-soft)]"
+                className="space-y-10"
               >
-                <div className="space-y-6">
+                <div className="space-y-8">
                   {/* Name & Email Row */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    {/* Name */}
+                    <div className="relative space-y-2">
                       <label
                         htmlFor="c-name"
-                        className="mb-2 block text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold"
+                        className="block text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold"
                       >
                         Your Name *
                       </label>
@@ -376,7 +414,7 @@ function Contact() {
                         id="c-name"
                         name="name"
                         type="text"
-                        placeholder="e.g. Alex Morgan"
+                        placeholder="Alex Morgan"
                         value={name}
                         onChange={(e) => {
                           setName(e.target.value);
@@ -385,21 +423,22 @@ function Contact() {
                         aria-invalid={!!fieldErrors.name}
                         aria-describedby={fieldErrors.name ? "c-name-error" : undefined}
                         disabled={status === "submitting"}
-                        className="w-full bg-transparent border-b border-border/30 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-accent transition-colors disabled:opacity-50 font-light"
+                        className="w-full bg-transparent border-b border-border/30 py-4 text-base sm:text-lg text-foreground placeholder:text-muted-foreground/40 outline-none focus:border-accent transition-colors disabled:opacity-50 font-light"
                       />
                       {fieldErrors.name && (
-                        <span id="c-name-error" className="mt-1.5 block text-[11px] font-mono text-red-400">
+                        <span id="c-name-error" className="mt-2 block text-xs font-mono text-red-400">
                           {fieldErrors.name}
                         </span>
                       )}
                     </div>
 
-                    <div>
+                    {/* Email */}
+                    <div className="relative space-y-2">
                       <label
                         htmlFor="c-email"
-                        className="mb-2 block text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold"
+                        className="block text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold"
                       >
-                        Your Email Address *
+                        Email Address *
                       </label>
                       <input
                         id="c-email"
@@ -414,10 +453,10 @@ function Contact() {
                         aria-invalid={!!fieldErrors.email}
                         aria-describedby={fieldErrors.email ? "c-email-error" : undefined}
                         disabled={status === "submitting"}
-                        className="w-full bg-transparent border-b border-border/30 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-accent transition-colors disabled:opacity-50 font-light"
+                        className="w-full bg-transparent border-b border-border/30 py-4 text-base sm:text-lg text-foreground placeholder:text-muted-foreground/40 outline-none focus:border-accent transition-colors disabled:opacity-50 font-light"
                       />
                       {fieldErrors.email && (
-                        <span id="c-email-error" className="mt-1.5 block text-[11px] font-mono text-red-400">
+                        <span id="c-email-error" className="mt-2 block text-xs font-mono text-red-400">
                           {fieldErrors.email}
                         </span>
                       )}
@@ -425,10 +464,10 @@ function Contact() {
                   </div>
 
                   {/* Company (Optional) */}
-                  <div>
+                  <div className="relative space-y-2">
                     <label
                       htmlFor="c-company"
-                      className="mb-2 block text-[9px] font-mono uppercase tracking-[0.25em] text-muted-foreground/80 font-semibold"
+                      className="block text-[9px] font-mono uppercase tracking-[0.25em] text-muted-foreground/70 font-semibold"
                     >
                       Company / Organization (Optional)
                     </label>
@@ -436,7 +475,7 @@ function Contact() {
                       id="c-company"
                       name="company"
                       type="text"
-                      placeholder="e.g. Acme Corp / Linear"
+                      placeholder="Acme Corp / Linear"
                       value={company}
                       onChange={(e) => {
                         setCompany(e.target.value);
@@ -445,20 +484,20 @@ function Contact() {
                       aria-invalid={!!fieldErrors.company}
                       aria-describedby={fieldErrors.company ? "c-company-error" : undefined}
                       disabled={status === "submitting"}
-                      className="w-full bg-transparent border-b border-border/30 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-accent transition-colors disabled:opacity-50 font-light"
+                      className="w-full bg-transparent border-b border-border/30 py-4 text-base sm:text-lg text-foreground placeholder:text-muted-foreground/40 outline-none focus:border-accent transition-colors disabled:opacity-50 font-light"
                     />
                     {fieldErrors.company && (
-                      <span id="c-company-error" className="mt-1.5 block text-[11px] font-mono text-red-400">
+                      <span id="c-company-error" className="mt-2 block text-xs font-mono text-red-400">
                         {fieldErrors.company}
                       </span>
                     )}
                   </div>
 
-                  {/* Conversational Subject ("What are you building?") */}
-                  <div>
+                  {/* What are you building? */}
+                  <div className="relative space-y-2">
                     <label
                       htmlFor="c-subject"
-                      className="mb-2 block text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold"
+                      className="block text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold"
                     >
                       What are you building? *
                     </label>
@@ -466,7 +505,7 @@ function Contact() {
                       id="c-subject"
                       name="subject"
                       type="text"
-                      placeholder="e.g. UI/UX Design Role / Enterprise Platform Design System"
+                      placeholder="e.g. Enterprise Platform Redesign / Product Design Role"
                       value={subject}
                       onChange={(e) => {
                         setSubject(e.target.value);
@@ -475,18 +514,18 @@ function Contact() {
                       aria-invalid={!!fieldErrors.subject}
                       aria-describedby={fieldErrors.subject ? "c-subject-error" : undefined}
                       disabled={status === "submitting"}
-                      className="w-full bg-transparent border-b border-border/30 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-accent transition-colors disabled:opacity-50 font-light"
+                      className="w-full bg-transparent border-b border-border/30 py-4 text-base sm:text-lg text-foreground placeholder:text-muted-foreground/40 outline-none focus:border-accent transition-colors disabled:opacity-50 font-light"
                     />
                     {fieldErrors.subject && (
-                      <span id="c-subject-error" className="mt-1.5 block text-[11px] font-mono text-red-400">
+                      <span id="c-subject-error" className="mt-2 block text-xs font-mono text-red-400">
                         {fieldErrors.subject}
                       </span>
                     )}
                   </div>
 
-                  {/* Conversational Message */}
-                  <div>
-                    <div className="flex items-center justify-between mb-2">
+                  {/* Message */}
+                  <div className="relative space-y-2">
+                    <div className="flex items-center justify-between">
                       <label
                         htmlFor="c-msg"
                         className="block text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold"
@@ -501,7 +540,7 @@ function Contact() {
                       id="c-msg"
                       name="message"
                       rows={5}
-                      placeholder="Share a few details about the product goals, scope, timeline, or open role."
+                      placeholder="Share a few details about product goals, scope, timeline, or open role."
                       value={message}
                       onChange={(e) => {
                         setMessage(e.target.value);
@@ -510,10 +549,10 @@ function Contact() {
                       aria-invalid={!!fieldErrors.message}
                       aria-describedby={fieldErrors.message ? "c-msg-error" : undefined}
                       disabled={status === "submitting"}
-                      className="w-full bg-transparent border-b border-border/30 py-3 text-sm leading-relaxed text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-accent transition-colors resize-none disabled:opacity-50 font-light"
+                      className="w-full bg-transparent border-b border-border/30 py-4 text-base sm:text-lg leading-relaxed text-foreground placeholder:text-muted-foreground/40 outline-none focus:border-accent transition-colors resize-none disabled:opacity-50 font-light"
                     />
                     {fieldErrors.message && (
-                      <span id="c-msg-error" className="mt-1.5 block text-[11px] font-mono text-red-400">
+                      <span id="c-msg-error" className="mt-2 block text-xs font-mono text-red-400">
                         {fieldErrors.message}
                       </span>
                     )}
@@ -525,22 +564,22 @@ function Contact() {
                   <div
                     role="alert"
                     aria-live="assertive"
-                    className="flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/[0.07] px-4 py-3 text-xs text-red-400 font-mono"
+                    className="flex items-center gap-2 border border-red-500/30 bg-red-500/[0.07] px-4 py-3 rounded-xl text-xs text-red-400 font-mono"
                   >
                     <AlertCircle className="h-4 w-4 shrink-0" strokeWidth={1.75} />
                     {errorMsg}
                   </div>
                 )}
 
-                {/* Submit Row */}
-                <div className="flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-6 border-t border-border/20 pt-6">
+                {/* Submit Action */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6 pt-6 border-t border-border/20">
                   <span className="text-xs font-mono text-muted-foreground/70">
                     Replies usually within 24 hours.
                   </span>
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-accent px-8 py-4 text-sm font-semibold text-accent-foreground transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_8px_30px_rgb(220,120,80,0.25)] active:scale-[0.98] disabled:opacity-70 disabled:scale-100 disabled:cursor-not-allowed"
+                    className="group inline-flex items-center justify-center gap-3 rounded-full bg-accent px-9 py-4 text-sm font-semibold text-accent-foreground shadow-[0_4px_20px_rgb(220,120,80,0.15)] transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_8px_30px_rgb(220,120,80,0.25)] active:scale-[0.98] disabled:opacity-70 disabled:scale-100 disabled:cursor-not-allowed"
                   >
                     {status === "submitting" ? (
                       <>
@@ -558,54 +597,26 @@ function Contact() {
               </form>
             )}
           </Reveal>
-        </div>
+        </section>
 
-        {/* ── WORKING PRINCIPLES: How I Like to Work ── */}
-        <Reveal className="border-t border-border/20 pt-16 space-y-10">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div>
-              <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-accent font-semibold block">
-                COLLABORATION PHILOSOPHY
-              </span>
-              <h3 className="font-display text-3xl font-light text-foreground tracking-tight mt-2">
-                How I Like to Work
-              </h3>
-            </div>
-            <p className="text-xs text-muted-foreground font-light max-w-md">
-              Core operating principles that guide my daily product design execution and cross-functional partnerships.
+
+        {/* ── SECTION 06: UNFORGETTABLE CLOSING STATEMENT ── */}
+        <section className="border-t border-border/20 pt-28 pb-16 text-center space-y-6 max-w-3xl mx-auto">
+          <Reveal>
+            <p className="font-display text-2xl xs:text-3xl sm:text-5xl text-foreground font-light leading-snug tracking-tight">
+              “Every meaningful product begins with a conversation.”
             </p>
-          </div>
-
-          {/* 4 Concise Principles Grid */}
-          <Stagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.08}>
-            {WORKING_PRINCIPLES.map((item) => (
-              <div
-                key={item.num}
-                className="rounded-3xl border border-border/30 bg-surface/20 p-7 space-y-3 hover:border-accent/30 transition-all duration-300"
-              >
-                <div className="flex items-center justify-between border-b border-border/20 pb-3">
-                  <span className="font-mono text-xs font-semibold text-accent">{item.num}</span>
-                  <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-muted-foreground/60">
-                    {item.title}
-                  </span>
-                </div>
-                <p className="text-sm leading-relaxed text-foreground/90 font-light pt-1">
-                  {item.detail}
-                </p>
-              </div>
-            ))}
-          </Stagger>
-        </Reveal>
-
-        {/* ── THOUGHTFUL CLOSING FOOTER STATEMENT ── */}
-        <Reveal className="border-t border-border/20 pt-16 pb-8 text-center space-y-4">
-          <p className="font-display text-xl sm:text-2xl text-foreground font-light max-w-2xl mx-auto leading-snug">
-            “Designed with curiosity. Refined through iteration. Every detail in this portfolio reflects how I approach product design.”
-          </p>
-          <span className="text-[9px] font-mono uppercase tracking-[0.35em] text-accent/80 block">
-            GOPI NEERAJ KUMAR · PRODUCT DESIGNER
-          </span>
-        </Reveal>
+            <p className="font-display text-xl sm:text-3xl text-accent font-light italic mt-3">
+              Let's start ours.
+            </p>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <div className="pt-6 flex items-center justify-center gap-2 text-[9px] font-mono uppercase tracking-[0.35em] text-muted-foreground/60">
+              <Sparkles className="h-3 w-3 text-accent/70" />
+              <span>GOPI NEERAJ KUMAR · PRODUCT DESIGNER</span>
+            </div>
+          </Reveal>
+        </section>
 
       </div>
     </PageShell>
