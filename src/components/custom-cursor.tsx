@@ -1,50 +1,34 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
 
-type CursorState = { active: boolean; label: string | null };
+type HoverMode = "none" | "interactive" | "card";
 
-function detectLabel(target: EventTarget | null): string | null {
-  if (!(target instanceof Element)) return null;
-  const explicit = target.closest<HTMLElement>("[data-cursor]");
-  if (explicit) {
-    const v = explicit.dataset.cursor;
-    if (v === "view" || v === "View") return "VIEW";
-    if (v === "talk" || v === "Talk") return "TALK";
-    if (v === "drag" || v === "Drag") return "DRAG";
-    if (v === "explore" || v === "Explore") return "EXPLORE";
-    if (v === "open" || v === "Open") return "OPEN";
-    if (v && v.length > 0 && v !== "true") return v.toUpperCase();
-    return "";
-  }
-  const anchor = target.closest<HTMLAnchorElement>("a[href]");
-  if (anchor) {
-    const href = anchor.getAttribute("href") || "";
-    if (href.includes("/contact") || href.startsWith("mailto:")) return "TALK";
-    if (/\/projects\/[^/]/.test(href)) return "VIEW";
-    if (href.includes("/process")) return "EXPLORE";
-    return "OPEN";
-  }
-  const button = target.closest("button, [role='button']");
-  if (button) {
-    const label = button.getAttribute("aria-label") || "";
-    if (label.includes("palette") || label.includes("search")) return "SEARCH";
-    return "CLICK";
-  }
-  return null;
+function detectHoverMode(target: EventTarget | null): HoverMode {
+  if (!(target instanceof Element)) return "none";
+
+  // Check if hovering over editable text or non-interactive text blocks first
+  const isEditable = target.closest("input, textarea, [contenteditable='true']");
+  if (isEditable) return "none";
+
+  // Check if hovering a card element
+  const card = target.closest("[data-card], .group.rounded-3xl, article, [data-stat]");
+  if (card) return "card";
+
+  // Check if hovering a clickable element (button, link, interactive element)
+  const clickable = target.closest("a[href], button, [role='button'], input[type='submit'], select, label");
+  if (clickable) return "interactive";
+
+  return "none";
 }
 
 export function CustomCursor() {
   const [enabled, setEnabled] = useState(false);
-  const [state, setState] = useState<CursorState>({ active: false, label: null });
+  const [hoverMode, setHoverMode] = useState<HoverMode>("none");
   const [isClicked, setIsClicked] = useState(false);
 
-  const x = useMotionValue(-100);
-  const y = useMotionValue(-100);
-  const springX = useSpring(x, { stiffness: 450, damping: 38, mass: 0.4 });
-  const springY = useSpring(y, { stiffness: 450, damping: 38, mass: 0.4 });
-
+  const ringRef = useRef<HTMLDivElement>(null);
+  const posRef = useRef({ x: -100, y: -100 });
+  const targetPosRef = useRef({ x: -100, y: -100 });
   const rafRef = useRef(0);
-  const pending = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -53,103 +37,69 @@ export function CustomCursor() {
     if (!canHover || reduced) return;
 
     setEnabled(true);
-    document.documentElement.classList.add("has-custom-cursor");
 
-    const onMove = (e: PointerEvent) => {
-      pending.current = { x: e.clientX, y: e.clientY };
+    const onPointerMove = (e: PointerEvent) => {
+      targetPosRef.current = { x: e.clientX, y: e.clientY };
+
       if (!rafRef.current) {
         rafRef.current = requestAnimationFrame(() => {
           rafRef.current = 0;
-          if (pending.current) {
-            x.set(pending.current.x);
-            y.set(pending.current.y);
+          posRef.current.x += (targetPosRef.current.x - posRef.current.x) * 0.45;
+          posRef.current.y += (targetPosRef.current.y - posRef.current.y) * 0.45;
+
+          if (ringRef.current) {
+            ringRef.current.style.transform = `translate3d(${posRef.current.x}px, ${posRef.current.y}px, 0) translate(-50%, -50%)`;
           }
         });
       }
     };
 
-    const onOver = (e: PointerEvent) => {
-      const label = detectLabel(e.target);
-      if (label === null) {
-        setState((s) => (s.active ? { active: false, label: null } : s));
-      } else {
-        setState({ active: true, label: label || null });
-      }
+    const onPointerOver = (e: PointerEvent) => {
+      const mode = detectHoverMode(e.target);
+      setHoverMode(mode);
     };
 
-    const onLeave = () => setState({ active: false, label: null });
-
+    const onPointerLeave = () => setHoverMode("none");
     const onMouseDown = () => setIsClicked(true);
     const onMouseUp = () => setIsClicked(false);
 
-    window.addEventListener("pointermove", onMove, { passive: true });
-    window.addEventListener("pointerover", onOver, { passive: true });
-    window.addEventListener("pointerleave", onLeave);
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    window.addEventListener("pointerover", onPointerOver, { passive: true });
+    window.addEventListener("pointerleave", onPointerLeave);
     window.addEventListener("mousedown", onMouseDown, { passive: true });
     window.addEventListener("mouseup", onMouseUp, { passive: true });
-    document.addEventListener("mouseleave", onLeave);
+    document.addEventListener("mouseleave", onPointerLeave);
 
     return () => {
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerover", onOver);
-      window.removeEventListener("pointerleave", onLeave);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("pointerover", onPointerOver);
+      window.removeEventListener("pointerleave", onPointerLeave);
       window.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mouseup", onMouseUp);
-      document.removeEventListener("mouseleave", onLeave);
-      document.documentElement.classList.remove("has-custom-cursor");
+      document.removeEventListener("mouseleave", onPointerLeave);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
     };
-  }, [x, y]);
+  }, []);
 
   if (!enabled) return null;
 
-  const hasLabel = state.active && !!state.label;
-  const size = hasLabel ? 72 : state.active ? 48 : 18;
+  const active = hoverMode !== "none";
+  const ringSize = hoverMode === "card" ? 38 : 30;
 
   return (
-    <>
-      {/* Ring / label bubble */}
-      <motion.div
-        aria-hidden="true"
-        style={{
-          x: springX,
-          y: springY,
-          mixBlendMode: "difference",
-        }}
-        className="pointer-events-none fixed left-0 top-0 z-[200] -translate-x-1/2 -translate-y-1/2"
-      >
-        <motion.div
-          animate={{ width: size, height: size, scale: isClicked ? 0.78 : 1 }}
-          transition={{ type: "spring", stiffness: 350, damping: 25, mass: 0.4 }}
-          className="flex items-center justify-center rounded-full border border-white bg-white/10 text-[9px] font-semibold uppercase tracking-[0.24em] text-white backdrop-blur-[2px]"
-        >
-          <AnimatePresence mode="wait">
-            {hasLabel && (
-              <motion.span
-                key={state.label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.15 }}
-                className="select-none"
-              >
-                {state.label}
-              </motion.span>
-            )}
-          </AnimatePresence>
-        </motion.div>
-      </motion.div>
-
-      {/* Precise dot */}
-      <motion.div
-        aria-hidden="true"
-        style={{
-          x,
-          y,
-          mixBlendMode: "difference",
-        }}
-        className="pointer-events-none fixed left-0 top-0 z-[201] h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white"
-      />
-    </>
+    <div
+      ref={ringRef}
+      aria-hidden="true"
+      className="pointer-events-none fixed left-0 top-0 z-[9999] rounded-full transition-all duration-[160ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+      style={{
+        width: `${ringSize}px`,
+        height: `${ringSize}px`,
+        opacity: active ? (hoverMode === "card" ? 0.75 : 0.9) : 0,
+        scale: active ? (isClicked ? 0.85 : 1) : 0.4,
+        border: "1px solid var(--accent)",
+        boxShadow: active ? "0 0 12px oklch(0.82 0.11 75 / 0.15)" : "none",
+        willChange: "transform, opacity",
+      }}
+    />
   );
 }
