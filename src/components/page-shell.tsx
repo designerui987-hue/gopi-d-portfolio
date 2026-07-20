@@ -25,10 +25,10 @@ export function PageShell({
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       exit={reduced ? { opacity: 0 } : { opacity: 0, y: -16, filter: "blur(4px)" }}
       transition={{ duration: 0.45, ease: EASE }}
-      className="relative mx-auto w-full max-w-6xl px-6 pb-32 pt-16 lg:pl-28 lg:pr-12 lg:pt-24"
+      className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 pb-32 pt-16 lg:pl-28 lg:pr-12 lg:pt-24"
     >
       <motion.div
-        className="mb-16 max-w-3xl"
+        className="mb-14 max-w-3xl"
         initial="hidden"
         animate="show"
         variants={{
@@ -41,7 +41,7 @@ export function PageShell({
             hidden: { opacity: 0, y: reduced ? 0 : 8 },
             show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: EASE } },
           }}
-          className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/70 bg-surface px-3 py-1 text-xs font-medium tracking-wide text-muted-foreground"
+          className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/70 bg-surface px-3 py-1 text-[11px] sm:text-xs font-medium tracking-wide text-muted-foreground"
         >
           <motion.span
             className="h-1.5 w-1.5 rounded-full bg-accent"
@@ -53,7 +53,7 @@ export function PageShell({
         {titleNode ? (
           <h1
             aria-label={title}
-            className="text-5xl leading-[1.02] tracking-tight text-foreground md:text-6xl lg:text-7xl"
+            className="text-3xl sm:text-5xl leading-[1.04] tracking-tight text-foreground md:text-6xl lg:text-7xl"
           >
             {titleNode}
           </h1>
@@ -68,7 +68,7 @@ export function PageShell({
                 transition: { duration: 0.45, ease: EASE },
               },
             }}
-            className="text-5xl leading-[1.02] tracking-tight text-foreground md:text-6xl lg:text-7xl"
+            className="text-3xl sm:text-5xl leading-[1.04] tracking-tight text-foreground md:text-6xl lg:text-7xl"
           >
             {title}
           </motion.h1>

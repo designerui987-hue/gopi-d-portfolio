@@ -145,7 +145,7 @@ export function ProductDesignExpertise() {
           index="04"
           eyebrow="Operating System"
           title="Product Design Expertise"
-          description="A combination of product thinking, interface design, design systems, and frontend collaboration developed through enterprise HRMS work and personal product exploration."
+          description="A combination of product thinking, interface design, design systems, and engineering collaboration developed through enterprise platform work and personal product exploration."
         />
         <div className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full border border-border/30 bg-surface/20 text-[10px] font-mono text-muted-foreground shrink-0">
           <Terminal className="h-3.5 w-3.5 text-accent" />
@@ -161,7 +161,7 @@ export function ProductDesignExpertise() {
             variants={staggerItem}
             whileHover={reduced ? undefined : { y: -4 }}
             transition={{ duration: 0.4, ease: EASE_EDITORIAL }}
-            className={`group relative overflow-hidden rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 md:p-10 transition-all duration-500 hover:border-accent/40 hover:bg-surface/30 hover:shadow-[0_25px_65px_rgba(0,0,0,0.45)] ${card.span}`}
+            className={`group relative overflow-hidden rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 sm:p-8 md:p-10 transition-all duration-500 hover:border-accent/40 hover:bg-surface/30 hover:shadow-[0_25px_65px_rgba(0,0,0,0.45)] ${card.span}`}
           >
             {/* Ambient background glow on hover */}
             <div
@@ -219,7 +219,7 @@ export function ProductDesignExpertise() {
 
       {/* ── Minimal Footer: Daily Toolkit & Supporting Knowledge ── */}
       <Reveal className="pt-8 border-t border-border/20">
-        <div className="rounded-3xl border border-border/30 bg-surface/15 backdrop-blur-md p-8 md:p-10 space-y-8">
+        <div className="rounded-3xl border border-border/30 bg-surface/15 backdrop-blur-md p-6 sm:p-8 md:p-10 space-y-8">
           {/* Daily Toolkit */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-border/20 pb-6">
             <div className="space-y-1 shrink-0">

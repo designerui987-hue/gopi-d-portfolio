@@ -179,7 +179,7 @@ function Contact() {
           <Reveal className="lg:col-span-5 space-y-8">
             {/* Collaborator Profile Header */}
             <div
-              className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 space-y-6"
+              className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 sm:p-8 space-y-6"
               style={{ boxShadow: "var(--shadow-soft)" }}
             >
               <div className="flex items-center justify-between gap-4 border-b border-border/20 pb-6">
@@ -260,51 +260,51 @@ function Contact() {
               <div className="space-y-2">
                 <a
                   href={`mailto:${EMAIL_ADDRESS}`}
-                  className="group flex items-center justify-between rounded-2xl border border-border/30 bg-surface/15 p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/30"
+                  className="group flex items-center justify-between rounded-2xl border border-border/30 bg-surface/15 p-4 sm:p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/30"
                 >
                   <div className="space-y-0.5">
                     <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-accent font-semibold block">
                       EMAIL
                     </span>
-                    <span className="text-sm font-mono text-foreground font-light">
+                    <span className="text-xs sm:text-sm font-mono text-foreground font-light break-all">
                       {EMAIL_ADDRESS}
                     </span>
                   </div>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
                 </a>
 
                 <a
                   href={LINKEDIN_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between rounded-2xl border border-border/30 bg-surface/15 p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/30"
+                  className="group flex items-center justify-between rounded-2xl border border-border/30 bg-surface/15 p-4 sm:p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/30"
                 >
                   <div className="space-y-0.5">
                     <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-accent font-semibold block">
                       LINKEDIN
                     </span>
-                    <span className="text-sm font-mono text-foreground font-light">
+                    <span className="text-xs sm:text-sm font-mono text-foreground font-light">
                       /in/neeraj-kumar-gopi
                     </span>
                   </div>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
                 </a>
 
                 <a
                   href={BEHANCE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between rounded-2xl border border-border/30 bg-surface/15 p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/30"
+                  className="group flex items-center justify-between rounded-2xl border border-border/30 bg-surface/15 p-4 sm:p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/30"
                 >
                   <div className="space-y-0.5">
                     <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-accent font-semibold block">
                       BEHANCE
                     </span>
-                    <span className="text-sm font-mono text-foreground font-light">
+                    <span className="text-xs sm:text-sm font-mono text-foreground font-light">
                       /neerajgopi
                     </span>
                   </div>
-                  <ArrowUpRight className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
                 </a>
 
                 <a
@@ -312,17 +312,17 @@ function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   download
-                  className="group flex items-center justify-between rounded-2xl border border-border/30 bg-surface/15 p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/30"
+                  className="group flex items-center justify-between rounded-2xl border border-border/30 bg-surface/15 p-4 sm:p-5 transition-all duration-300 hover:border-accent/40 hover:bg-surface/30"
                 >
                   <div className="space-y-0.5">
                     <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-accent font-semibold block">
                       RESUME
                     </span>
-                    <span className="text-sm font-mono text-foreground font-light">
+                    <span className="text-xs sm:text-sm font-mono text-foreground font-light">
                       Download PDF Document
                     </span>
                   </div>
-                  <FileDown className="h-4 w-4 text-muted-foreground transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:text-accent" />
+                  <FileDown className="h-4 w-4 text-muted-foreground shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:text-accent" />
                 </a>
               </div>
             </div>
@@ -335,7 +335,7 @@ function Contact() {
               <div
                 role="alert"
                 aria-live="polite"
-                className="rounded-3xl border border-emerald-500/30 bg-emerald-500/[0.06] backdrop-blur-md p-10 md:p-14 flex flex-col items-center text-center gap-6"
+                className="rounded-3xl border border-emerald-500/30 bg-emerald-500/[0.06] backdrop-blur-md p-6 sm:p-10 md:p-14 flex flex-col items-center text-center gap-6"
               >
                 <div className="h-12 w-12 rounded-full border border-emerald-500/40 bg-emerald-500/10 flex items-center justify-center">
                   <CheckCircle2 className="h-6 w-6 text-emerald-400" strokeWidth={1.5} />
@@ -360,7 +360,7 @@ function Contact() {
                 onSubmit={handleSubmit}
                 noValidate
                 aria-label="Contact form"
-                className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 md:p-10 space-y-7 shadow-[var(--shadow-soft)]"
+                className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 sm:p-8 md:p-10 space-y-7 shadow-[var(--shadow-soft)]"
               >
                 <div className="space-y-6">
                   {/* Name & Email Row */}

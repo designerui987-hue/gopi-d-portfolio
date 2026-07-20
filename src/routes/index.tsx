@@ -168,10 +168,10 @@ function Home() {
   return (
     <HeroScene>
       {/* ─── CHAPTER 00: Hero (Editorial Composition) ─── */}
-      <div className="relative min-h-[90vh] w-full flex flex-col justify-center px-6 lg:pl-28 lg:pr-12 py-20 overflow-hidden border-b border-border/25">
+      <div className="relative min-h-[85vh] w-full flex flex-col justify-center px-4 sm:px-6 lg:pl-28 lg:pr-12 py-16 sm:py-20 overflow-hidden border-b border-border/25">
         {/* Signature Typographic Backdrop (Oversized Low-Contrast Architectural Watermark) */}
         <div
-          className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none overflow-hidden opacity-[0.03] pr-4 lg:pr-12 text-right z-0"
+          className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none select-none overflow-hidden opacity-[0.025] pr-4 lg:pr-12 text-right z-0"
           aria-hidden="true"
         >
           <span className="font-display text-[18vw] font-light leading-none tracking-tighter text-foreground block">
@@ -179,20 +179,20 @@ function Home() {
           </span>
         </div>
 
-        <div className="relative z-10 max-w-6xl space-y-10">
+        <div className="relative z-10 max-w-6xl space-y-8 sm:space-y-10">
 
           {/* Top Editorial Label Bar */}
-          <FadeUp delay={0.15} className="flex flex-wrap items-center justify-between gap-4 border-b border-border/20 pb-5">
-            <div className="flex items-center gap-3">
+          <FadeUp delay={0.15} className="flex flex-wrap items-center justify-between gap-3 border-b border-border/20 pb-4 sm:pb-5">
+            <div className="flex items-center gap-2.5 sm:gap-3">
               <span className="font-mono text-xs font-semibold text-accent">01</span>
               <span className="h-3 w-px bg-border/40" />
-              <div className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full border border-accent/40 shadow-sm">
+              <div className="relative h-6 w-6 sm:h-7 sm:w-7 shrink-0 overflow-hidden rounded-full border border-accent/40 shadow-sm">
                 <img src="/neeraj.jpg" alt="Gopi Neeraj Kumar" className="h-full w-full object-cover" />
               </div>
               <span className="text-xs font-mono text-foreground/90 font-medium">Gopi Neeraj Kumar</span>
             </div>
 
-            <div className="flex items-center gap-3 text-[9px] font-mono uppercase tracking-[0.35em] text-accent/90 font-semibold">
+            <div className="flex items-center gap-2 sm:gap-3 text-[8px] sm:text-[9px] font-mono uppercase tracking-[0.28em] sm:tracking-[0.35em] text-accent/90 font-semibold">
               <span>PRODUCT DESIGNER</span>
               <span className="text-accent/30">&middot;</span>
               <span>2026 PORTFOLIO</span>
@@ -204,7 +204,7 @@ function Home() {
           {/* Main Display Headline (Intentional Broken Rhythm & Serif Contrast) */}
           <div className="space-y-4 max-w-5xl">
             <FadeUp delay={0.35}>
-              <h1 className="font-display text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] xl:text-[5.8rem] tracking-tight text-foreground font-light leading-[0.92] select-none">
+              <h1 className="font-display text-[2.1rem] sm:text-5xl md:text-7xl lg:text-[5.2rem] xl:text-[5.8rem] tracking-tight text-foreground font-light leading-[0.94] select-none">
                 Designing <span className="text-accent italic font-normal">calm</span> digital<br />
                 experiences for<br />
                 complex workflows.
@@ -215,7 +215,7 @@ function Home() {
           {/* Asymmetric 2-Column Positioning & Editorial Caption */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-2">
             <FadeUp delay={0.65} y={16} className="lg:col-span-7 space-y-4">
-              <p className="text-base md:text-lg leading-[1.75] text-muted-foreground font-light max-w-xl">
+              <p className="text-sm sm:text-base md:text-lg leading-[1.75] text-muted-foreground font-light max-w-xl">
                 I translate complex business requirements into calm, structured digital interfaces.{" "}
                 <span className="text-foreground/90">Designing products through UX strategy, interface design, interaction design, and scalable design systems so software feels quiet, effortless, and clear.</span>
               </p>
@@ -235,12 +235,12 @@ function Home() {
           </div>
 
           {/* Two Distinct CTA Journeys & Supporting Links */}
-          <FadeUp delay={1.05} y={14} className="flex flex-wrap items-center gap-4 pt-4 border-t border-border/20">
+          <FadeUp delay={1.05} y={14} className="flex flex-wrap items-center gap-3.5 sm:gap-4 pt-4 border-t border-border/20">
             {/* Primary Journey CTA */}
             <Magnetic strength={0.2}>
               <Link
                 to="/projects"
-                className="group inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-sm font-semibold text-accent-foreground shadow-[0_4px_20px_rgb(220,120,80,0.15)] transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_8px_30px_rgb(220,120,80,0.25)] active:scale-[0.98]"
+                className="group inline-flex items-center gap-3 rounded-full bg-accent px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold text-accent-foreground shadow-[0_4px_20px_rgb(220,120,80,0.15)] transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_8px_30px_rgb(220,120,80,0.25)] active:scale-[0.98]"
               >
                 <span>Explore Selected Work</span>
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -251,7 +251,7 @@ function Home() {
             <Magnetic strength={0.2}>
               <Link
                 to="/about"
-                className="group inline-flex items-center gap-2 rounded-full border border-border/40 px-7 py-4 text-sm font-medium text-muted-foreground bg-surface/20 backdrop-blur-sm transition-all duration-300 hover:scale-[1.01] hover:text-foreground hover:border-accent/40 hover:bg-surface/35 active:scale-[0.98]"
+                className="group inline-flex items-center gap-2 rounded-full border border-border/40 px-5 sm:px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-medium text-muted-foreground bg-surface/20 backdrop-blur-sm transition-all duration-300 hover:scale-[1.01] hover:text-foreground hover:border-accent/40 hover:bg-surface/35 active:scale-[0.98]"
               >
                 <span>Read My Design Philosophy</span>
                 <ArrowUpRight className="h-4 w-4 text-accent transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -259,7 +259,7 @@ function Home() {
             </Magnetic>
 
             {/* Additional Direct Channels */}
-            <div className="flex items-center gap-4 ml-auto text-xs font-mono text-muted-foreground">
+            <div className="flex items-center gap-3.5 sm:gap-4 sm:ml-auto text-xs font-mono text-muted-foreground pt-2 sm:pt-0">
               <a
                 href={LINKEDIN_URL}
                 target="_blank"
@@ -286,7 +286,7 @@ function Home() {
       </div>
 
       {/* ─── Main Content Container ─── */}
-      <div className="relative mx-auto w-full max-w-6xl px-6 pb-32 lg:pl-28 lg:pr-12 pt-20 space-y-36">
+      <div className="relative mx-auto w-full max-w-6xl px-4 sm:px-6 pb-32 lg:pl-28 lg:pr-12 pt-16 sm:pt-20 space-y-28 sm:space-y-36">
 
         {/* ─── CHAPTER 01: Key Metrics ─── */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
