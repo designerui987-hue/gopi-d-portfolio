@@ -99,9 +99,11 @@ export function PageShell({
 
 export function PlaceholderCard({
   label,
+  image,
   aspect = "aspect-[4/3]",
 }: {
   label?: string;
+  image?: string;
   aspect?: string;
 }) {
   const reduced = useReducedMotion();
@@ -116,9 +118,17 @@ export function PlaceholderCard({
       }
       transition={{ duration: 0.18, ease: EASE }}
     >
-      <div
-        className="absolute inset-0 grid-bg opacity-60 transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.01] group-hover:opacity-100"
-      />
+      {image ? (
+        <img
+          src={image}
+          alt={label ?? "Photo"}
+          className="absolute inset-0 h-full w-full object-cover transition-transform duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.01]"
+        />
+      ) : (
+        <div
+          className="absolute inset-0 grid-bg opacity-60 transition-all duration-[180ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.01] group-hover:opacity-100"
+        />
+      )}
       <div
         className="absolute inset-0 opacity-0 transition-opacity duration-[180ms] group-hover:opacity-100"
         style={{
@@ -126,6 +136,9 @@ export function PlaceholderCard({
             "radial-gradient(ellipse 65% 55% at 50% 40%, oklch(0.68 0.14 45 / 0.10), transparent 70%)",
         }}
       />
+      {image && (
+        <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent pointer-events-none" />
+      )}
       {/* Corner mark */}
       <div className="absolute right-4 top-4 flex h-6 w-6 items-center justify-center">
         <motion.span

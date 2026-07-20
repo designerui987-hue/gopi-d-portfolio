@@ -477,7 +477,7 @@ function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 1, ease: EASE_EDITORIAL }}
               >
-                <PlaceholderCard label="NEERAJ GOPI" aspect="aspect-[4/5]" />
+                <PlaceholderCard image="/neeraj.jpg" label="NEERAJ GOPI" aspect="aspect-[4/5]" />
               </motion.div>
             </div>
             <div className="space-y-6 md:col-span-7">
