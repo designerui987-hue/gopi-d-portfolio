@@ -165,7 +165,7 @@ function HRMSCaseStudy({ project }: { project: Project }) {
                   {project.description}
                 </p>
                 <p className="text-[15px] leading-[1.8] text-slate-600">
-                  The goal was to design an intuitive HRMS platform that consolidates attendance tracking, leave management, onboarding, and payroll into a single, cohesive experience — eliminating tool-switching and reducing administrative overhead.
+                  The goal was to design an intuitive enterprise business platform that consolidates workflow management, team operations, onboarding, and administrative processes into a single, cohesive experience — eliminating tool-switching and reducing operational overhead.
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-4">

@@ -144,14 +144,14 @@ function AboutPage() {
               <div className="flex items-center gap-2 text-accent">
                 <Workflow className="h-4 w-4" />
                 <span className="font-mono text-xs font-semibold tracking-wider">
-                  01 · ENTERPRISE DESIGN (2025–2026)
+                  01 · PROFESSIONAL PRODUCT EXPERIENCE (2025–2026)
                 </span>
               </div>
               <h3 className="font-display text-2xl text-foreground font-light">
-                Internal HRMS Platform
+                Enterprise Business Platform
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed font-light">
-                Designed payroll modules, checklist builders, attendance sheets, and configuration tools end-to-end. Translating high complexity into structured flows taught me the value of component alignment and clear developer handoff.
+                Designed workflow-driven interfaces, reusable component systems, responsive layouts, and scalable design foundations while collaborating with product managers and engineers.
               </p>
             </div>
 
@@ -159,14 +159,14 @@ function AboutPage() {
               <div className="flex items-center gap-2 text-accent">
                 <Layers className="h-4 w-4" />
                 <span className="font-mono text-xs font-semibold tracking-wider">
-                  02 · FINTECH PROTOTYPE (2026)
+                  02 · PRODUCT DESIGN CONCEPT (2026)
                 </span>
               </div>
               <h3 className="font-display text-2xl text-foreground font-light">
-                Nova Stock Analytics
+                StockAI Investment Experience
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed font-light">
-                Designed and built a calm stock tracking system as a personal design-to-code prototype. Replaced confusing trading charts with plain-language recommendation blocks, deepening my frontend layout skills.
+                Designed an AI-powered product concept exploring user trust and explainable AI. Replaced complex data tables with transparent recommendation cards and clear information architecture.
               </p>
             </div>
           </div>

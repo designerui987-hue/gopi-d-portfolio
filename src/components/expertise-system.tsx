@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { Sparkles, Terminal } from "lucide-react";
+import { Sparkles, Terminal, Code2 } from "lucide-react";
 import { SectionHeader } from "./section-header";
 import { Reveal, Stagger, staggerItem } from "./reveal";
 
@@ -76,36 +76,38 @@ export const EXPERTISE_CARDS = [
   },
   {
     num: "05",
-    discipline: "FRONTEND COLLABORATION",
-    title: "Developer Collaboration",
+    discipline: "DESIGN HANDOFF",
+    title: "Design Handoff & Engineering Collaboration",
     description:
-      "Designing with implementation in mind to reduce friction between design and engineering.",
+      "I create structured documentation, component specifications, and responsive design guidance that help engineering teams build products accurately.",
     capabilities: [
-      "HTML",
-      "CSS",
-      "Tailwind CSS",
-      "Basic JavaScript",
-      "Responsive Development",
-      "GitHub Collaboration",
+      "Developer Handoff",
       "Design QA",
-      "Component Specs",
+      "Component Documentation",
+      "Responsive Specifications",
+      "Implementation Awareness",
+      "Cross-functional Collaboration",
+      "Design Reviews",
+      "Product Requirement Translation",
     ],
     span: "lg:col-span-6",
   },
   {
     num: "06",
     discipline: "AI WORKFLOW",
-    title: "AI Assisted Workflow",
+    title: "AI-Enhanced Design Workflow",
     description:
-      "Using AI to accelerate research, exploration, documentation, and rapid prototyping while keeping design decisions human.",
+      "Using AI to accelerate research synthesis, rapid wireframe exploration, content drafting, and design documentation while keeping decisions human.",
     capabilities: [
       "Prompt Engineering",
+      "Research Synthesis",
+      "Rapid Ideation",
+      "Wireframe Exploration",
+      "Content Drafting",
+      "Design Documentation",
       "ChatGPT",
       "Claude",
       "Lovable",
-      "Replit",
-      "AI-Assisted Design",
-      "Rapid Ideation",
     ],
     span: "lg:col-span-6",
   },
@@ -122,6 +124,12 @@ export const DAILY_TOOLKIT = [
   "Claude",
   "Lovable",
   "GitHub",
+] as const;
+
+export const SUPPORTING_KNOWLEDGE = [
+  "HTML",
+  "CSS",
+  "Basic JavaScript",
 ] as const;
 
 const EASE_EDITORIAL = [0.16, 1, 0.3, 1] as const;
@@ -141,7 +149,7 @@ export function ProductDesignExpertise() {
         />
         <div className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-full border border-border/30 bg-surface/20 text-[10px] font-mono text-muted-foreground shrink-0">
           <Terminal className="h-3.5 w-3.5 text-accent" />
-          <span>6 DISCIPLINES · HUMAN-LED PRODUCT DESIGN</span>
+          <span>6 DISCIPLINES · USER-CENTERED DESIGN</span>
         </div>
       </div>
 
@@ -184,7 +192,7 @@ export function ProductDesignExpertise() {
               </p>
             </div>
 
-            {/* Capabilities List (Refined typography cells) */}
+            {/* Capabilities List */}
             <div className="pt-5 border-t border-border/20 space-y-3">
               <span className="text-[8px] font-mono uppercase tracking-[0.25em] text-muted-foreground/50 block">
                 CAPABILITIES
@@ -209,32 +217,61 @@ export function ProductDesignExpertise() {
         ))}
       </Stagger>
 
-      {/* ── Daily Toolkit Minimal Footer ── */}
+      {/* ── Minimal Footer: Daily Toolkit & Supporting Knowledge ── */}
       <Reveal className="pt-8 border-t border-border/20">
-        <div className="rounded-3xl border border-border/30 bg-surface/15 backdrop-blur-md p-8 md:p-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
-          <div className="space-y-1 shrink-0">
-            <span className="text-[9px] font-mono uppercase tracking-[0.35em] text-accent font-semibold block">
-              DAILY TOOLKIT
-            </span>
-            <span className="text-xs text-muted-foreground font-light">
-              Software &amp; environments used for daily product execution
-            </span>
+        <div className="rounded-3xl border border-border/30 bg-surface/15 backdrop-blur-md p-8 md:p-10 space-y-8">
+          {/* Daily Toolkit */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-border/20 pb-6">
+            <div className="space-y-1 shrink-0">
+              <span className="text-[9px] font-mono uppercase tracking-[0.35em] text-accent font-semibold block">
+                DAILY TOOLKIT
+              </span>
+              <span className="text-xs text-muted-foreground font-light">
+                Software &amp; environments used for daily product execution
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-xs font-mono text-muted-foreground/90">
+              {DAILY_TOOLKIT.map((tool, idx) => (
+                <span
+                  key={tool}
+                  className="inline-flex items-center gap-2 hover:text-accent transition-colors cursor-default"
+                >
+                  <span className="hover:underline underline-offset-4 decoration-accent/40">
+                    {tool}
+                  </span>
+                  {idx < DAILY_TOOLKIT.length - 1 && (
+                    <span className="text-accent/30 select-none">&middot;</span>
+                  )}
+                </span>
+              ))}
+            </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-xs font-mono text-muted-foreground/90">
-            {DAILY_TOOLKIT.map((tool, idx) => (
-              <span
-                key={tool}
-                className="inline-flex items-center gap-2 hover:text-accent transition-colors cursor-default"
-              >
-                <span className="hover:underline underline-offset-4 decoration-accent/40">
-                  {tool}
-                </span>
-                {idx < DAILY_TOOLKIT.length - 1 && (
-                  <span className="text-accent/30 select-none">&middot;</span>
-                )}
+          {/* Supporting Knowledge (Implementation Awareness) */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="space-y-1 shrink-0">
+              <span className="text-[9px] font-mono uppercase tracking-[0.35em] text-muted-foreground/70 font-semibold block">
+                SUPPORTING KNOWLEDGE
               </span>
-            ))}
+              <span className="text-xs text-muted-foreground font-light">
+                Technical foundation for smooth engineering collaboration
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-xs font-mono text-muted-foreground/80">
+              {SUPPORTING_KNOWLEDGE.map((item, idx) => (
+                <span
+                  key={item}
+                  className="inline-flex items-center gap-2 hover:text-foreground transition-colors cursor-default"
+                >
+                  <span>{item}</span>
+                  {idx < SUPPORTING_KNOWLEDGE.length - 1 && (
+                    <span className="text-border select-none">&middot;</span>
+                  )}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </Reveal>

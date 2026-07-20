@@ -170,14 +170,13 @@ function Home() {
       {/* ─── CHAPTER 00: Hero (Who am I?) ─── */}
       <div className="relative h-screen min-h-[680px] w-full flex flex-col justify-center px-6 lg:pl-28 lg:pr-12 overflow-hidden border-b border-border/30">
         <div className="relative z-10 max-w-5xl space-y-0">
-
           <FadeUp delay={0.15} className="mb-6 flex flex-wrap items-center gap-3">
             <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-accent/40 shadow-md">
               <img src="/neeraj.jpg" alt="Gopi Neeraj Kumar" className="h-full w-full object-cover" />
             </div>
             <span className="inline-flex items-center gap-2.5 text-[10px] uppercase tracking-[0.4em] text-accent font-semibold">
               <span className="inline-block h-px w-6 bg-accent/60 rounded-full" />
-              UI/UX Designer &amp; Product Developer
+              UI/UX Designer &amp; Product Designer
               <span className="inline-block h-px w-6 bg-accent/60 rounded-full" />
             </span>
           </FadeUp>
@@ -189,8 +188,8 @@ function Home() {
 
           <FadeUp delay={1.45} y={18} className="mt-8 max-w-xl">
             <p className="text-base md:text-[1.05rem] leading-[1.75] text-muted-foreground font-light">
-              I translate complex software requirements into calm, quiet interfaces.{" "}
-              <span className="text-foreground/75">One year into building digital products with intention, clarity, and precision.</span>
+              I translate complex software requirements into calm, structured digital interfaces.{" "}
+              <span className="text-foreground/75">Designing products through UX strategy, interface design, interaction design, and scalable design systems.</span>
             </p>
           </FadeUp>
 
@@ -242,7 +241,7 @@ function Home() {
       {/* ─── Main Content Container ─── */}
       <div className="relative mx-auto w-full max-w-6xl px-6 pb-32 lg:pl-28 lg:pr-12 pt-20 space-y-36">
 
-        {/* ─── CHAPTER 01: Key Metrics (Why should someone trust me?) ─── */}
+        {/* ─── CHAPTER 01: Key Metrics ─── */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-4 space-y-4">
             <span className="text-[10px] uppercase tracking-[0.3em] text-accent font-semibold block">
@@ -252,16 +251,16 @@ function Home() {
               Trust is built through shipped work, not claims.
             </h3>
             <p className="text-xs leading-relaxed text-muted-foreground font-light">
-              One year of full-time design. Four core enterprise modules designed end-to-end. Real tools built for real teams.
+              One year of professional design experience. Workflow-driven product modules designed end-to-end. Built for real user needs.
             </p>
           </div>
           <div className="lg:col-span-8">
             <StatsScrollReveal className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {[
-                ["1 yr", "full-time product design experience", "Proven Experience", "col-span-1 sm:col-span-2 bg-surface/25 border-accent/20"],
-                ["2", "production releases shipped", "Public Releases", "col-span-1"],
-                ["4", "enterprise modules designed end-to-end", "Product Scope", "col-span-1"],
-                ["Figma + Lovable", "foundational design & dev stack", "Tooling Stack", "col-span-1 sm:col-span-2"],
+                ["1 yr", "professional product design experience", "Proven Experience", "col-span-1 sm:col-span-2 bg-surface/25 border-accent/20"],
+                ["2", "product experiences shipped / designed", "Public Releases", "col-span-1"],
+                ["4", "workflow-driven modules designed end-to-end", "Product Scope", "col-span-1"],
+                ["Figma & Systems", "core design & prototyping toolkit", "Tooling Stack", "col-span-1 sm:col-span-2"],
               ].map(([k, v, category, extraClass], i) => (
                 <div
                   key={v}
@@ -376,7 +375,7 @@ function Home() {
                 transition={{ duration: 0.75, delay: 0.25, ease: EASE_EDITORIAL }}
                 className="text-sm leading-relaxed text-muted-foreground/80 font-light"
               >
-                Recently, I collaborated on an enterprise HRMS platform where I designed four core modules end-to-end — turning tangled employee workflows into straightforward screen flows.
+                Recently, I collaborated on a complex enterprise business platform where I designed workflow-driven interfaces, reusable component systems, and responsive layouts while working alongside product managers and engineers.
               </motion.p>
               
               {/* Finishing Signature Accent */}
@@ -389,10 +388,10 @@ function Home() {
               >
                 <div>
                   <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold">
-                    Core tools
+                    Design Environment
                   </div>
                   <div className="mt-2 font-display text-lg text-foreground flex items-center gap-2">
-                    <span>Figma · Lovable</span>
+                    <span>Figma · Design Systems</span>
                     <CheckCircle2 className="h-4 w-4 text-accent" />
                   </div>
                 </div>
