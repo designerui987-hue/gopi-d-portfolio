@@ -32,7 +32,7 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-disabled-text: var(--disabled-text);
 
-  /* ── Primary & Secondary Buttons ── */
+  /* ── Buttons & CTAs ── */
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-hover: var(--primary-hover);
@@ -40,11 +40,12 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary-hover: var(--secondary-hover);
 
-  /* ── Accent System (Warm Champagne Gold) ── */
+  /* ── Dual Accent System (Primary: Warm Ivory | Secondary: Soft Lavender) ── */
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-lavender: var(--accent-lavender);
 
   /* ── Borders & Dividers ── */
   --color-border: var(--border);
@@ -72,8 +73,8 @@
 :root {
   --radius: 1.25rem;
 
-  /* ── SOFT GRAPHITE EDITORIAL PALETTE (Apple, Linear, Vercel Inspired) ── */
-  /* Surface System: 4 Distinct Depth Levels */
+  /* ── ATMOSPHERIC EDITORIAL STUDIO PALETTE (Apple, Linear, Vercel Inspired) ── */
+  /* Surface System: 4 Illuminated Depth Levels */
   --canvas: #111315;                          /* Level 1: Canvas Background (#111315) */
   --background: var(--canvas);
   --section: #17191C;                         /* Level 2: Section Surface (#17191C) */
@@ -81,97 +82,102 @@
   --surface-elevated: #262A2F;                /* Level 4: Interactive Surface (#262A2F) */
 
   --card: var(--surface);
-  --card-foreground: #F5F2EC;
+  --card-foreground: #F5F0E6;
   --popover: var(--surface);
-  --popover-foreground: #F5F2EC;
+  --popover-foreground: #F5F0E6;
 
-  /* Typography Color Hierarchy */
-  --heading-primary: #F5F2EC;                  /* Primary Text (#F5F2EC) */
+  /* Typography Hierarchy */
+  --heading-primary: #F5F0E6;                  /* Primary Text: Warm Ivory (#F5F0E6) */
   --foreground: var(--heading-primary);
-  --heading-secondary: #C9C5BD;                /* Secondary Text (#C9C5BD) */
+  --heading-secondary: #C9C5BD;                /* Secondary Text: Soft Pearl (#C9C5BD) */
   --body-text: #C9C5BD;                        /* Body Text (#C9C5BD) */
   --muted: #17191C;
   --muted-foreground: #9B9892;                 /* Muted Text (#9B9892) */
-  --disabled-text: #5C5A55;                    /* Disabled Text */
+  --disabled-text: #5C5A55;
+
+  /* Primary Accent: Warm Ivory */
+  --accent: #F5F0E6;                           /* Primary Accent: Warm Ivory (#F5F0E6) */
+  --accent-foreground: #111315;
+  --accent-soft: rgba(245, 240, 230, 0.08);
+
+  /* Secondary Accent: Soft Lavender (Reserved strictly for hover, active nav & micro-interactions) */
+  --accent-lavender: #D4C4E8;                  /* Soft Lavender (#D4C4E8) */
+  --accent-hover: #D4C4E8;                     /* Hover Shift: Soft Lavender (#D4C4E8) */
 
   /* Button System */
-  --primary: #D6C2A1;                          /* Primary Button (#D6C2A1) */
-  --primary-foreground: #111315;              /* Dark Graphite Text (#111315) */
-  --primary-hover: #E4D1B3;                    /* Primary Hover (#E4D1B3) */
+  --primary: #F5F0E6;                          /* Primary Button Fill: Warm Ivory */
+  --primary-foreground: #111315;              /* Dark Graphite Text */
+  --primary-hover: #FFF9EF;                    /* Luminous Hover */
 
   --secondary: transparent;                   /* Secondary Button: Transparent */
-  --secondary-foreground: #F5F2EC;
+  --secondary-foreground: #F5F0E6;
   --secondary-hover: #262A2F;
 
-  /* Accent Strategy (Restrained Champagne Accent) */
-  --accent: #D6C2A1;                          /* Primary Accent (#D6C2A1) */
-  --accent-foreground: #111315;
-  --accent-hover: #E4D1B3;                    /* Hover Accent (#E4D1B3) */
-  --accent-soft: rgba(214, 194, 161, 0.12);   /* Ambient Accent Tint */
-
-  /* Borders & Dividers */
-  --border: rgba(255, 255, 255, 0.08);        /* Soft Tonal Border (rgba 255,255,255,0.08) */
-  --border-hover: rgba(214, 194, 161, 0.35);  /* Interactive Accent Border */
+  /* Borders & Hairline Dividers */
+  --border: rgba(255, 255, 255, 0.08);        /* Soft Tonal Border */
+  --border-hover: rgba(212, 196, 232, 0.35);  /* Interactive Lavender Accent Border */
   --divider: rgba(255, 255, 255, 0.05);       /* Hairline Divider */
   --input: #1E2125;
-  --ring: #D6C2A1;                            /* Focus Ring */
+  --ring: #D4C4E8;                            /* Focus Ring: Soft Lavender */
 
   /* Feedback & State Tokens */
-  --success: #6AAE8D;                         /* Success (#6AAE8D) */
-  --warning: #D4A44F;                         /* Warning (#D4A44F) */
-  --error: #D66C6C;                           /* Error (#D66C6C) */
+  --success: #6AAE8D;
+  --warning: #D4A44F;
+  --error: #D66C6C;
   --destructive: var(--error);
-  --destructive-foreground: #F5F2EC;
+  --destructive-foreground: #F5F0E6;
   --info: #78A9FF;
 
-  /* Shadows & Atmospheric Glows */
-  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.22);
-  --shadow-float: 0 10px 40px rgba(0, 0, 0, 0.32);
-  --shadow-premium: 0 20px 80px rgba(0, 0, 0, 0.45);
+  /* Atmospheric Radial Lighting System (Low Opacity, No Visible Blobs) */
+  --shadow-soft: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 24px rgba(0, 0, 0, 0.22);
+  --shadow-float: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 40px rgba(0, 0, 0, 0.32);
+  --shadow-premium: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 20px 80px rgba(0, 0, 0, 0.45);
 
-  --glow-1: radial-gradient(circle, rgba(214, 194, 161, 0.05), transparent 70%);
-  --glow-2: radial-gradient(circle, rgba(120, 169, 255, 0.03), transparent 70%);
+  --glow-hero: radial-gradient(circle, rgba(120, 169, 255, 0.035), transparent 70%);     /* Subtle Cool Sapphire near Hero */
+  --glow-cta: radial-gradient(circle, rgba(245, 240, 230, 0.045), transparent 70%);      /* Warm Ivory near CTA */
+  --glow-ambient: radial-gradient(circle, rgba(212, 196, 232, 0.025), transparent 70%);  /* Soft Ambient Lavender */
 }
 
 .light {
-  /* ── LUXURY LIGHT EDITORIAL PALETTE (Warm Archival Paper & Warm Charcoal) ── */
-  --canvas: oklch(0.982 0.004 80);            /* Level 1: Warm Publication Paper (#f9f9f8) */
+  /* ── LUXURY LIGHT EDITORIAL PALETTE ── */
+  --canvas: oklch(0.982 0.004 80);
   --background: var(--canvas);
-  --section: oklch(0.965 0.005 80);           /* Level 2: Section Surface (#f3f3f1) */
-  --surface: oklch(0.94 0.006 80);            /* Level 3: Card Surface (#eaeaea) */
-  --surface-elevated: oklch(0.90 0.007 80);   /* Level 4: Interactive Hover (#dfdfdf) */
+  --section: oklch(0.965 0.005 80);
+  --surface: oklch(0.94 0.006 80);
+  --surface-elevated: oklch(0.90 0.007 80);
 
   --card: var(--surface);
   --card-foreground: oklch(0.18 0.006 75);
   --popover: var(--surface);
   --popover-foreground: oklch(0.18 0.006 75);
 
-  --heading-primary: oklch(0.16 0.006 75);    /* Deep Warm Charcoal (#131315) */
+  --heading-primary: oklch(0.16 0.006 75);
   --foreground: var(--heading-primary);
-  --heading-secondary: oklch(0.28 0.007 75);  /* Soft Slate Charcoal (#2a2a2e) */
-  --body-text: oklch(0.35 0.008 75);          /* High-Contrast Body Copy (#3a3a3f) */
+  --heading-secondary: oklch(0.28 0.007 75);
+  --body-text: oklch(0.35 0.008 75);
   --muted: oklch(0.92 0.008 75);
-  --muted-foreground: oklch(0.50 0.009 75);   /* Warm Muted Text (#6a6a72) */
-  --disabled-text: oklch(0.70 0.008 75);      /* Light Disabled Text (#a2a2aa) */
+  --muted-foreground: oklch(0.50 0.009 75);
+  --disabled-text: oklch(0.70 0.008 75);
 
-  --primary: oklch(0.20 0.007 75);
+  --primary: oklch(0.16 0.006 75);
   --primary-foreground: oklch(0.982 0.004 80);
-  --primary-hover: oklch(0.28 0.008 75);
+  --primary-hover: oklch(0.25 0.008 75);
 
   --secondary: oklch(0.90 0.007 80);
   --secondary-foreground: oklch(0.16 0.006 75);
   --secondary-hover: oklch(0.85 0.008 80);
 
-  --accent: oklch(0.55 0.16 45);              /* Rich Bronze Gold */
+  --accent: oklch(0.28 0.007 75);
   --accent-foreground: oklch(0.982 0.004 80);
-  --accent-hover: oklch(0.50 0.15 45);
-  --accent-soft: oklch(0.55 0.16 45 / 0.10);
+  --accent-lavender: oklch(0.55 0.12 300);
+  --accent-hover: oklch(0.55 0.12 300);
+  --accent-soft: oklch(0.55 0.12 300 / 0.08);
 
   --border: oklch(0 0 0 / 0.08);
-  --border-hover: oklch(0.55 0.16 45 / 0.35);
+  --border-hover: oklch(0.55 0.12 300 / 0.35);
   --divider: oklch(0 0 0 / 0.05);
   --input: oklch(0.88 0.01 75);
-  --ring: oklch(0.55 0.16 45);
+  --ring: oklch(0.55 0.12 300);
 
   --success: oklch(0.50 0.16 142);
   --warning: oklch(0.58 0.16 75);
@@ -184,8 +190,9 @@
   --shadow-float: 0 10px 40px oklch(0.18 0.006 75 / 0.08);
   --shadow-premium: 0 20px 80px oklch(0.18 0.006 75 / 0.12);
 
-  --glow-1: radial-gradient(circle, oklch(0.55 0.16 45 / 0.04), transparent 70%);
-  --glow-2: radial-gradient(circle, oklch(0.6 0.08 240 / 0.02), transparent 70%);
+  --glow-hero: radial-gradient(circle, oklch(0.50 0.18 245 / 0.025), transparent 70%);
+  --glow-cta: radial-gradient(circle, oklch(0.28 0.007 75 / 0.03), transparent 70%);
+  --glow-ambient: radial-gradient(circle, oklch(0.55 0.12 300 / 0.02), transparent 70%);
 }
 
 @layer base {
@@ -214,7 +221,7 @@
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-accent);
+    background: var(--color-accent-lavender);
   }
 
   /* Soft Global Noise Texture */
@@ -285,23 +292,24 @@
   }
 
   ::selection {
-    background: var(--color-accent-soft);
+    background: rgba(212, 196, 232, 0.22);
     color: var(--color-heading-primary);
   }
 }
 
-/* Glassmorphism Panel */
+/* Glassmorphism Panel & Illuminated Card Surface System */
 @utility glass-panel {
-  background: color-mix(in oklab, var(--color-surface) 75%, transparent);
+  background: linear-gradient(180deg, rgba(30, 33, 37, 0.70) 0%, rgba(20, 22, 26, 0.85) 100%);
   backdrop-filter: blur(24px) saturate(1.1);
-  border: 1px solid var(--color-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 24px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* Subtle background grid texture (barely visible while reading) */
+/* Subtle background grid texture (barely visible texture) */
 @utility grid-bg {
   background-image:
-    linear-gradient(to right, oklch(1 0 0 / 0.008) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(1 0 0 / 0.008) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 
@@ -317,6 +325,6 @@
   border-radius: 9999px;
   filter: blur(140px);
   pointer-events: none;
-  opacity: 0.06;
+  opacity: 0.05;
   mix-blend-mode: screen;
 }
