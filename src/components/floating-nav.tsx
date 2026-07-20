@@ -258,41 +258,6 @@ export function FloatingNav() {
                 </motion.div>
               </MagneticSlot>
             </a>
-
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className="cursor-pointer"
-            >
-              <MagneticSlot>
-                <motion.div
-                  className="flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground"
-                  whileHover={{ scale: reduced ? 1 : 1.02, color: "var(--foreground)" }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={EASE_EDITORIAL}
-                >
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.div
-                      key={theme}
-                      initial={{ opacity: 0, rotate: -15, scale: 0.85 }}
-                      animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                      exit={{ opacity: 0, rotate: 15, scale: 0.85 }}
-                      transition={
-                        reduced ? { duration: 0 } : { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
-                      }
-                      className="absolute flex items-center justify-center"
-                    >
-                      {theme === "dark" ? (
-                        <Sun className="h-4 w-4" strokeWidth={1.75} />
-                      ) : (
-                        <Moon className="h-4 w-4" strokeWidth={1.75} />
-                      )}
-                    </motion.div>
-                  </AnimatePresence>
-                </motion.div>
-              </MagneticSlot>
-            </button>
           </div>
         </motion.nav>
       </motion.div>
