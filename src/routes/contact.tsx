@@ -8,7 +8,6 @@ import {
   Loader2,
   Mail,
   ExternalLink,
-  Sparkles,
 } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { Reveal, Stagger, staggerItem } from "@/components/reveal";
@@ -66,20 +65,81 @@ const WORKING_PRINCIPLES = [
 ] as const;
 
 function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+
+  const validate = () => {
+    const errs: Record<string, string> = {};
+    if (!name.trim()) errs.name = "Please enter your name.";
+    else if (name.length > 100) errs.name = "Name must be 100 characters or fewer.";
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.trim() || !emailRegex.test(email.trim())) errs.email = "Please enter a valid email address.";
+    else if (email.length > 150) errs.email = "Email must be 150 characters or fewer.";
+
+    if (company && company.length > 100) errs.company = "Company must be 100 characters or fewer.";
+
+    if (!subject.trim()) errs.subject = "Please enter what you are building or looking for.";
+    else if (subject.length > 150) errs.subject = "Subject must be 150 characters or fewer.";
+
+    if (!message.trim() || message.trim().length < 10) errs.message = "Message must be at least 10 characters long.";
+    else if (message.length > 2000) errs.message = "Message cannot exceed 2000 characters.";
+
+    setFieldErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
+  const resetForm = () => {
+    setName("");
+    setEmail("");
+    setCompany("");
+    setSubject("");
+    setMessage("");
+    setFieldErrors({});
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!validate()) return;
     if (status === "submitting") return;
+
     setStatus("submitting");
     setErrorMsg("");
 
-    const form = e.currentTarget;
-    const data = new FormData(form);
-
+    // 1. Try local server API endpoint /api/contact first
     try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, company, subject, message }),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        resetForm();
+        return;
+      }
+    } catch {
+      // Endpoint fallback
+    }
+
+    // 2. Fall back to Formspree if API route is unhandled or in static preview
+    try {
+      const data = new FormData();
+      data.set("name", name);
+      data.set("email", email);
+      data.set("company", company);
+      data.set("subject", subject);
+      data.set("message", message);
+
       const res = await fetch(FORMSPREE_URL, {
         method: "POST",
         body: data,
@@ -88,13 +148,13 @@ function Contact() {
 
       if (res.ok) {
         setStatus("success");
-        form.reset();
+        resetForm();
       } else {
         const json = await res.json().catch(() => ({}));
         const msg =
           Array.isArray(json?.errors)
             ? json.errors.map((err: { message: string }) => err.message).join(", ")
-            : "Something went wrong. Please try again or email me directly.";
+            : "Something went wrong. Please try again or email directly.";
         setErrorMsg(msg);
         setStatus("error");
       }
@@ -300,7 +360,7 @@ function Contact() {
                 onSubmit={handleSubmit}
                 noValidate
                 aria-label="Contact form"
-                className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 md:p-10 space-y-8 shadow-[var(--shadow-soft)]"
+                className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 md:p-10 space-y-7 shadow-[var(--shadow-soft)]"
               >
                 <div className="space-y-6">
                   {/* Name & Email Row */}
@@ -310,75 +370,153 @@ function Contact() {
                         htmlFor="c-name"
                         className="mb-2 block text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold"
                       >
-                        Your Name
+                        Your Name *
                       </label>
                       <input
                         id="c-name"
                         name="name"
                         type="text"
                         placeholder="e.g. Alex Morgan"
-                        required
-                        autoComplete="name"
+                        value={name}
+                        onChange={(e) => {
+                          setName(e.target.value);
+                          if (fieldErrors.name) setFieldErrors((prev) => ({ ...prev, name: "" }));
+                        }}
+                        aria-invalid={!!fieldErrors.name}
+                        aria-describedby={fieldErrors.name ? "c-name-error" : undefined}
                         disabled={status === "submitting"}
                         className="w-full bg-transparent border-b border-border/30 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-accent transition-colors disabled:opacity-50 font-light"
                       />
+                      {fieldErrors.name && (
+                        <span id="c-name-error" className="mt-1.5 block text-[11px] font-mono text-red-400">
+                          {fieldErrors.name}
+                        </span>
+                      )}
                     </div>
+
                     <div>
                       <label
                         htmlFor="c-email"
                         className="mb-2 block text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold"
                       >
-                        Your Email Address
+                        Your Email Address *
                       </label>
                       <input
                         id="c-email"
                         name="email"
                         type="email"
                         placeholder="alex@company.com"
-                        required
-                        autoComplete="email"
+                        value={email}
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                          if (fieldErrors.email) setFieldErrors((prev) => ({ ...prev, email: "" }));
+                        }}
+                        aria-invalid={!!fieldErrors.email}
+                        aria-describedby={fieldErrors.email ? "c-email-error" : undefined}
                         disabled={status === "submitting"}
                         className="w-full bg-transparent border-b border-border/30 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-accent transition-colors disabled:opacity-50 font-light"
                       />
+                      {fieldErrors.email && (
+                        <span id="c-email-error" className="mt-1.5 block text-[11px] font-mono text-red-400">
+                          {fieldErrors.email}
+                        </span>
+                      )}
                     </div>
                   </div>
 
-                  {/* Conversational Subject */}
+                  {/* Company (Optional) */}
+                  <div>
+                    <label
+                      htmlFor="c-company"
+                      className="mb-2 block text-[9px] font-mono uppercase tracking-[0.25em] text-muted-foreground/80 font-semibold"
+                    >
+                      Company / Organization (Optional)
+                    </label>
+                    <input
+                      id="c-company"
+                      name="company"
+                      type="text"
+                      placeholder="e.g. Acme Corp / Linear"
+                      value={company}
+                      onChange={(e) => {
+                        setCompany(e.target.value);
+                        if (fieldErrors.company) setFieldErrors((prev) => ({ ...prev, company: "" }));
+                      }}
+                      aria-invalid={!!fieldErrors.company}
+                      aria-describedby={fieldErrors.company ? "c-company-error" : undefined}
+                      disabled={status === "submitting"}
+                      className="w-full bg-transparent border-b border-border/30 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-accent transition-colors disabled:opacity-50 font-light"
+                    />
+                    {fieldErrors.company && (
+                      <span id="c-company-error" className="mt-1.5 block text-[11px] font-mono text-red-400">
+                        {fieldErrors.company}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Conversational Subject ("What are you building?") */}
                   <div>
                     <label
                       htmlFor="c-subject"
                       className="mb-2 block text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold"
                     >
-                      What are you building?
+                      What are you building? *
                     </label>
                     <input
                       id="c-subject"
                       name="subject"
                       type="text"
-                      placeholder="e.g. UI/UX Design Role / Enterprise Platform Redesign"
-                      required
+                      placeholder="e.g. UI/UX Design Role / Enterprise Platform Design System"
+                      value={subject}
+                      onChange={(e) => {
+                        setSubject(e.target.value);
+                        if (fieldErrors.subject) setFieldErrors((prev) => ({ ...prev, subject: "" }));
+                      }}
+                      aria-invalid={!!fieldErrors.subject}
+                      aria-describedby={fieldErrors.subject ? "c-subject-error" : undefined}
                       disabled={status === "submitting"}
                       className="w-full bg-transparent border-b border-border/30 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-accent transition-colors disabled:opacity-50 font-light"
                     />
+                    {fieldErrors.subject && (
+                      <span id="c-subject-error" className="mt-1.5 block text-[11px] font-mono text-red-400">
+                        {fieldErrors.subject}
+                      </span>
+                    )}
                   </div>
 
                   {/* Conversational Message */}
                   <div>
-                    <label
-                      htmlFor="c-msg"
-                      className="mb-2 block text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold"
-                    >
-                      Tell me about your project or opportunity.
-                    </label>
+                    <div className="flex items-center justify-between mb-2">
+                      <label
+                        htmlFor="c-msg"
+                        className="block text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold"
+                      >
+                        Tell me about your project or opportunity. *
+                      </label>
+                      <span className="text-[10px] font-mono text-muted-foreground/60">
+                        {message.length} / 2000
+                      </span>
+                    </div>
                     <textarea
                       id="c-msg"
                       name="message"
                       rows={5}
                       placeholder="Share a few details about the product goals, scope, timeline, or open role."
-                      required
+                      value={message}
+                      onChange={(e) => {
+                        setMessage(e.target.value);
+                        if (fieldErrors.message) setFieldErrors((prev) => ({ ...prev, message: "" }));
+                      }}
+                      aria-invalid={!!fieldErrors.message}
+                      aria-describedby={fieldErrors.message ? "c-msg-error" : undefined}
                       disabled={status === "submitting"}
                       className="w-full bg-transparent border-b border-border/30 py-3 text-sm leading-relaxed text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-accent transition-colors resize-none disabled:opacity-50 font-light"
                     />
+                    {fieldErrors.message && (
+                      <span id="c-msg-error" className="mt-1.5 block text-[11px] font-mono text-red-400">
+                        {fieldErrors.message}
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -387,7 +525,7 @@ function Contact() {
                   <div
                     role="alert"
                     aria-live="assertive"
-                    className="flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/[0.07] px-4 py-3 text-xs text-red-400"
+                    className="flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/[0.07] px-4 py-3 text-xs text-red-400 font-mono"
                   >
                     <AlertCircle className="h-4 w-4 shrink-0" strokeWidth={1.75} />
                     {errorMsg}
