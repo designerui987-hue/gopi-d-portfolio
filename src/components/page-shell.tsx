@@ -20,7 +20,8 @@ export function PageShell({
   const reduced = useReducedMotion();
 
   return (
-    <motion.div
+    <motion.main
+      id="main-content"
       initial={reduced ? { opacity: 0 } : { opacity: 0, y: 16, filter: "blur(4px)" }}
       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
       exit={reduced ? { opacity: 0 } : { opacity: 0, y: -16, filter: "blur(4px)" }}
@@ -92,7 +93,7 @@ export function PageShell({
       >
         {children}
       </motion.div>
-    </motion.div>
+    </motion.main>
   );
 }
 

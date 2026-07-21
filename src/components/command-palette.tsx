@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Command } from "cmdk";
 import { useNavigate } from "@tanstack/react-router";
-import { Home, Layers, Workflow, Palette, User, Mail, FileDown, Sun, Moon, Search } from "lucide-react";
+import { Home, Layers, Workflow, Palette, User, Mail, FileDown, Sun, Moon, Search, BookOpen, Sliders } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function CommandPalette({
@@ -205,6 +205,28 @@ export function CommandPalette({
                     Design System Tokens
                   </span>
                   <span className="text-[10px] text-muted-foreground font-mono">G S</span>
+                </Command.Item>
+
+                <Command.Item
+                  onSelect={() => handleSelect(() => navigate({ to: "/writing" }))}
+                  className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-all select-none hover:bg-accent/10 aria-selected:bg-accent/10 aria-selected:text-accent border border-transparent aria-selected:border-accent/20"
+                >
+                  <span className="flex items-center gap-3">
+                    <BookOpen className="h-4 w-4 shrink-0" strokeWidth={1.75} />
+                    Writing &amp; Essays
+                  </span>
+                  <span className="text-[10px] text-muted-foreground font-mono">G E</span>
+                </Command.Item>
+
+                <Command.Item
+                  onSelect={() => handleSelect(() => navigate({ to: "/playground" }))}
+                  className="flex items-center justify-between px-3 py-2.5 rounded-xl text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-all select-none hover:bg-accent/10 aria-selected:bg-accent/10 aria-selected:text-accent border border-transparent aria-selected:border-accent/20"
+                >
+                  <span className="flex items-center gap-3">
+                    <Sliders className="h-4 w-4 shrink-0" strokeWidth={1.75} />
+                    Experimental Lab
+                  </span>
+                  <span className="text-[10px] text-muted-foreground font-mono">G L</span>
                 </Command.Item>
 
                 <Command.Item

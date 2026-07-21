@@ -113,67 +113,65 @@ export function GeometricBackground() {
         />
       )}
 
-      {/* Luxury Drifting Mesh Glow 1 (Amber Gold) */}
+      {/* ── ATMOSPHERIC STUDIO LIGHTING SYSTEM (Low Opacity, No Visible Blobs) ── */}
+      {/* 1. Subtle Cool Sapphire Glow (Near Hero Top) */}
       {!reduced && (
         <motion.div
           animate={{
-            x: [0, 30, -20, 0],
-            y: [0, -40, 20, 0],
-            scale: [1, 1.15, 0.9, 1],
+            x: [0, 25, -15, 0],
+            y: [0, -30, 15, 0],
+            scale: [1, 1.08, 0.95, 1],
           }}
           transition={{
-            duration: 25,
+            duration: 26,
             repeat: Infinity,
             ease: "easeInOut",
           }}
           style={{
             y: y1,
-            background:
-              "radial-gradient(circle, var(--glow-1), transparent 70%)",
+            background: "var(--glow-hero)",
           }}
-          className="absolute -left-10 -top-40 h-[650px] w-[650px] rounded-full opacity-35 blur-3xl"
+          className="absolute -left-16 -top-44 h-[700px] w-[700px] rounded-full opacity-100 blur-3xl"
         />
       )}
 
-      {/* Luxury Drifting Mesh Glow 2 (Terracotta Warmth) */}
+      {/* 2. Soft Ambient Lavender Glow (Mid-Canvas Depth) */}
       {!reduced && (
         <motion.div
           animate={{
-            x: [0, -40, 30, 0],
-            y: [0, 30, -50, 0],
-            scale: [1, 0.9, 1.1, 1],
+            x: [0, -30, 25, 0],
+            y: [0, 25, -35, 0],
+            scale: [1, 0.94, 1.06, 1],
           }}
           transition={{
-            duration: 30,
+            duration: 32,
             repeat: Infinity,
             ease: "easeInOut",
           }}
           style={{
             y: y2,
-            background:
-              "radial-gradient(circle, oklch(0.55 0.16 45 / 0.12), transparent 70%)",
+            background: "var(--glow-ambient)",
           }}
-          className="absolute right-[-100px] top-[15%] h-[600px] w-[600px] rounded-full opacity-30 blur-3xl"
+          className="absolute right-[-120px] top-[25%] h-[650px] w-[650px] rounded-full opacity-100 blur-3xl"
         />
       )}
 
-      {/* Luxury Drifting Mesh Glow 3 (Deep Blue / Teal Accent) */}
+      {/* 3. Warm Ivory Glow (Near Bottom CTA / Footer) */}
       {!reduced && (
         <motion.div
           animate={{
-            x: [0, 20, -10, 0],
-            y: [0, 40, -20, 0],
+            x: [0, 15, -10, 0],
+            y: [0, 30, -15, 0],
           }}
           transition={{
-            duration: 22,
+            duration: 24,
             repeat: Infinity,
             ease: "easeInOut",
           }}
           style={{
-            background:
-              "radial-gradient(circle, var(--glow-2), transparent 70%)",
+            background: "var(--glow-cta)",
           }}
-          className="absolute bottom-[-150px] left-[20%] h-[550px] w-[550px] rounded-full opacity-25 blur-3xl"
+          className="absolute bottom-[-160px] left-[15%] h-[600px] w-[600px] rounded-full opacity-100 blur-3xl"
         />
       )}
 

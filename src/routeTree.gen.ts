@@ -9,8 +9,10 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as WritingRouteImport } from './routes/writing'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ProcessRouteImport } from './routes/process'
+import { Route as PlaygroundRouteImport } from './routes/playground'
 import { Route as DesignSystemRouteImport } from './routes/design-system'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
@@ -18,6 +20,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProjectsIndexRouteImport } from './routes/projects.index'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
 
+const WritingRoute = WritingRouteImport.update({
+  id: '/writing',
+  path: '/writing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProjectsRoute = ProjectsRouteImport.update({
   id: '/projects',
   path: '/projects',
@@ -26,6 +33,11 @@ const ProjectsRoute = ProjectsRouteImport.update({
 const ProcessRoute = ProcessRouteImport.update({
   id: '/process',
   path: '/process',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlaygroundRoute = PlaygroundRouteImport.update({
+  id: '/playground',
+  path: '/playground',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DesignSystemRoute = DesignSystemRouteImport.update({
@@ -64,8 +76,10 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/design-system': typeof DesignSystemRoute
+  '/playground': typeof PlaygroundRoute
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRouteWithChildren
+  '/writing': typeof WritingRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
 }
@@ -74,7 +88,9 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/design-system': typeof DesignSystemRoute
+  '/playground': typeof PlaygroundRoute
   '/process': typeof ProcessRoute
+  '/writing': typeof WritingRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects': typeof ProjectsIndexRoute
 }
@@ -84,8 +100,10 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/design-system': typeof DesignSystemRoute
+  '/playground': typeof PlaygroundRoute
   '/process': typeof ProcessRoute
   '/projects': typeof ProjectsRouteWithChildren
+  '/writing': typeof WritingRoute
   '/projects/$slug': typeof ProjectsSlugRoute
   '/projects/': typeof ProjectsIndexRoute
 }
@@ -96,8 +114,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/design-system'
+    | '/playground'
     | '/process'
     | '/projects'
+    | '/writing'
     | '/projects/$slug'
     | '/projects/'
   fileRoutesByTo: FileRoutesByTo
@@ -106,7 +126,9 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/design-system'
+    | '/playground'
     | '/process'
+    | '/writing'
     | '/projects/$slug'
     | '/projects'
   id:
@@ -115,8 +137,10 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/design-system'
+    | '/playground'
     | '/process'
     | '/projects'
+    | '/writing'
     | '/projects/$slug'
     | '/projects/'
   fileRoutesById: FileRoutesById
@@ -126,12 +150,21 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   DesignSystemRoute: typeof DesignSystemRoute
+  PlaygroundRoute: typeof PlaygroundRoute
   ProcessRoute: typeof ProcessRoute
   ProjectsRoute: typeof ProjectsRouteWithChildren
+  WritingRoute: typeof WritingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/writing': {
+      id: '/writing'
+      path: '/writing'
+      fullPath: '/writing'
+      preLoaderRoute: typeof WritingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/projects': {
       id: '/projects'
       path: '/projects'
@@ -144,6 +177,13 @@ declare module '@tanstack/react-router' {
       path: '/process'
       fullPath: '/process'
       preLoaderRoute: typeof ProcessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/playground': {
+      id: '/playground'
+      path: '/playground'
+      fullPath: '/playground'
+      preLoaderRoute: typeof PlaygroundRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/design-system': {
@@ -210,8 +250,10 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   DesignSystemRoute: DesignSystemRoute,
+  PlaygroundRoute: PlaygroundRoute,
   ProcessRoute: ProcessRoute,
   ProjectsRoute: ProjectsRouteWithChildren,
+  WritingRoute: WritingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -485,6 +485,78 @@ function DesignSystem() {
 
         </div>
       </SystemSection>
+
+      {/* 9. Figma Variables Exporter */}
+      <SystemSection
+        id="figma"
+        index="09"
+        label="FIGMA VARIABLES & JSON EXPORT"
+        title="Figma Tokens & W3C DTCG Format."
+        description="Production design tokens formatted for direct import into Figma Variables, Tokens Studio, and Style Dictionary."
+      >
+        <div className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-6 md:p-8 space-y-4">
+          <div className="flex items-center justify-between border-b border-border/20 pb-4">
+            <span className="text-xs font-mono text-accent">design-tokens.tokens.json</span>
+            <button
+              type="button"
+              onClick={() => {
+                const tokenData = {
+                  color: {
+                    canvas: { $value: "#111315", $type: "color" },
+                    section: { $value: "#17191C", $type: "color" },
+                    surface: { $value: "#1E2125", $type: "color" },
+                    accent: {
+                      ivory: { $value: "#F5F0E6", $type: "color" },
+                      lavender: { $value: "#D4C4E8", $type: "color" }
+                    }
+                  },
+                  typography: {
+                    display: { $value: "Fraunces", $type: "fontFamily" },
+                    body: { $value: "Inter", $type: "fontFamily" }
+                  },
+                  spacing: {
+                    base: { $value: "8px", $type: "dimension" }
+                  }
+                };
+                const jsonStr = JSON.stringify(tokenData, null, 2);
+                navigator.clipboard.writeText(jsonStr);
+
+                // Automated File Download
+                const blob = new Blob([jsonStr], { type: "application/json" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "design-tokens.tokens.json";
+                a.click();
+                URL.revokeObjectURL(url);
+              }}
+              className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-3.5 py-1.5 text-xs font-mono text-accent hover:bg-accent/20 transition-colors shadow-sm"
+            >
+              <Copy className="h-3.5 w-3.5" /> Export &amp; Download Tokens (.json)
+            </button>
+          </div>
+          <pre className="font-mono text-xs text-muted-foreground/90 bg-background/50 p-4 rounded-xl border border-border/30 overflow-x-auto">
+{`{
+  "color": {
+    "canvas": { "$value": "#111315", "$type": "color" },
+    "section": { "$value": "#17191C", "$type": "color" },
+    "surface": { "$value": "#1E2125", "$type": "color" },
+    "accent": {
+      "ivory": { "$value": "#F5F0E6", "$type": "color" },
+      "lavender": { "$value": "#D4C4E8", "$type": "color" }
+    }
+  },
+  "typography": {
+    "display": { "$value": "Fraunces", "$type": "fontFamily" },
+    "body": { "$value": "Inter", "$type": "fontFamily" }
+  },
+  "spacing": {
+    "base": { "$value": "8px", "$type": "dimension" }
+  }
+}`}
+          </pre>
+        </div>
+      </SystemSection>
     </PageShell>
   );
 }

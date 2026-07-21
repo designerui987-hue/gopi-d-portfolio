@@ -20,6 +20,9 @@ import {
   Sun,
   Moon,
   Sparkles,
+  Search,
+  BookOpen,
+  Sliders,
 } from "lucide-react";
 import { useRef, useState, useEffect, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -49,6 +52,8 @@ const items = [
   { to: "/projects", label: "Projects", icon: Layers },
   { to: "/process", label: "Process", icon: Workflow },
   { to: "/design-system", label: "System", icon: Palette },
+  { to: "/writing", label: "Writing", icon: BookOpen },
+  { to: "/playground", label: "Lab", icon: Sliders },
   { to: "/about", label: "About", icon: User },
   { to: "/contact", label: "Contact", icon: Mail },
 ] as const;
@@ -238,7 +243,27 @@ export function FloatingNav() {
           <span className="mx-1 h-4 w-px bg-border/35 shrink-0" aria-hidden="true" />
 
           {/* ── Action tools ── */}
-          <div className="flex items-center gap-0.5">
+          <div className="flex items-center gap-1">
+            {/* Command Palette Trigger (Linear / Vercel style) */}
+            <button
+              onClick={() => setPaletteOpen(true)}
+              aria-label="Open command palette (Cmd+K)"
+              className="cursor-pointer"
+            >
+              <MagneticSlot>
+                <motion.div
+                  className="relative flex h-8 items-center justify-center gap-1.5 rounded-full px-2.5 sm:px-3 text-[10px] font-mono font-medium border border-border/40 bg-surface/30 text-muted-foreground hover:text-accent hover:border-accent/40 transition-colors"
+                  whileHover={{ scale: reduced ? 1 : 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={EASE_EDITORIAL}
+                >
+                  <Search className="h-3 w-3 text-accent/80 shrink-0" strokeWidth={1.75} />
+                  <span className="hidden lg:inline text-[9px] uppercase tracking-wider">Search</span>
+                  <kbd className="hidden sm:inline-block rounded border border-border/50 bg-background/50 px-1 py-0.2 text-[8px] text-muted-foreground/80 font-mono">⌘K</kbd>
+                </motion.div>
+              </MagneticSlot>
+            </button>
+
             <a
               href="/neeraj_ui_ux_resume_updaetd_v1_7148.pdf"
               target="_blank"
@@ -258,41 +283,6 @@ export function FloatingNav() {
                 </motion.div>
               </MagneticSlot>
             </a>
-
-            {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className="cursor-pointer"
-            >
-              <MagneticSlot>
-                <motion.div
-                  className="flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground"
-                  whileHover={{ scale: reduced ? 1 : 1.02, color: "var(--foreground)" }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={EASE_EDITORIAL}
-                >
-                  <AnimatePresence mode="wait" initial={false}>
-                    <motion.div
-                      key={theme}
-                      initial={{ opacity: 0, rotate: -15, scale: 0.85 }}
-                      animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                      exit={{ opacity: 0, rotate: 15, scale: 0.85 }}
-                      transition={
-                        reduced ? { duration: 0 } : { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
-                      }
-                      className="absolute flex items-center justify-center"
-                    >
-                      {theme === "dark" ? (
-                        <Sun className="h-4 w-4" strokeWidth={1.75} />
-                      ) : (
-                        <Moon className="h-4 w-4" strokeWidth={1.75} />
-                      )}
-                    </motion.div>
-                  </AnimatePresence>
-                </motion.div>
-              </MagneticSlot>
-            </button>
           </div>
         </motion.nav>
       </motion.div>

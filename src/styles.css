@@ -11,28 +11,58 @@
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
+
+  /* ── Canvas & Surface Tokens ── */
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-canvas: var(--canvas);
+  --color-section: var(--section);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
+
+  /* ── Typography Tokens ── */
+  --color-foreground: var(--foreground);
+  --color-heading-primary: var(--heading-primary);
+  --color-heading-secondary: var(--heading-secondary);
+  --color-body-text: var(--body-text);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
+  --color-disabled-text: var(--disabled-text);
+
+  /* ── Buttons & CTAs ── */
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-hover: var(--secondary-hover);
+
+  /* ── Dual Accent System (Primary: Warm Ivory | Secondary: Soft Lavender) ── */
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-hover: var(--accent-hover);
   --color-accent-soft: var(--accent-soft);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent-lavender: var(--accent-lavender);
+
+  /* ── Borders & Dividers ── */
   --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-divider: var(--divider);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-surface: var(--surface);
-  --color-surface-elevated: var(--surface-elevated);
+
+  /* ── Feedback & State Tokens ── */
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+
+  /* ── Fonts & Shadows ── */
   --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --shadow-soft: var(--shadow-soft);
@@ -43,88 +73,124 @@
 :root {
   --radius: 1.25rem;
 
-  /* Ergonomic Dark Mode Palette: Warm Charcoal Canvas (Apple / Vercel / Linear inspired) */
-  --background: oklch(0.14 0.005 60);         /* Warm Charcoal Canvas (#161618) */
-  --foreground: oklch(0.96 0.004 85);         /* Crisp Warm Off-White (#f5f5f4) */
+  /* ── MIDNIGHT OCEAN DESIGN SYSTEM TOKENS (Google DeepMind, OpenAI, Anthropic, Stripe, Linear & Vercel Inspired) ── */
+  --canvas: #08131F;                          /* Level 1: Deep Midnight Ocean Canvas (#08131F) */
+  --background: var(--canvas);
+  --section: #111E2C;                         /* Level 2: Ocean Surface (#111E2C) */
+  --surface: #17273A;                         /* Level 3: Ocean Surface Alt Card (#17273A) */
+  --surface-elevated: #203247;                /* Level 4: Surface Hover / Interactive (#203247) */
 
-  --surface: oklch(0.17 0.006 60);            /* Card Surface (#1e1e21) */
-  --surface-elevated: oklch(0.21 0.007 60);   /* Elevated Surface (#28282c) */
+  --card: var(--surface);
+  --card-foreground: #F8FAFC;
+  --popover: var(--surface-elevated);
+  --popover-foreground: #F8FAFC;
 
-  --card: oklch(0.17 0.006 60);
-  --card-foreground: oklch(0.96 0.004 85);
-  --popover: oklch(0.18 0.006 60);
-  --popover-foreground: oklch(0.96 0.004 85);
+  /* Typography Hierarchy (High Contrast Cool Neutrals) */
+  --heading-primary: #F8FAFC;                  /* Primary Text: High-Contrast Ivory (#F8FAFC — 17.1:1 Contrast) */
+  --foreground: var(--heading-primary);
+  --heading-secondary: #C4D0E3;                /* Secondary Text: Cool Pearl Blue (#C4D0E3) */
+  --body-text: #C4D0E3;                        /* Body Text (#C4D0E3) */
+  --muted: #111E2C;
+  --muted-foreground: #8A98AC;                 /* Muted Text: Ocean Slate (#8A98AC) */
+  --disabled-text: #4C5A6E;
 
-  /* Primary action highlights */
-  --primary: oklch(0.96 0.004 85);
-  --primary-foreground: oklch(0.14 0.005 60);
+  /* Primary Brand Accent: Bright Ocean Blue (#61A8FF) */
+  --accent: #61A8FF;                           /* Primary Brand Accent: Bright Ocean Blue (#61A8FF) */
+  --accent-foreground: #08131F;
+  --accent-soft: rgba(97, 168, 255, 0.10);
+  --accent-lavender: #7DB9FF;                  /* Hover Accent: Luminous Ocean Blue (#7DB9FF) */
+  --accent-hover: #7DB9FF;                     /* Hover State (#7DB9FF) */
+  --accent-teal: #7EE7D8;                      /* Secondary Accent: Soft Teal (#7EE7D8 — used sparingly) */
 
-  --secondary: oklch(0.20 0.006 60);
-  --secondary-foreground: oklch(0.96 0.004 85);
+  /* Button System */
+  --primary: #F8FAFC;                          /* Primary Button Fill: Cool Ivory */
+  --primary-foreground: #08131F;              /* Deep Midnight Text */
+  --primary-hover: #FFFFFF;                    /* Luminous White Hover */
 
-  --muted: oklch(0.19 0.006 60);
-  --muted-foreground: oklch(0.78 0.006 85);   /* Ergonomic high-comfort body copy contrast */
+  --secondary: transparent;                   /* Secondary Button: Transparent */
+  --secondary-foreground: #F8FAFC;
+  --secondary-hover: #203247;
 
-  /* Luxury Champagne Gold Accent (Restrained & Reserved) */
-  --accent: oklch(0.82 0.11 75);
-  --accent-foreground: oklch(0.14 0.005 60);
-  --accent-soft: oklch(0.74 0.09 75);
+  /* Hairline Borders & Dividers */
+  --border: #27384B;                          /* Hairline Border (#27384B) */
+  --border-hover: rgba(97, 168, 255, 0.45);   /* Interactive Ocean Blue Border */
+  --divider: #182839;                         /* Subtle Hairline Divider (#182839) */
+  --input: #17273A;
+  --ring: rgba(97, 168, 255, 0.45);           /* Focus Ring: Ocean Blue Glow */
 
-  --destructive: oklch(0.62 0.22 27);
-  --destructive-foreground: oklch(0.96 0.004 85);
+  /* Feedback & State Tokens */
+  --success: #49D17D;                         /* Ocean Mint Green (#49D17D) */
+  --warning: #F2BE5C;                         /* Ocean Amber (#F2BE5C) */
+  --error: #F46B6B;                           /* Coral Red (#F46B6B) */
+  --destructive: var(--error);
+  --destructive-foreground: #F8FAFC;
+  --info: #61A8FF;
 
-  --border: oklch(0.24 0.005 60 / 0.4);       /* Soft subtle layered border */
-  --input: oklch(0.22 0.005 60);
-  --ring: oklch(0.82 0.11 75);
+  /* Soft Layered Ambient Lighting System (DeepMind & OpenAI Inspired Glows) */
+  --shadow-soft: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 20px rgba(0, 0, 0, 0.40);
+  --shadow-float: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 10px 40px rgba(0, 0, 0, 0.50);
+  --shadow-premium: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 20px 80px rgba(0, 0, 0, 0.65);
 
-  --shadow-soft: 0 4px 20px oklch(0 0 0 / 0.15);
-  --shadow-float: 0 10px 40px oklch(0 0 0 / 0.25);
-  --shadow-premium: 0 20px 80px oklch(0 0 0 / 0.35);
-
-  /* Atmospheric ambient background glows */
-  --glow-1: radial-gradient(circle, oklch(0.82 0.11 75 / 0.07), transparent 70%);
-  --glow-2: radial-gradient(circle, oklch(0.68 0.08 190 / 0.05), transparent 70%);
+  --glow-hero: radial-gradient(circle, rgba(97, 168, 255, 0.045), transparent 70%);       /* Subtle Ocean Blue Glow near Hero */
+  --glow-cta: radial-gradient(circle, rgba(248, 250, 252, 0.04), transparent 70%);        /* Cool Ivory Glow near CTA */
+  --glow-ambient: radial-gradient(circle, rgba(126, 231, 216, 0.025), transparent 70%);   /* Soft Teal Ambient Highlight */
 }
 
 .light {
-  /* Premium Light Palette: Warm editorial book paper background */
-  --background: oklch(0.97 0.006 75);
-  --foreground: oklch(0.18 0.006 75);
+  /* ── LUXURY LIGHT EDITORIAL PALETTE ── */
+  --canvas: oklch(0.982 0.004 80);
+  --background: var(--canvas);
+  --section: oklch(0.965 0.005 80);
+  --surface: oklch(0.94 0.006 80);
+  --surface-elevated: oklch(0.90 0.007 80);
 
-  --surface: oklch(0.94 0.008 75);
-  --surface-elevated: oklch(0.91 0.008 75);
-
-  --card: oklch(0.94 0.008 75);
+  --card: var(--surface);
   --card-foreground: oklch(0.18 0.006 75);
-  --popover: oklch(0.95 0.008 75);
+  --popover: var(--surface);
   --popover-foreground: oklch(0.18 0.006 75);
 
-  --primary: oklch(0.18 0.006 75);
-  --primary-foreground: oklch(0.97 0.006 75);
-
-  --secondary: oklch(0.88 0.01 75);
-  --secondary-foreground: oklch(0.18 0.006 75);
-
+  --heading-primary: oklch(0.16 0.006 75);
+  --foreground: var(--heading-primary);
+  --heading-secondary: oklch(0.28 0.007 75);
+  --body-text: oklch(0.35 0.008 75);
   --muted: oklch(0.92 0.008 75);
-  --muted-foreground: oklch(0.44 0.01 75);
+  --muted-foreground: oklch(0.50 0.009 75);
+  --disabled-text: oklch(0.70 0.008 75);
 
-  --accent: oklch(0.55 0.16 45);
-  --accent-foreground: oklch(0.97 0.006 75);
-  --accent-soft: oklch(0.48 0.14 45);
+  --primary: oklch(0.16 0.006 75);
+  --primary-foreground: oklch(0.982 0.004 80);
+  --primary-hover: oklch(0.25 0.008 75);
 
-  --destructive: oklch(0.58 0.20 27);
-  --destructive-foreground: oklch(0.97 0.006 75);
+  --secondary: oklch(0.90 0.007 80);
+  --secondary-foreground: oklch(0.16 0.006 75);
+  --secondary-hover: oklch(0.85 0.008 80);
 
-  --border: oklch(0.84 0.01 75);
-  --input: oklch(0.84 0.01 75);
-  --ring: oklch(0.55 0.16 45);
+  --accent: oklch(0.28 0.007 75);
+  --accent-foreground: oklch(0.982 0.004 80);
+  --accent-lavender: oklch(0.55 0.12 300);
+  --accent-hover: oklch(0.55 0.12 300);
+  --accent-soft: oklch(0.55 0.12 300 / 0.08);
+
+  --border: oklch(0 0 0 / 0.08);
+  --border-hover: oklch(0.55 0.12 300 / 0.35);
+  --divider: oklch(0 0 0 / 0.05);
+  --input: oklch(0.88 0.01 75);
+  --ring: oklch(0.55 0.12 300);
+
+  --success: oklch(0.50 0.16 142);
+  --warning: oklch(0.58 0.16 75);
+  --error: oklch(0.52 0.22 25);
+  --destructive: var(--error);
+  --destructive-foreground: oklch(0.982 0.004 80);
+  --info: oklch(0.50 0.18 245);
 
   --shadow-soft: 0 4px 20px oklch(0.18 0.006 75 / 0.05);
   --shadow-float: 0 10px 40px oklch(0.18 0.006 75 / 0.08);
   --shadow-premium: 0 20px 80px oklch(0.18 0.006 75 / 0.12);
 
-  --glow-1: radial-gradient(circle, oklch(0.55 0.16 45 / 0.05), transparent 70%);
-  --glow-2: radial-gradient(circle, oklch(0.6 0.08 240 / 0.03), transparent 70%);
+  --glow-hero: radial-gradient(circle, oklch(0.50 0.18 245 / 0.025), transparent 70%);
+  --glow-cta: radial-gradient(circle, oklch(0.28 0.007 75 / 0.03), transparent 70%);
+  --glow-ambient: radial-gradient(circle, oklch(0.55 0.12 300 / 0.02), transparent 70%);
 }
 
 @layer base {
@@ -153,7 +219,7 @@
     border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-accent-soft);
+    background: var(--color-accent-lavender);
   }
 
   /* Soft Global Noise Texture */
@@ -163,7 +229,7 @@
     width: 100%;
     height: 100%;
     content: "";
-    opacity: 0.012;
+    opacity: 0.010;
     pointer-events: none;
     z-index: 99999;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
@@ -178,14 +244,15 @@
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--color-canvas);
+    color: var(--color-body-text);
     font-feature-settings: "ss01", "cv11";
     transition: background-color 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   p, article, li {
     text-rendering: optimizeLegibility;
+    color: var(--color-body-text);
   }
 
   .bg-surface, .bg-surface-elevated, .border-border, .border-border\/70, .border, input, textarea, button, a {
@@ -194,6 +261,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+    color: var(--color-heading-primary);
     letter-spacing: -0.04em;
     font-weight: 500;
     font-optical-sizing: auto;
@@ -222,23 +290,24 @@
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--accent) 30%, transparent);
-    color: var(--foreground);
+    background: rgba(212, 196, 232, 0.22);
+    color: var(--color-heading-primary);
   }
 }
 
-/* Glassmorphism Panel */
+/* Glassmorphism Panel & Illuminated Card Surface System */
 @utility glass-panel {
-  background: color-mix(in oklab, var(--color-surface) 65%, transparent);
+  background: linear-gradient(180deg, rgba(30, 33, 37, 0.70) 0%, rgba(20, 22, 26, 0.85) 100%);
   backdrop-filter: blur(24px) saturate(1.1);
-  border: 1px solid color-mix(in oklab, var(--color-border) 35%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 24px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* Subtle background grid texture (barely visible while reading) */
+/* Subtle background grid texture (barely visible texture) */
 @utility grid-bg {
   background-image:
-    linear-gradient(to right, oklch(1 0 0 / 0.012) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(1 0 0 / 0.012) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 
@@ -254,6 +323,6 @@
   border-radius: 9999px;
   filter: blur(140px);
   pointer-events: none;
-  opacity: 0.08;
+  opacity: 0.05;
   mix-blend-mode: screen;
 }

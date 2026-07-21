@@ -179,107 +179,59 @@ function Home() {
           </span>
         </div>
 
-        <div className="relative z-10 max-w-6xl space-y-8 sm:space-y-10">
+        <div className="relative z-10 max-w-6xl space-y-12">
 
-          {/* Top Editorial Label Bar */}
-          <FadeUp delay={0.15} className="flex flex-wrap items-center justify-between gap-3 border-b border-border/20 pb-4 sm:pb-5">
-            <div className="flex items-center gap-2.5 sm:gap-3">
-              <span className="font-mono text-xs font-semibold text-accent">01</span>
-              <span className="h-3 w-px bg-border/40" />
-              <div className="relative h-6 w-6 sm:h-7 sm:w-7 shrink-0 overflow-hidden rounded-full border border-accent/40 shadow-sm">
+          {/* Top Minimal Status Bar */}
+          <FadeUp delay={0.15} className="flex flex-wrap items-center justify-between gap-4 border-b border-border/20 pb-6">
+            <div className="flex items-center gap-3">
+              <div className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full border border-accent/40 shadow-sm">
                 <img src="/neeraj.jpg" alt="Gopi Neeraj Kumar" className="h-full w-full object-cover" />
               </div>
-              <span className="text-xs font-mono text-foreground/90 font-medium">Gopi Neeraj Kumar</span>
+              <span className="text-xs font-mono text-foreground font-semibold">Gopi Neeraj Kumar</span>
+              <span className="text-muted-foreground/30 font-mono text-xs">&middot;</span>
+              <span className="text-xs font-mono text-muted-foreground">UI/UX Product Designer</span>
             </div>
 
-            <div className="flex items-center gap-2 sm:gap-3 text-[8px] sm:text-[9px] font-mono uppercase tracking-[0.28em] sm:tracking-[0.35em] text-accent/90 font-semibold">
-              <span>PRODUCT DESIGNER</span>
-              <span className="text-accent/30">&middot;</span>
-              <span>2026 PORTFOLIO</span>
-              <span className="hidden sm:inline-block text-accent/30">&middot;</span>
-              <span className="hidden sm:inline-block text-muted-foreground/70">AVAILABLE FOR OPPORTUNITIES</span>
+            <div className="flex items-center gap-2 rounded-full border border-accent/30 bg-accent/10 px-3 py-1 text-[10px] font-mono text-accent font-semibold">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+              AVAILABLE FOR NEW ROLES
             </div>
           </FadeUp>
 
-          {/* Main Display Headline (Intentional Broken Rhythm & Serif Contrast) */}
-          <div className="space-y-4 max-w-5xl">
+          {/* Main Display Headline (96px-120px Apple x Linear Editorial Scale) */}
+          <div className="space-y-6 max-w-5xl">
             <FadeUp delay={0.35}>
-              <h1 className="font-display text-[2.1rem] sm:text-5xl md:text-7xl lg:text-[5.2rem] xl:text-[5.8rem] tracking-tight text-foreground font-light leading-[0.94] select-none">
-                Designing <span className="text-accent italic font-normal">calm</span> digital<br />
-                experiences for<br />
-                complex workflows.
+              <h1 className="font-display text-[2.75rem] sm:text-6xl md:text-8xl lg:text-[6.5rem] xl:text-[7.5rem] tracking-tight text-foreground font-light leading-[0.92] select-none">
+                Designing <span className="text-accent italic font-normal">calm</span> products for complex systems.
               </h1>
             </FadeUp>
-          </div>
 
-          {/* Asymmetric 2-Column Positioning & Editorial Caption */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end pt-2">
-            <FadeUp delay={0.65} y={16} className="lg:col-span-7 space-y-4">
-              <p className="text-sm sm:text-base md:text-lg leading-[1.75] text-muted-foreground font-light max-w-xl">
-                I translate complex business requirements into calm, structured digital interfaces.{" "}
-                <span className="text-foreground/90">Designing products through UX strategy, interface design, interaction design, and scalable design systems so software feels quiet, effortless, and clear.</span>
+            <FadeUp delay={0.55}>
+              <p className="text-base sm:text-lg md:text-xl leading-relaxed text-muted-foreground font-light max-w-2xl pt-2">
+                I translate complex business requirements into clear, quiet digital interfaces through UX strategy, design systems, and functional frontend logic.
               </p>
             </FadeUp>
-
-            <FadeUp delay={0.85} y={16} className="lg:col-span-5 hidden lg:block">
-              <div className="rounded-2xl border border-border/30 bg-surface/15 backdrop-blur-sm p-6 space-y-3 shadow-[var(--shadow-soft)]">
-                <div className="flex items-center justify-between text-[9px] font-mono uppercase tracking-[0.25em] text-accent font-semibold border-b border-border/20 pb-2">
-                  <span>DESIGN PHILOSOPHY</span>
-                  <span>01 / 06</span>
-                </div>
-                <p className="text-xs text-muted-foreground/90 font-light leading-relaxed">
-                  Usability over noise. Systems over isolated screens. Predictability as the core product metric.
-                </p>
-              </div>
-            </FadeUp>
           </div>
 
-          {/* Two Distinct CTA Journeys & Supporting Links */}
-          <FadeUp delay={1.05} y={14} className="flex flex-wrap items-center gap-3.5 sm:gap-4 pt-4 border-t border-border/20">
-            {/* Primary Journey CTA */}
+          {/* Single High-Impact Action Bar */}
+          <FadeUp delay={0.75} className="flex flex-wrap items-center gap-6 pt-4 border-t border-border/20">
             <Magnetic strength={0.2}>
               <Link
-                to="/projects"
-                className="group inline-flex items-center gap-3 rounded-full bg-accent px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold text-accent-foreground shadow-[0_4px_20px_rgb(220,120,80,0.15)] transition-all duration-300 hover:scale-[1.01] hover:shadow-[0_8px_30px_rgb(220,120,80,0.25)] active:scale-[0.98]"
+                to="/projects/$slug"
+                params={{ slug: "stockai" }}
+                className="group inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-sm font-semibold text-accent-foreground transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_8px_30px_rgba(97,168,255,0.25)] active:scale-[0.98]"
               >
-                <span>Explore Selected Work</span>
+                <span>View Flagship Case Study</span>
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
             </Magnetic>
 
-            {/* Secondary Journey CTA */}
-            <Magnetic strength={0.2}>
-              <Link
-                to="/about"
-                className="group inline-flex items-center gap-2 rounded-full border border-border/40 px-5 sm:px-7 py-3.5 sm:py-4 text-xs sm:text-sm font-medium text-muted-foreground bg-surface/20 backdrop-blur-sm transition-all duration-300 hover:scale-[1.01] hover:text-foreground hover:border-accent/40 hover:bg-surface/35 active:scale-[0.98]"
-              >
-                <span>Read My Design Philosophy</span>
-                <ArrowUpRight className="h-4 w-4 text-accent transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-            </Magnetic>
-
-            {/* Additional Direct Channels */}
-            <div className="flex items-center gap-3.5 sm:gap-4 sm:ml-auto text-xs font-mono text-muted-foreground pt-2 sm:pt-0">
-              <a
-                href={LINKEDIN_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
-              >
-                <Linkedin className="h-3.5 w-3.5 text-accent" />
-                <span>LinkedIn</span>
-              </a>
-              <span className="text-border">&middot;</span>
-              <a
-                href={RESUME_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
-              >
-                <FileDown className="h-3.5 w-3.5 text-accent" />
-                <span>Resume</span>
-              </a>
-            </div>
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 text-xs font-mono text-muted-foreground hover:text-accent transition-colors"
+            >
+              <span>Read Design Philosophy &rarr;</span>
+            </Link>
           </FadeUp>
 
         </div>
@@ -327,6 +279,46 @@ function Home() {
                 </div>
               ))}
             </StatsScrollReveal>
+          </div>
+        </section>
+
+        {/* ─── GOOGLE UX CORE CAPABILITY MATRIX ─── */}
+        <section className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 md:p-10 space-y-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border/20 pb-5">
+            <div>
+              <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-accent font-semibold block">
+                GOOGLE UX COMPETENCY ALIGNMENT
+              </span>
+              <h3 className="font-display text-2xl md:text-3xl text-foreground font-light tracking-tight mt-1">
+                Product thinking first, visual excellence second.
+              </h3>
+            </div>
+            <span className="text-xs font-mono text-muted-foreground/70">
+              6 CORE UX PILLARS
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { title: "Systems & Tokens", desc: "Tokenized Figma variables, auto-layout variants, and component specifications." },
+              { title: "Research & Journey Mapping", desc: "Problem framing, user mental models, and qualitative synthesis." },
+              { title: "Complex Workflows", desc: "Enterprise dashboards, information architecture, and low cognitive load." },
+              { title: "Engineering Partnership", desc: "CSS layout boundaries, component state management, and clear developer handoffs." },
+              { title: "Accessibility (WCAG AA)", desc: "High-contrast color tokens (>4.5:1), keyboard focus rings, and reduced motion." },
+              { title: "Usability & Metrics", desc: "Data-backed decision logs, user confidence scores, and shipped product releases." },
+            ].map((p, idx) => (
+              <div
+                key={p.title}
+                className="rounded-2xl border border-border/30 bg-background/30 p-5 space-y-2 hover:border-accent/30 transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-semibold text-accent">0{idx + 1}</span>
+                  <CheckCircle2 className="h-3.5 w-3.5 text-accent/80" />
+                </div>
+                <h4 className="font-display text-lg text-foreground font-medium">{p.title}</h4>
+                <p className="text-xs text-muted-foreground font-light leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -451,6 +443,47 @@ function Home() {
               </motion.div>
             </div>
           </Reveal>
+        </section>
+
+        {/* ─── CHAPTER 06: Writing & Experimental Lab Teaser ─── */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-border/20 pt-16">
+          <div className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 space-y-4 hover:border-accent/40 transition-colors">
+            <div className="flex items-center justify-between border-b border-border/20 pb-3">
+              <span className="font-mono text-xs text-accent">CHAPTER 06 · WRITING</span>
+              <span className="text-[9px] font-mono uppercase tracking-wider text-muted-foreground/60">ESSAYS</span>
+            </div>
+            <h3 className="font-display text-2xl text-foreground font-light tracking-tight">
+              On calm software &amp; product craft.
+            </h3>
+            <p className="text-xs text-muted-foreground font-light leading-relaxed">
+              Read editorial thoughts on quiet software, tokenized design systems, and bridging design with code.
+            </p>
+            <Link
+              to="/writing"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-accent hover:underline pt-2"
+            >
+              Explore Essays &rarr;
+            </Link>
+          </div>
+
+          <div className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 space-y-4 hover:border-accent/40 transition-colors">
+            <div className="flex items-center justify-between border-b border-border/20 pb-3">
+              <span className="font-mono text-xs text-accent">CHAPTER 07 · LAB</span>
+              <span className="text-[9px] font-mono uppercase tracking-wider text-muted-foreground/60">PROTOTYPES</span>
+            </div>
+            <h3 className="font-display text-2xl text-foreground font-light tracking-tight">
+              Micro-interactions &amp; visual explorations.
+            </h3>
+            <p className="text-xs text-muted-foreground font-light leading-relaxed">
+              Test live interactive UI components, sparkline data density widgets, and design system token matrixes.
+            </p>
+            <Link
+              to="/playground"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-accent hover:underline pt-2"
+            >
+              Enter Lab &rarr;
+            </Link>
+          </div>
         </section>
 
         {/* ─── CHAPTER 06: Climax CTA & Studio Footer (Why contact me?) ─── */}
