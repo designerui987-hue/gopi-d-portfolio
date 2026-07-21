@@ -73,69 +73,66 @@
 :root {
   --radius: 1.25rem;
 
-  /* ── ATMOSPHERIC EDITORIAL STUDIO PALETTE (Apple, Linear, Vercel Inspired) ── */
-  /* Surface System: 4 Illuminated Depth Levels */
-  --canvas: #111315;                          /* Level 1: Canvas Background (#111315) */
+  /* ── JAPANESE LUXURY WABI-SABI STUDIO PALETTE (MUJI, Aesop, Kinfolk, Sony Design Inspired) ── */
+  --canvas: #151515;                          /* Deep Charcoal Ink Canvas (#151515) */
   --background: var(--canvas);
-  --section: #17191C;                         /* Level 2: Section Surface (#17191C) */
-  --surface: #1E2125;                         /* Level 3: Card Surface (#1E2125) */
-  --surface-elevated: #262A2F;                /* Level 4: Interactive Surface (#262A2F) */
+  --section: #202020;                         /* Tatami Shadow Surface (#202020) */
+  --surface: #1D1D1D;                         /* Charcoal Paper Card (#1D1D1D) */
+  --surface-elevated: #272727;                /* Washi Matte Elevated (#272727) */
 
   --card: var(--surface);
-  --card-foreground: #F5F0E6;
-  --popover: var(--surface);
-  --popover-foreground: #F5F0E6;
+  --card-foreground: #F4F0E8;
+  --popover: var(--surface-elevated);
+  --popover-foreground: #F4F0E8;
 
   /* Typography Hierarchy */
-  --heading-primary: #F5F0E6;                  /* Primary Text: Warm Ivory (#F5F0E6) */
+  --heading-primary: #F4F0E8;                  /* Washi Warm Ivory (#F4F0E8) */
   --foreground: var(--heading-primary);
-  --heading-secondary: #C9C5BD;                /* Secondary Text: Soft Pearl (#C9C5BD) */
-  --body-text: #C9C5BD;                        /* Body Text (#C9C5BD) */
-  --muted: #17191C;
-  --muted-foreground: #9B9892;                 /* Muted Text (#9B9892) */
-  --disabled-text: #5C5A55;
+  --heading-secondary: #C7B9A5;                /* Soft Cedar Wood (#C7B9A5) */
+  --body-text: #C7B9A5;                        /* Body Text (#C7B9A5) */
+  --muted: #202020;
+  --muted-foreground: #9A948A;                 /* Japanese Moss / Stone Gray (#9A948A) */
+  --disabled-text: #5A554E;
 
-  /* Primary Accent: Warm Ivory */
-  --accent: #F5F0E6;                           /* Primary Accent: Warm Ivory (#F5F0E6) */
-  --accent-foreground: #111315;
-  --accent-soft: rgba(245, 240, 230, 0.08);
-
-  /* Secondary Accent: Soft Lavender (Reserved strictly for hover, active nav & micro-interactions) */
-  --accent-lavender: #D4C4E8;                  /* Soft Lavender (#D4C4E8) */
-  --accent-hover: #D4C4E8;                     /* Hover Shift: Soft Lavender (#D4C4E8) */
+  /* Accent: Warm Clay / Cedar Terra (#A47149) */
+  --accent: #A47149;                           /* Warm Clay Accent (#A47149) */
+  --accent-foreground: #151515;
+  --accent-soft: rgba(164, 113, 73, 0.12);
+  --accent-lavender: #B98459;                  /* Luminous Warm Amber Clay (#B98459) */
+  --accent-hover: #B98459;                     /* Hover Shift (#B98459) */
 
   /* Button System */
-  --primary: #F5F0E6;                          /* Primary Button Fill: Warm Ivory */
-  --primary-foreground: #111315;              /* Dark Graphite Text */
-  --primary-hover: #FFF9EF;                    /* Luminous Hover */
+  --primary: #F4F0E8;                          /* Primary Button Fill: Washi Warm Ivory */
+  --primary-foreground: #151515;              /* Dark Charcoal Text */
+  --primary-hover: #FFFFFF;                    /* Luminous White Hover */
 
   --secondary: transparent;                   /* Secondary Button: Transparent */
-  --secondary-foreground: #F5F0E6;
-  --secondary-hover: #262A2F;
+  --secondary-foreground: #F4F0E8;
+  --secondary-hover: #272727;
 
   /* Borders & Hairline Dividers */
-  --border: rgba(255, 255, 255, 0.08);        /* Soft Tonal Border */
-  --border-hover: rgba(212, 196, 232, 0.35);  /* Interactive Lavender Accent Border */
-  --divider: rgba(255, 255, 255, 0.05);       /* Hairline Divider */
-  --input: #1E2125;
-  --ring: #D4C4E8;                            /* Focus Ring: Soft Lavender */
+  --border: #343434;                          /* Soft Charcoal Hairline (#343434) */
+  --border-hover: rgba(164, 113, 73, 0.45);   /* Interactive Warm Clay Accent Border */
+  --divider: #2A2A2A;                         /* Subtle Ink Line (#2A2A2A) */
+  --input: #1D1D1D;
+  --ring: rgba(164, 113, 73, 0.45);           /* Focus Ring: Warm Clay (#A47149) */
 
   /* Feedback & State Tokens */
-  --success: #6AAE8D;
-  --warning: #D4A44F;
-  --error: #D66C6C;
+  --success: #6E8F74;                         /* Bamboo Green (#6E8F74) */
+  --warning: #C79B52;                         /* Golden Amber (#C79B52) */
+  --error: #B45B5B;                           /* Crimson Ink (#B45B5B) */
   --destructive: var(--error);
-  --destructive-foreground: #F5F0E6;
-  --info: #78A9FF;
+  --destructive-foreground: #F4F0E8;
+  --info: #A47149;
 
-  /* Atmospheric Radial Lighting System (Low Opacity, No Visible Blobs) */
-  --shadow-soft: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 24px rgba(0, 0, 0, 0.22);
-  --shadow-float: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 10px 40px rgba(0, 0, 0, 0.32);
-  --shadow-premium: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 20px 80px rgba(0, 0, 0, 0.45);
+  /* Soft Ambient Lighting System (Wabi-Sabi Shadows & Low Opacity Glows) */
+  --shadow-soft: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 4px 20px rgba(0, 0, 0, 0.35);
+  --shadow-float: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 10px 40px rgba(0, 0, 0, 0.45);
+  --shadow-premium: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 20px 80px rgba(0, 0, 0, 0.60);
 
-  --glow-hero: radial-gradient(circle, rgba(120, 169, 255, 0.035), transparent 70%);     /* Subtle Cool Sapphire near Hero */
-  --glow-cta: radial-gradient(circle, rgba(245, 240, 230, 0.045), transparent 70%);      /* Warm Ivory near CTA */
-  --glow-ambient: radial-gradient(circle, rgba(212, 196, 232, 0.025), transparent 70%);  /* Soft Ambient Lavender */
+  --glow-hero: radial-gradient(circle, rgba(164, 113, 73, 0.04), transparent 70%);       /* Subtle Warm Clay near Hero */
+  --glow-cta: radial-gradient(circle, rgba(244, 240, 232, 0.04), transparent 70%);       /* Washi Warm Ivory near CTA */
+  --glow-ambient: radial-gradient(circle, rgba(185, 132, 89, 0.025), transparent 70%);   /* Soft Cedar Glow */
 }
 
 .light {
