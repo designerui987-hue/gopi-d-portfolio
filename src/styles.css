@@ -73,67 +73,67 @@
 :root {
   --radius: 1.25rem;
 
-  /* ── ATELIER EMERALD DESIGN SYSTEM TOKENS (90% Neutral Charcoal/Ivory + Emerald Accent + Sparingly Gold Highlights) ── */
-  --canvas: #121417;                          /* Level 1: Deep Obsidian Charcoal Canvas (#121417) */
+  /* ── MIDNIGHT OCEAN DESIGN SYSTEM TOKENS (Google DeepMind, OpenAI, Anthropic, Stripe, Linear & Vercel Inspired) ── */
+  --canvas: #08131F;                          /* Level 1: Deep Midnight Ocean Canvas (#08131F) */
   --background: var(--canvas);
-  --section: #181B1F;                         /* Level 2: Studio Section Surface (#181B1F) */
-  --surface: #1E2228;                         /* Level 3: Atelier Card Surface (#1E2228) */
-  --surface-elevated: #262B32;                /* Level 4: Interactive Elevated Surface (#262B32) */
+  --section: #111E2C;                         /* Level 2: Ocean Surface (#111E2C) */
+  --surface: #17273A;                         /* Level 3: Ocean Surface Alt Card (#17273A) */
+  --surface-elevated: #203247;                /* Level 4: Surface Hover / Interactive (#203247) */
 
   --card: var(--surface);
-  --card-foreground: #F6F4EF;
+  --card-foreground: #F8FAFC;
   --popover: var(--surface-elevated);
-  --popover-foreground: #F6F4EF;
+  --popover-foreground: #F8FAFC;
 
-  /* Typography Hierarchy (90% Neutral Washi Ivory & Slate) */
-  --heading-primary: #F6F4EF;                  /* Primary Text: Washi Ivory (#F6F4EF — 16.5:1 Contrast) */
+  /* Typography Hierarchy (High Contrast Cool Neutrals) */
+  --heading-primary: #F8FAFC;                  /* Primary Text: High-Contrast Ivory (#F8FAFC — 17.1:1 Contrast) */
   --foreground: var(--heading-primary);
-  --heading-secondary: #C8C4BC;                /* Secondary Text: Pearl Gray (#C8C4BC) */
-  --body-text: #C8C8C4BC;                        /* Body Text (#C8C4BC) */
-  --muted: #181B1F;
-  --muted-foreground: #949088;                 /* Muted Text: Studio Slate (#949088) */
-  --disabled-text: #545860;
+  --heading-secondary: #C4D0E3;                /* Secondary Text: Cool Pearl Blue (#C4D0E3) */
+  --body-text: #C4D0E3;                        /* Body Text (#C4D0E3) */
+  --muted: #111E2C;
+  --muted-foreground: #8A98AC;                 /* Muted Text: Ocean Slate (#8A98AC) */
+  --disabled-text: #4C5A6E;
 
-  /* Primary Brand Accent: Atelier Emerald (#10B981 / #34D399) */
-  --accent: #34D399;                           /* Primary Brand Accent: Atelier Emerald (#34D399) */
-  --accent-foreground: #121417;
-  --accent-soft: rgba(52, 211, 153, 0.10);
-  --accent-lavender: #10B981;                  /* Deep Emerald (#10B981) */
-  --accent-hover: #10B981;                     /* Hover State: Deep Emerald (#10B981) */
-  --accent-gold: #D4AF37;                      /* Atelier Gold Highlight (Used sparingly for premium metrics) */
+  /* Primary Brand Accent: Bright Ocean Blue (#61A8FF) */
+  --accent: #61A8FF;                           /* Primary Brand Accent: Bright Ocean Blue (#61A8FF) */
+  --accent-foreground: #08131F;
+  --accent-soft: rgba(97, 168, 255, 0.10);
+  --accent-lavender: #7DB9FF;                  /* Hover Accent: Luminous Ocean Blue (#7DB9FF) */
+  --accent-hover: #7DB9FF;                     /* Hover State (#7DB9FF) */
+  --accent-teal: #7EE7D8;                      /* Secondary Accent: Soft Teal (#7EE7D8 — used sparingly) */
 
   /* Button System */
-  --primary: #F6F4EF;                          /* Primary Button Fill: Washi Ivory */
-  --primary-foreground: #121417;              /* Deep Obsidian Charcoal Text */
+  --primary: #F8FAFC;                          /* Primary Button Fill: Cool Ivory */
+  --primary-foreground: #08131F;              /* Deep Midnight Text */
   --primary-hover: #FFFFFF;                    /* Luminous White Hover */
 
   --secondary: transparent;                   /* Secondary Button: Transparent */
-  --secondary-foreground: #F6F4EF;
-  --secondary-hover: #262B32;
+  --secondary-foreground: #F8FAFC;
+  --secondary-hover: #203247;
 
   /* Hairline Borders & Dividers */
-  --border: #2E343D;                          /* Hairline Charcoal Border (#2E343D) */
-  --border-hover: rgba(52, 211, 153, 0.40);   /* Interactive Atelier Emerald Border */
-  --divider: #22262E;                         /* Subtle Hairline Divider (#22262E) */
-  --input: #1E2228;
-  --ring: rgba(52, 211, 153, 0.45);           /* Focus Ring: Emerald Glow */
+  --border: #27384B;                          /* Hairline Border (#27384B) */
+  --border-hover: rgba(97, 168, 255, 0.45);   /* Interactive Ocean Blue Border */
+  --divider: #182839;                         /* Subtle Hairline Divider (#182839) */
+  --input: #17273A;
+  --ring: rgba(97, 168, 255, 0.45);           /* Focus Ring: Ocean Blue Glow */
 
   /* Feedback & State Tokens */
-  --success: #34D399;                         /* Emerald Green (#34D399) */
-  --warning: #F59E0B;                         /* Amber Gold (#F59E0B) */
-  --error: #EF4444;                           /* Rose Red (#EF4444) */
+  --success: #49D17D;                         /* Ocean Mint Green (#49D17D) */
+  --warning: #F2BE5C;                         /* Ocean Amber (#F2BE5C) */
+  --error: #F46B6B;                           /* Coral Red (#F46B6B) */
   --destructive: var(--error);
-  --destructive-foreground: #F6F4EF;
-  --info: #60A5FA;
+  --destructive-foreground: #F8FAFC;
+  --info: #61A8FF;
 
-  /* Soft Ambient Lighting System (Refined Shadows & Low Opacity Emerald Glows) */
-  --shadow-soft: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 20px rgba(0, 0, 0, 0.35);
-  --shadow-float: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 10px 40px rgba(0, 0, 0, 0.45);
-  --shadow-premium: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 20px 80px rgba(0, 0, 0, 0.60);
+  /* Soft Layered Ambient Lighting System (DeepMind & OpenAI Inspired Glows) */
+  --shadow-soft: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 4px 20px rgba(0, 0, 0, 0.40);
+  --shadow-float: inset 0 1px 0 rgba(255, 255, 255, 0.10), 0 10px 40px rgba(0, 0, 0, 0.50);
+  --shadow-premium: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 20px 80px rgba(0, 0, 0, 0.65);
 
-  --glow-hero: radial-gradient(circle, rgba(52, 211, 153, 0.04), transparent 70%);        /* Subtle Atelier Emerald Glow near Hero */
-  --glow-cta: radial-gradient(circle, rgba(246, 244, 239, 0.04), transparent 70%);        /* Washi Ivory Glow near CTA */
-  --glow-ambient: radial-gradient(circle, rgba(212, 175, 55, 0.02), transparent 70%);    /* Atelier Gold Ambient Highlight */
+  --glow-hero: radial-gradient(circle, rgba(97, 168, 255, 0.045), transparent 70%);       /* Subtle Ocean Blue Glow near Hero */
+  --glow-cta: radial-gradient(circle, rgba(248, 250, 252, 0.04), transparent 70%);        /* Cool Ivory Glow near CTA */
+  --glow-ambient: radial-gradient(circle, rgba(126, 231, 216, 0.025), transparent 70%);   /* Soft Teal Ambient Highlight */
 }
 
 .light {
