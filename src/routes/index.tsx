@@ -342,6 +342,46 @@ function Home() {
           </div>
         </section>
 
+        {/* ─── GOOGLE UX CORE CAPABILITY MATRIX ─── */}
+        <section className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 md:p-10 space-y-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border/20 pb-5">
+            <div>
+              <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-accent font-semibold block">
+                GOOGLE UX COMPETENCY ALIGNMENT
+              </span>
+              <h3 className="font-display text-2xl md:text-3xl text-foreground font-light tracking-tight mt-1">
+                Product thinking first, visual excellence second.
+              </h3>
+            </div>
+            <span className="text-xs font-mono text-muted-foreground/70">
+              6 CORE UX PILLARS
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { title: "Systems & Tokens", desc: "Tokenized Figma variables, auto-layout variants, and component specifications." },
+              { title: "Research & Journey Mapping", desc: "Problem framing, user mental models, and qualitative synthesis." },
+              { title: "Complex Workflows", desc: "Enterprise dashboards, information architecture, and low cognitive load." },
+              { title: "Engineering Partnership", desc: "CSS layout boundaries, component state management, and clear developer handoffs." },
+              { title: "Accessibility (WCAG AA)", desc: "High-contrast color tokens (>4.5:1), keyboard focus rings, and reduced motion." },
+              { title: "Usability & Metrics", desc: "Data-backed decision logs, user confidence scores, and shipped product releases." },
+            ].map((p, idx) => (
+              <div
+                key={p.title}
+                className="rounded-2xl border border-border/30 bg-background/30 p-5 space-y-2 hover:border-accent/30 transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs font-semibold text-accent">0{idx + 1}</span>
+                  <CheckCircle2 className="h-3.5 w-3.5 text-accent/80" />
+                </div>
+                <h4 className="font-display text-lg text-foreground font-medium">{p.title}</h4>
+                <p className="text-xs text-muted-foreground font-light leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* ─── CHAPTER 02: Selected Work ─── */}
         <HomeProjectsSection />
 
