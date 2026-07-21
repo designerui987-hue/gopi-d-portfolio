@@ -40,9 +40,9 @@ function ProjectsIndex() {
 
   return (
     <PageShell
-      eyebrow="Portfolio"
-      title="Sleek layouts, proven utility."
-      description="Detailed case studies of digital products. Each project documents the why behind every decision."
+      eyebrow="SELECTED CASE STUDIES"
+      title="Products Designed for Complexity & Calm."
+      description="In-depth design documentation of shipped modules, enterprise business applications, and AI product concepts."
     >
       <div className="mt-20">
         <Stagger className="space-y-6" stagger={0.12}>

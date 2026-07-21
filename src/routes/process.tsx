@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform, useReducedMotion, useSpring } from "framer-motion";
-import { BookOpen, PencilRuler, MessageSquare, Repeat, Sparkles } from "lucide-react";
+import { BookOpen, PencilRuler, MessageSquare, Repeat, Sparkles, Layers, Cpu, Compass, CheckCircle2 } from "lucide-react";
 import { PageShell } from "@/components/page-shell";
 import { Stagger, staggerItem, Reveal } from "@/components/reveal";
 import { useRef } from "react";
@@ -8,17 +8,17 @@ import { useRef } from "react";
 export const Route = createFileRoute("/process")({
   head: () => ({
     meta: [
-      { title: "How I Work — Gopi Neeraj Kumar" },
+      { title: "Design Methodology & Process — Gopi Neeraj Kumar" },
       {
         name: "description",
         content:
-          "How I actually approach a design project as a junior UI/UX designer — understand, sketch, feedback, refine.",
+          "Systematic product design methodology combining discovery, information architecture, cross-functional alignment, and scalable design systems.",
       },
-      { property: "og:title", content: "How I Work — Gopi Neeraj Kumar" },
+      { property: "og:title", content: "Design Methodology & Process — Gopi Neeraj Kumar" },
       {
         property: "og:description",
         content:
-          "How I actually approach a design project as a junior UI/UX designer — understand, sketch, feedback, refine.",
+          "Systematic product design methodology combining discovery, information architecture, cross-functional alignment, and scalable design systems.",
       },
     ],
   }),
@@ -36,39 +36,39 @@ type Step = {
 const steps: Step[] = [
   {
     n: "01",
-    t: "Understand the brief",
-    Icon: BookOpen,
-    d: "I re-read the brief, write the problem back in one sentence, and list what I don't know yet. If I can, I talk to whoever wrote it, or to one or two people who'd actually use the thing. Nothing polished — just notes in FigJam or a Notion doc.",
-    outputs: ["Problem in one sentence", "Open questions", "3–5 short user notes"],
+    t: "Discovery & Problem Framing",
+    Icon: Compass,
+    d: "I translate complex or ambiguous product goals into clear problem statements. By mapping user mental models, business objectives, and technical constraints early, I ensure design decisions are rooted in evidence rather than assumptions.",
+    outputs: ["Problem Definition", "User Journey Mapping", "Information Architecture"],
   },
   {
     n: "02",
-    t: "Sketch cheap and often",
+    t: "Architecture & Structural Exploration",
     Icon: PencilRuler,
-    d: "Before Figma, I sketch on paper or in FigJam — two or three rough directions, ugly on purpose. It stops me from falling in love with the first idea and makes it easier to throw things away.",
-    outputs: ["Paper sketches", "Rough user flows", "Low-fi wireframes"],
+    d: "Before committing to visual fidelity, I map structural hierarchy, user flows, and low-fidelity interaction models in FigJam. Rapid exploration allows stress-testing alternative pathways without getting attached to visual details.",
+    outputs: ["Conceptual User Flows", "Low-Fi Wireframes", "Structural Prototypes"],
   },
   {
     n: "03",
-    t: "Show it early, on purpose",
+    t: "Cross-functional Alignment & Reviews",
     Icon: MessageSquare,
-    d: "I share work while it's still rough — with mentors, classmates, and (whenever I can) real users. I try to ask specific questions instead of \"what do you think?\", and I take notes I'll actually re-read the next day.",
-    outputs: ["Mentor / peer review", "Small user checks", "Written feedback log"],
+    d: "I conduct structured design reviews with product managers, engineering leads, and stakeholders. Sharing work early surfaces edge cases, technical feasibility bounds, and usability gaps before high-fidelity execution.",
+    outputs: ["Design Review Notes", "Usability Testing Logs", "Technical Feasibility Alignment"],
   },
   {
     n: "04",
-    t: "Refine in small loops",
+    t: "Systemic High-Fidelity & Handoff",
     Icon: Repeat,
-    d: "Then I move into Figma properly — components, states, responsive checks. I iterate in small, defensible steps, keep a short changelog, and try to write down why I made each decision, not just what I changed.",
-    outputs: ["Hi-fi screens", "Component variants", "Design decisions log"],
+    d: "I execute high-fidelity interfaces in Figma using scalable design tokens, variant components, auto-layout, and interaction states. I prepare comprehensive handoff documentation and collaborate closely with developers during implementation.",
+    outputs: ["Hi-Fi Component System", "Micro-Interactions", "Developer Handoff Specs"],
   },
 ];
 
 const principles = [
-  ["Ship something small, weekly", "Even a rough Figma frame is a decision I can defend or throw away."],
-  ["Feedback beats opinion — including mine", "If I can't explain why, it's an opinion. Time to ask someone."],
-  ["Reuse before you invent", "First check the kit. If a pattern exists, use it. If not, note why."],
-  ["Write it down", "Short notes on decisions save future-me a lot of second-guessing."],
+  ["Systems Over Isolated Screens", "Every component is designed as part of a scalable, repeatable product design system."],
+  ["Clarity as the Core Metric", "If an interaction pattern requires explanation, the interface structure needs refinement."],
+  ["Engineering Collaboration", "Designing with deep awareness of code boundaries accelerates product velocity and reduces friction."],
+  ["Usability Validates Aesthetics", "Visual elegance serves human comprehension and focus—never superficial distraction."],
 ];
 
 function StepCard({ step }: { step: Step }) {
@@ -84,29 +84,29 @@ function StepCard({ step }: { step: Step }) {
 
       <div>
         <div className="flex items-start justify-between relative z-10">
-          <div className="font-display text-sm text-accent font-semibold">{step.n}</div>
+          <div className="font-mono text-xs text-accent font-semibold">{step.n}</div>
           <div className="flex h-11 w-11 items-center justify-center rounded-full border border-border/40 bg-background/50 text-muted-foreground group-hover:text-accent group-hover:border-accent/30 transition-all duration-[180ms]">
             <step.Icon className="h-4 w-4" strokeWidth={1.75} />
           </div>
         </div>
-        <h3 className="mt-6 font-display text-2xl text-foreground font-medium group-hover:text-accent transition-colors duration-[180ms]">
+        <h3 className="mt-6 font-display text-2xl text-foreground font-light tracking-tight group-hover:text-accent transition-colors duration-[180ms]">
           {step.t}
         </h3>
-        <p className="mt-4 text-sm leading-relaxed text-muted-foreground group-hover:text-foreground/90 transition-colors duration-[180ms]">
+        <p className="mt-4 text-sm leading-relaxed text-muted-foreground font-light group-hover:text-foreground/90 transition-colors duration-[180ms]">
           {step.d}
         </p>
       </div>
 
       <div className="mt-8 border-t border-border/30 pt-6 relative z-10">
-        <div className="mb-4 text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold flex items-center gap-1.5">
+        <div className="mb-4 text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-semibold flex items-center gap-1.5 font-mono">
           <Sparkles className="h-3 w-3 text-accent" />
-          Deliverables
+          KEY DELIVERABLES
         </div>
         <ul className="flex flex-wrap gap-2">
           {step.outputs.map((o) => (
             <li
               key={o}
-              className="rounded-full border border-border/40 bg-background/40 px-3 py-1 text-xs text-foreground/80 hover:text-foreground hover:border-accent/30 transition-colors duration-[180ms]"
+              className="rounded-full border border-border/40 bg-background/40 px-3 py-1 text-xs font-mono text-foreground/80 hover:text-accent hover:border-accent/30 transition-colors duration-[180ms]"
             >
               {o}
             </li>
@@ -124,7 +124,6 @@ function HorizontalTimeline() {
     target: targetRef,
   });
 
-  // Dampen scroll translation using physical springs to create Locomotive-like inertia
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 75,
     damping: 24,
@@ -148,10 +147,10 @@ function HorizontalTimeline() {
       <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
         {/* Horizontal track line */}
         <div className="absolute top-[50%] left-0 right-0 h-[1px] bg-border/25 z-0" />
-        
-        <motion.div style={{ x }} className="flex gap-8 px-12 relative z-10 w-[240vw]">
+
+        <motion.div style={{ x }} className="flex gap-8 relative z-10 px-4">
           {steps.map((s) => (
-            <div key={s.n} className="w-[50vw] max-w-[460px] shrink-0">
+            <div key={s.n} className="w-[480px] shrink-0 h-[460px]">
               <StepCard step={s} />
             </div>
           ))}
@@ -164,65 +163,73 @@ function HorizontalTimeline() {
 function Process() {
   return (
     <PageShell
-      eyebrow="Workflow"
-      title="A junior designer's honest loop."
-      description="I'm early in my career, so my process is deliberately simple: understand the brief, sketch cheaply, get feedback from mentors and users, refine in small steps. Below is how that plays out on a project."
+      eyebrow="METHODOLOGY & PROCESS"
+      title="Systematic, repeatable, and defensible."
+      description="A structured product design methodology connecting user discovery, structural architecture, cross-functional review, and scalable system handoff."
     >
-      {/* Desktop Horizontal Scroll Timeline */}
-      <HorizontalTimeline />
+      <div className="relative mt-12 space-y-24">
 
-      {/* Mobile Stack Timeline */}
-      <div className="md:hidden space-y-8 mt-12 relative">
-        <div className="absolute left-[20px] top-4 bottom-4 w-[1px] bg-border/30" />
-        {steps.map((s) => (
-          <div key={s.n} className="relative pl-10">
-            {/* Timeline node */}
-            <div className="absolute left-[12px] top-[14px] h-[16px] w-[16px] rounded-full border-2 border-accent bg-background z-10" />
-            <StepCard step={s} />
+        {/* ── CINEMATIC TIMELINE TRACK ── */}
+        <section className="space-y-6">
+          <div className="flex items-center justify-between border-b border-border/20 pb-4">
+            <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-accent font-semibold">
+              04-STAGE EXECUTION CYCLE
+            </span>
+            <span className="text-xs font-mono text-muted-foreground/60 hidden md:inline">
+              SCROLL TO EXPLORE TIMELINE &rarr;
+            </span>
           </div>
-        ))}
-      </div>
 
-      {/* Principles */}
-      <Reveal className="mt-36">
-        <div className="mb-8 flex items-baseline gap-4 border-b border-border/30 pb-4">
-          <span className="font-display text-sm text-accent">05</span>
-          <span className="text-[10px] uppercase tracking-[0.24em] text-muted-foreground font-semibold">
-            Working notes
-          </span>
-        </div>
-        <h2 className="max-w-2xl font-display text-4xl leading-tight text-foreground font-light">
-          Small rules I try to actually follow.
-        </h2>
-        <Stagger className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-border/40 bg-border/40 md:grid-cols-2" stagger={0.06}>
-          {principles.map(([t, d]) => (
-            <motion.div
-              key={t}
-              variants={staggerItem}
-              className="bg-surface/20 backdrop-blur-sm p-8 md:p-10 hover:bg-surface/30 transition-all duration-[180ms]"
-            >
-              <div className="font-display text-xl text-foreground font-medium flex items-center gap-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                {t}
+          <HorizontalTimeline />
+
+          {/* Mobile vertical stack fallback */}
+          <div className="grid grid-cols-1 gap-6 md:hidden">
+            {steps.map((s) => (
+              <StepCard key={s.n} step={s} />
+            ))}
+          </div>
+        </section>
+
+        {/* ── OPERATING PRINCIPLES ── */}
+        <Reveal className="border-t border-border/20 pt-16 space-y-10">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-accent font-semibold block">
+                OPERATING PHILOSOPHY
+              </span>
+              <h3 className="font-display text-3xl font-light text-foreground tracking-tight mt-2">
+                Core Design Principles
+              </h3>
+            </div>
+            <p className="text-xs text-muted-foreground font-light max-w-md">
+              Foundational tenets guiding daily product execution and engineering partnerships.
+            </p>
+          </div>
+
+          <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-6" stagger={0.08}>
+            {principles.map(([title, desc], idx) => (
+              <div
+                key={title}
+                className="rounded-3xl border border-border/30 bg-surface/20 p-7 space-y-3 hover:border-accent/30 transition-all duration-300"
+              >
+                <div className="flex items-center justify-between border-b border-border/20 pb-3">
+                  <span className="font-mono text-xs font-semibold text-accent">0{idx + 1}</span>
+                  <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-muted-foreground/60">
+                    PRINCIPLE
+                  </span>
+                </div>
+                <h4 className="font-display text-xl text-foreground font-light tracking-tight pt-1">
+                  {title}
+                </h4>
+                <p className="text-sm leading-relaxed text-muted-foreground font-light">
+                  {desc}
+                </p>
               </div>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                {d}
-              </p>
-            </motion.div>
-          ))}
-        </Stagger>
-      </Reveal>
+            ))}
+          </Stagger>
+        </Reveal>
 
-      {/* Quote */}
-      <Reveal className="mt-28">
-        <div className="relative py-12 px-8 rounded-3xl border border-border/40 bg-surface/10 backdrop-blur-sm overflow-hidden text-center max-w-4xl mx-auto">
-          <div className="absolute -top-10 -left-10 h-32 w-32 rounded-full bg-accent/5 blur-xl" />
-          <blockquote className="font-display text-2xl md:text-3xl leading-relaxed text-foreground/90 italic font-light relative z-10">
-            "I'm not trying to be clever yet — I'm trying to be honest about the
-            problem and clear on the page."
-          </blockquote>
-        </div>
-      </Reveal>
+      </div>
     </PageShell>
   );
 }

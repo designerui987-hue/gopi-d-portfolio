@@ -20,6 +20,7 @@ import {
   Sun,
   Moon,
   Sparkles,
+  Search,
 } from "lucide-react";
 import { useRef, useState, useEffect, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -238,7 +239,27 @@ export function FloatingNav() {
           <span className="mx-1 h-4 w-px bg-border/35 shrink-0" aria-hidden="true" />
 
           {/* ── Action tools ── */}
-          <div className="flex items-center gap-0.5">
+          <div className="flex items-center gap-1">
+            {/* Command Palette Trigger (Linear / Vercel style) */}
+            <button
+              onClick={() => setPaletteOpen(true)}
+              aria-label="Open command palette (Cmd+K)"
+              className="cursor-pointer"
+            >
+              <MagneticSlot>
+                <motion.div
+                  className="relative flex h-8 items-center justify-center gap-1.5 rounded-full px-2.5 sm:px-3 text-[10px] font-mono font-medium border border-border/40 bg-surface/30 text-muted-foreground hover:text-accent hover:border-accent/40 transition-colors"
+                  whileHover={{ scale: reduced ? 1 : 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={EASE_EDITORIAL}
+                >
+                  <Search className="h-3 w-3 text-accent/80 shrink-0" strokeWidth={1.75} />
+                  <span className="hidden lg:inline text-[9px] uppercase tracking-wider">Search</span>
+                  <kbd className="hidden sm:inline-block rounded border border-border/50 bg-background/50 px-1 py-0.2 text-[8px] text-muted-foreground/80 font-mono">⌘K</kbd>
+                </motion.div>
+              </MagneticSlot>
+            </button>
+
             <a
               href="/neeraj_ui_ux_resume_updaetd_v1_7148.pdf"
               target="_blank"
