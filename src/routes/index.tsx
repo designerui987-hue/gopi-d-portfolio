@@ -282,6 +282,18 @@ function Home() {
             </div>
           </FadeUp>
 
+          {/* Animated Scroll Indicator */}
+          <FadeUp delay={1.25} y={10} className="hidden sm:flex items-center gap-2 text-[10px] font-mono text-muted-foreground/60 pt-4">
+            <div className="flex h-5 w-3 items-start justify-center rounded-full border border-border/50 p-0.5">
+              <motion.div
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                className="h-0.5 w-0.5 rounded-full bg-accent"
+              />
+            </div>
+            <span className="uppercase tracking-[0.22em]">SCROLL TO EXPLORE &rarr;</span>
+          </FadeUp>
+
         </div>
       </div>
 
