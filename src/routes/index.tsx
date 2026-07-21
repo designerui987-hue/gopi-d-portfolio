@@ -465,6 +465,47 @@ function Home() {
           </Reveal>
         </section>
 
+        {/* ─── CHAPTER 06: Writing & Experimental Lab Teaser ─── */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-border/20 pt-16">
+          <div className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 space-y-4 hover:border-accent/40 transition-colors">
+            <div className="flex items-center justify-between border-b border-border/20 pb-3">
+              <span className="font-mono text-xs text-accent">CHAPTER 06 · WRITING</span>
+              <span className="text-[9px] font-mono uppercase tracking-wider text-muted-foreground/60">ESSAYS</span>
+            </div>
+            <h3 className="font-display text-2xl text-foreground font-light tracking-tight">
+              On calm software &amp; product craft.
+            </h3>
+            <p className="text-xs text-muted-foreground font-light leading-relaxed">
+              Read editorial thoughts on quiet software, tokenized design systems, and bridging design with code.
+            </p>
+            <Link
+              to="/writing"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-accent hover:underline pt-2"
+            >
+              Explore Essays &rarr;
+            </Link>
+          </div>
+
+          <div className="rounded-3xl border border-border/40 bg-surface/20 backdrop-blur-md p-8 space-y-4 hover:border-accent/40 transition-colors">
+            <div className="flex items-center justify-between border-b border-border/20 pb-3">
+              <span className="font-mono text-xs text-accent">CHAPTER 07 · LAB</span>
+              <span className="text-[9px] font-mono uppercase tracking-wider text-muted-foreground/60">PROTOTYPES</span>
+            </div>
+            <h3 className="font-display text-2xl text-foreground font-light tracking-tight">
+              Micro-interactions &amp; visual explorations.
+            </h3>
+            <p className="text-xs text-muted-foreground font-light leading-relaxed">
+              Test live interactive UI components, sparkline data density widgets, and design system token matrixes.
+            </p>
+            <Link
+              to="/playground"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-accent hover:underline pt-2"
+            >
+              Enter Lab &rarr;
+            </Link>
+          </div>
+        </section>
+
         {/* ─── CHAPTER 06: Climax CTA & Studio Footer (Why contact me?) ─── */}
         <div className="border-t border-border/25 pt-24 text-center">
           <span className="text-[10px] uppercase tracking-[0.35em] text-accent font-semibold block mb-6">
