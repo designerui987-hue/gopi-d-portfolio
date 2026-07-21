@@ -21,6 +21,8 @@ import {
   Moon,
   Sparkles,
   Search,
+  BookOpen,
+  Sliders,
 } from "lucide-react";
 import { useRef, useState, useEffect, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
@@ -50,6 +52,8 @@ const items = [
   { to: "/projects", label: "Projects", icon: Layers },
   { to: "/process", label: "Process", icon: Workflow },
   { to: "/design-system", label: "System", icon: Palette },
+  { to: "/writing", label: "Writing", icon: BookOpen },
+  { to: "/playground", label: "Lab", icon: Sliders },
   { to: "/about", label: "About", icon: User },
   { to: "/contact", label: "Contact", icon: Mail },
 ] as const;
