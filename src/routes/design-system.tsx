@@ -500,22 +500,39 @@ function DesignSystem() {
             <button
               type="button"
               onClick={() => {
-                const jsonStr = JSON.stringify({
-                  canvas: { value: "#111315", type: "color" },
-                  section: { value: "#17191C", type: "color" },
-                  surface: { value: "#1E2125", type: "color" },
-                  primaryAccent: { value: "#F5F0E6", type: "color" },
-                  secondaryAccent: { value: "#D4C4E8", type: "color" },
-                  fontDisplay: { value: "Fraunces, Cormorant, serif", type: "fontFamily" },
-                  fontSans: { value: "Inter, Geist, sans-serif", type: "fontFamily" },
-                  spacingBase: { value: "8px", type: "dimension" }
-                }, null, 2);
+                const tokenData = {
+                  color: {
+                    canvas: { $value: "#111315", $type: "color" },
+                    section: { $value: "#17191C", $type: "color" },
+                    surface: { $value: "#1E2125", $type: "color" },
+                    accent: {
+                      ivory: { $value: "#F5F0E6", $type: "color" },
+                      lavender: { $value: "#D4C4E8", $type: "color" }
+                    }
+                  },
+                  typography: {
+                    display: { $value: "Fraunces", $type: "fontFamily" },
+                    body: { $value: "Inter", $type: "fontFamily" }
+                  },
+                  spacing: {
+                    base: { $value: "8px", $type: "dimension" }
+                  }
+                };
+                const jsonStr = JSON.stringify(tokenData, null, 2);
                 navigator.clipboard.writeText(jsonStr);
-                alert("Figma Tokens JSON copied to clipboard!");
+
+                // Automated File Download
+                const blob = new Blob([jsonStr], { type: "application/json" });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "design-tokens.tokens.json";
+                a.click();
+                URL.revokeObjectURL(url);
               }}
-              className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-mono text-accent hover:bg-accent/20 transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-full border border-accent/40 bg-accent/10 px-3.5 py-1.5 text-xs font-mono text-accent hover:bg-accent/20 transition-colors shadow-sm"
             >
-              <Copy className="h-3 w-3" /> Copy Figma JSON
+              <Copy className="h-3.5 w-3.5" /> Export &amp; Download Tokens (.json)
             </button>
           </div>
           <pre className="font-mono text-xs text-muted-foreground/90 bg-background/50 p-4 rounded-xl border border-border/30 overflow-x-auto">
